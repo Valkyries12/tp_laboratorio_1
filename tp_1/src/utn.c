@@ -40,17 +40,45 @@ int utn_getInt(int * pNumeroIngresado, char * mensaje, char * mensajeError, int 
 }
 
 
-int utn_getCaracter(int * pCaracterIngresado,char * mensaje,char * mensajeError,
+
+int utn_getFloat(float * pNumeroIngresado, char * mensaje, char * mensajeError, float maximo, float minimo, int maximoDeReintentos){
+
+	float auxNumeroIngresado;
+	int retorno;
+	retorno = -1;
+
+	if(pNumeroIngresado != NULL && maximo >= minimo && maximoDeReintentos>= 0){
+		do{
+			printf("%s", mensaje);
+			scanf("%f", &auxNumeroIngresado);
+			maximoDeReintentos--;
+
+			if(auxNumeroIngresado >= minimo && auxNumeroIngresado <= maximo){
+						*pNumeroIngresado = auxNumeroIngresado;
+						retorno = 0;
+						break;
+			}else{
+				printf("%s", mensajeError);
+			}
+
+		}while(maximoDeReintentos > 0);
+	}
+
+	return retorno;
+}
+
+int utn_getCaracter(char * pCaracterIngresado,char * mensaje,char * mensajeError,
 		int maximo, int minimo, int maximoDeReintentos){
 
-	int buffer;
+	char buffer;
 	int retorno;
 	retorno = -1;
 
 	if(pCaracterIngresado != NULL && mensaje != NULL && mensajeError != NULL &&  maximo >= minimo && maximoDeReintentos>= 0){
 		do{
 			printf("%s", mensaje);
-			scanf("%d", &buffer);
+			fflush(stdin);
+			scanf("%c", &buffer);
 			maximoDeReintentos--;
 
 			if(buffer >= minimo && buffer <= maximo){
