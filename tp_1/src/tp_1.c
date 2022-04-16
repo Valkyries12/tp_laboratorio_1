@@ -27,6 +27,7 @@ int main(void) {
 	int pHayError;
 	int tienePrecio;
 	int tieneKilometro;
+	int estaCalculado;
 	float precioAerolineas;
 	float precioLatam;
 	float precioAerolineasConDescuento;
@@ -43,6 +44,7 @@ int main(void) {
 
 	tienePrecio = FALSE;
 	tieneKilometro = FALSE;
+	estaCalculado = FALSE;
 
 
 	do {
@@ -122,6 +124,7 @@ int main(void) {
 						if (pHayError == 0) {
 							respuesta = restarNumeroFlotante(precioAerolineas, precioLatam, &diferenciaDePrecios);
 							utn_verificarSiHayError(respuesta, &pHayError);
+							estaCalculado = TRUE;
 						}
 
 					} else {
@@ -130,10 +133,24 @@ int main(void) {
 
 					break;
 				case 4:
-					if (tieneKilometro && tienePrecio) {
+					if (estaCalculado) {
 						puts("\n=== Informe de resultados === \n");
+						printf("\nKMs ingresados: %d km \n\n", kilometrosIngresados);
+						//aerolineas
+						printf("\nPrecio Aerolineas: $%.2f", precioAerolineas);
+						printf("\na) Precio con tarjeta de débito: $%.2f", precioAerolineasConDescuento);
+						printf("\nb) Precio con tarjeta de crédito: $%.2f", precioAerolineasConInteres);
+						printf("\nc) Precio pagado con Bitcoins: %.8f BTC", precioAerolineasEnBitcoin);
+						printf("\nd) Mostrar precio unitario: $%.2f", precioUnitarioAerolineas);
+
+						//latam
+						printf("\n\n\nPrecio Latam: $%.2f", precioLatam);
+						printf("\na) Precio con tarjeta de débito: $%.2f", precioLatamConDescuento);
+						printf("\nb) Precio con tarjeta de crédito: $%.2f", precioLatamConInteres);
+						printf("\nc) Precio pagado con Bitcoins: %.8f BTC", precioLatamEnBitcoin);
+						printf("\nd) Mostrar precio unitario: $%.2f", precioUnitarioLatam);
 					} else {
-						puts("\n No puede informar resultados sin haber asignado un vuelo \n");
+						puts("\n No puede informar resultados sin haber calculado antes \n");
 					}
 
 					break;
@@ -152,7 +169,7 @@ int main(void) {
 					break;
 			}
 		} else {
-			puts("serompio");
+			puts("\n Se ha roto el sistema");
 		}
 	}
 	while(menuOpcion != 6);
