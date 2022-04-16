@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "utn.h"
+#include "operaciones_aritmeticas.h"
 
 
 #define TRUE 1
@@ -23,15 +24,26 @@ int main(void) {
 	int menuOpcion;
 	int kilometrosIngresados;
 	int respuesta;
-	int respuestaAerolineas;
-	int respuestaLatam;
+	int pHayError;
 	int tienePrecio;
 	int tieneKilometro;
 	float precioAerolineas;
 	float precioLatam;
+	float precioAerolineasConDescuento;
+	float precioAerolineasConInteres;
+	float precioAerolineasEnBitcoin;
+	float precioUnitarioAerolineas;
+
+	float precioLatamConDescuento;
+	float precioLatamConInteres;
+	float precioLatamEnBitcoin;
+	float precioUnitarioLatam;
+	float diferenciaDePrecios;
+
 
 	tienePrecio = FALSE;
 	tieneKilometro = FALSE;
+
 
 	do {
 		respuesta = utn_getInt(&menuOpcion, "\n 1. Ingresar kilómetros\n 2. Ingresar precios de vuelos\n 3. Calcular todos los costos\n 4. Informar resultados\n 5. Carga forzada de datos\n 6. Salir \n\nPor favor ingrese una opción: ", "\nOpción inválida. Por favor elija una opción\n", 6, 1, 3);
@@ -40,22 +52,25 @@ int main(void) {
 				case 1:
 					puts("\n=== Ingreso de kilometraje ===\n");
 					respuesta = utn_getInt(&kilometrosIngresados, "\n Ingrese kilometros: ", "\n Hubo un error en el ingreso de kilometros. Por favor revisar \n", 20000, 350, 3);
-					if (respuesta == 0) {
-						printf("\n Se han registrado %d kilometros \n", kilometrosIngresados);
+					utn_verificarSiHayError(respuesta, &pHayError);
+					utn_imprimirMensajes(pHayError, "\n Se han registrado los kilometros \n", "\n Oops ha ocurrido un error =( \n");
+					if (pHayError == 0) {
 						tieneKilometro = TRUE;
 					}
 					break;
 				case 2:
 					if (tieneKilometro) {
 						puts("\n=== Precio de vuelos === \n");
-						respuestaAerolineas = utn_getFloat(&precioAerolineas, "\nPrecio vuelo Aerolineas: ", "Ha ocurrido un error al asignar el precio", 279500.45, 5099.27 , 2);
-						respuestaLatam = utn_getFloat(&precioLatam, "\nPrecio vuelo Latam: ", "Ha ocurrido un error al asignar el precio", 279500.45, 5099.27, 2);
 
-						if (respuestaAerolineas == 0 && respuestaLatam == 0) {
+						respuesta = utn_getFloat(&precioAerolineas, "\nPrecio vuelo Aerolineas: ", "\nHa ocurrido un error al asignar el precio", 279500.45, 5099.27 , 2);
+						utn_verificarSiHayError(respuesta, &pHayError);
+						if (pHayError == 0) {
+							respuesta = utn_getFloat(&precioLatam, "\nPrecio vuelo Latam: ", "\nHa ocurrido un error al asignar el precio", 279500.45, 5099.27, 2);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						utn_imprimirMensajes(pHayError, "\nPrecio asignado con éxito\n", "\n\n Oops ha ocurrido un error =( \n");
+						if (pHayError == 0) {
 							tienePrecio = TRUE;
-							printf("\nPrecio asignado con éxito\n");
-						} else {
-							printf("\n\n Oops ha ocurrido un error =( \n");
 						}
 
 					} else {
@@ -66,6 +81,49 @@ int main(void) {
 				case 3:
 					if (tieneKilometro && tienePrecio) {
 						puts("\nCalculando costos...  \n");
+						///costos de aerolineas
+						respuesta = utn_hacerDescuento(precioAerolineas, 10, &precioAerolineasConDescuento);
+						utn_verificarSiHayError(respuesta, &pHayError);
+
+						if (pHayError == 0) {
+							respuesta = utn_sumarInteres(precioAerolineas, 25, &precioAerolineasConInteres);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularAPrecioBitcoin(precioAerolineas, 4613709.90, &precioAerolineasEnBitcoin);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularPrecioPorKilometro(kilometrosIngresados, precioAerolineas, &precioUnitarioAerolineas);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+
+						//costos latam
+						if (pHayError == 0) {
+							respuesta = utn_hacerDescuento(precioLatam, 10, &precioLatamConDescuento);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_sumarInteres(precioLatam, 25, &precioLatamConInteres);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularAPrecioBitcoin(precioLatam, 4613709.90, &precioLatamEnBitcoin);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularPrecioPorKilometro(kilometrosIngresados, precioLatam, &precioUnitarioLatam);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+
+						utn_imprimirMensajes(pHayError, "\nCostos calculados con éxito\n", "\n\n Oops ha ocurrido un error =( \n");
+
+						///diferencia de precios
+						if (pHayError == 0) {
+							respuesta = restarNumeroFlotante(precioAerolineas, precioLatam, &diferenciaDePrecios);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+
 					} else {
 						puts("\n No puede calcular costos sin haber asignado un vuelo \n");
 					}

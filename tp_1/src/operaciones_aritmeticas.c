@@ -21,4 +21,29 @@ float sumarNumeroFlotante(float num1, float num2) {
 }
 
 
+int restarNumeroFlotante(float num1, float num2, float * pResultado) {
+	int codigoError;
+	float auxResultado;
+	float resultado;
+
+	if (pResultado != NULL && num1 > 0 && num2 > 0) {
+		if (num1 > num2) {
+			resultado = num1 - num2;
+			auxResultado = resultado;
+		} else {
+			resultado = num2 - num1;
+			auxResultado = resultado;
+		}
+
+		* pResultado = auxResultado;
+		codigoError = 0;
+	}
+
+	codigoError =-1;
+
+
+	return codigoError;
+}
+
+
 

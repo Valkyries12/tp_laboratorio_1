@@ -142,3 +142,102 @@ int utn_loguear(int * pIsLogged, int intentosMaximos) {
 
 }
 
+
+int utn_hacerDescuento(float monto, int descuento, float * pValorFinal) {
+	int codigoError;
+	float auxPValorFinal;
+	float resultado;
+	codigoError = -1;
+
+	if (pValorFinal != NULL && descuento > 0 && monto > 0) {
+		resultado = (monto * descuento) / 100;
+		resultado = monto - resultado;
+		auxPValorFinal = resultado;
+		* pValorFinal = auxPValorFinal;
+		codigoError = 0;
+	}
+
+	return codigoError;
+}
+
+
+int utn_sumarInteres(float monto, int interes, float * pValorFinal) {
+	int codigoError;
+	float auxPValorFinal;
+	float resultado;
+	codigoError = -1;
+
+	if (pValorFinal != NULL && interes > 0 && monto > 0) {
+		resultado = (monto * interes) / 100;
+		resultado = monto + resultado;
+		auxPValorFinal = resultado;
+		* pValorFinal = auxPValorFinal;
+		codigoError = 0;
+	}
+
+
+	return codigoError;
+}
+
+
+void utn_verificarSiHayError(int respuesta, int * pHayError) {
+	int auxRespuesta;
+	auxRespuesta = respuesta;
+	* pHayError = auxRespuesta;
+
+
+}
+
+
+void utn_imprimirMensajes(int  hayError, char * mensaje, char * mensajeError) {
+	if (mensaje != NULL && mensajeError != NULL) {
+		if (hayError == 0) {
+			printf("%s", mensaje);
+		} else {
+			if (hayError == -1)
+			printf("%s", mensajeError);
+		}
+	}
+
+}
+
+
+int utn_calcularAPrecioBitcoin(float monto, float precioBitcoin, float * pValorFinal) {
+	int codigoError;
+	float resultado;
+	float auxPValorFinal;
+
+	codigoError = -1;
+
+	if ( pValorFinal != NULL && monto > 0 && precioBitcoin > 0) {
+		resultado = monto / precioBitcoin;
+		auxPValorFinal = resultado;
+		* pValorFinal = auxPValorFinal;
+		codigoError = 0;
+	}
+
+
+	return codigoError;
+
+}
+
+
+int utn_calcularPrecioPorKilometro(int kilometro, float precio, float * pValorFinal) {
+	int codigoError;
+	float resultado;
+	float auxPValorFinal;
+
+	codigoError = -1;
+
+	if (pValorFinal != NULL && kilometro > 349 && precio > 5099.26) {
+		resultado = precio / kilometro;
+		auxPValorFinal = resultado;
+		* pValorFinal = auxPValorFinal;
+		codigoError = 0;
+	}
+
+
+	return codigoError;
+}
+
+
