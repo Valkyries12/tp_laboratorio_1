@@ -29,6 +29,7 @@ int main(void) {
 	int tienePrecio;
 	int tieneKilometro;
 	int estaCalculado;
+
 	float precioAerolineas;
 	float precioLatam;
 	float precioAerolineasConDescuento;
@@ -136,12 +137,15 @@ int main(void) {
 				case 4:
 					if (estaCalculado) {
 						puts("\n=== Informe de resultados === \n");
-						printf("\nKMs ingresados: %d km \n\n", kilometrosIngresados);
+						printf("\nKMs ingresados: %d km \n", kilometrosIngresados);
 						//aerolineas
 						imprimirInformeDeCostos("Aerolineas", precioAerolineas, precioAerolineasConDescuento, precioAerolineasConInteres, precioAerolineasEnBitcoin, precioUnitarioAerolineas);
 
 						//latam
 						imprimirInformeDeCostos("Latam", precioLatam, precioLatamConDescuento, precioLatamConInteres, precioLatamEnBitcoin, precioUnitarioLatam);
+
+						// diferencia de precios
+						printf("La diferencia de precio es: %.2f \n\n", diferenciaDePrecios);
 					} else {
 						puts("\n No puede informar resultados sin haber calculado antes \n");
 					}
@@ -152,6 +156,64 @@ int main(void) {
 						puts("\n No se puede realizar la carga forzada teniendo un vuelo asignado \n");
 					} else {
 						puts("\n=== Carga forzada de datos === \n");
+						kilometrosIngresados = 7090;
+						precioAerolineas = 162965;
+						precioLatam = 159339;
+						///costos de aerolineas
+						respuesta = utn_hacerDescuento(precioAerolineas, 10, &precioAerolineasConDescuento);
+						utn_verificarSiHayError(respuesta, &pHayError);
+
+						if (pHayError == 0) {
+							respuesta = utn_sumarInteres(precioAerolineas, 25, &precioAerolineasConInteres);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularAPrecioBitcoin(precioAerolineas, 4613709.90, &precioAerolineasEnBitcoin);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularPrecioPorKilometro(kilometrosIngresados, precioAerolineas, &precioUnitarioAerolineas);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+
+						//costos latam
+						if (pHayError == 0) {
+							respuesta = utn_hacerDescuento(precioLatam, 10, &precioLatamConDescuento);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_sumarInteres(precioLatam, 25, &precioLatamConInteres);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularAPrecioBitcoin(precioLatam, 4613709.90, &precioLatamEnBitcoin);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+						if (pHayError == 0) {
+							respuesta = utn_calcularPrecioPorKilometro(kilometrosIngresados, precioLatam, &precioUnitarioLatam);
+							utn_verificarSiHayError(respuesta, &pHayError);
+						}
+
+						utn_imprimirMensajes(pHayError, "\nCarga realizada con éxito\n", "\n\n Oops ha ocurrido un error =( \n");
+
+						///diferencia de precios
+						if (pHayError == 0) {
+							respuesta = restarNumeroFlotante(precioAerolineas, precioLatam, &diferenciaDePrecios);
+							utn_verificarSiHayError(respuesta, &pHayError);
+
+							printf("\nKMs ingresados: %d km \n", kilometrosIngresados);
+							//aerolineas
+							imprimirInformeDeCostos("Aerolineas", precioAerolineas, precioAerolineasConDescuento, precioAerolineasConInteres, precioAerolineasEnBitcoin, precioUnitarioAerolineas);
+
+							//latam
+							imprimirInformeDeCostos("Latam", precioLatam, precioLatamConDescuento, precioLatamConInteres, precioLatamEnBitcoin, precioUnitarioLatam);
+
+							// diferencia de precios
+							printf("La diferencia de precio es: %.2f \n\n", diferenciaDePrecios);
+						}
+
+
+
 					}
 
 					break;
