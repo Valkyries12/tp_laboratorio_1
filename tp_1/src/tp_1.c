@@ -12,6 +12,7 @@
 #include <stdlib.h>
 #include "utn.h"
 #include "operaciones_aritmeticas.h"
+#include "aerolineas.h"
 
 
 #define TRUE 1
@@ -137,18 +138,10 @@ int main(void) {
 						puts("\n=== Informe de resultados === \n");
 						printf("\nKMs ingresados: %d km \n\n", kilometrosIngresados);
 						//aerolineas
-						printf("\nPrecio Aerolineas: $%.2f", precioAerolineas);
-						printf("\na) Precio con tarjeta de débito: $%.2f", precioAerolineasConDescuento);
-						printf("\nb) Precio con tarjeta de crédito: $%.2f", precioAerolineasConInteres);
-						printf("\nc) Precio pagado con Bitcoins: %.8f BTC", precioAerolineasEnBitcoin);
-						printf("\nd) Mostrar precio unitario: $%.2f", precioUnitarioAerolineas);
+						imprimirInformeDeCostos("Aerolineas", precioAerolineas, precioAerolineasConDescuento, precioAerolineasConInteres, precioAerolineasEnBitcoin, precioUnitarioAerolineas);
 
 						//latam
-						printf("\n\n\nPrecio Latam: $%.2f", precioLatam);
-						printf("\na) Precio con tarjeta de débito: $%.2f", precioLatamConDescuento);
-						printf("\nb) Precio con tarjeta de crédito: $%.2f", precioLatamConInteres);
-						printf("\nc) Precio pagado con Bitcoins: %.8f BTC", precioLatamEnBitcoin);
-						printf("\nd) Mostrar precio unitario: $%.2f", precioUnitarioLatam);
+						imprimirInformeDeCostos("Latam", precioLatam, precioLatamConDescuento, precioLatamConInteres, precioLatamEnBitcoin, precioUnitarioLatam);
 					} else {
 						puts("\n No puede informar resultados sin haber calculado antes \n");
 					}
