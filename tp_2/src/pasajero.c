@@ -70,23 +70,27 @@ int buscarPasajeroPorId(Pasajero arr[], int id, int len) {
 
 
 
-int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apellido, float precio, int tipoPasajero, char * codigoVuelo ) {
+int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apellido, float precio, int tipoPasajero, char * codigoVuelo, int estadoVuelo ) {
 	int codigoError;
 	int indice;
 //	int numeroDocumento;
 //	int edad;
-
+	printf("Dentro de agregar pasajero");
 	codigoError = -1;
-	if (arr != NULL && len > 0 && id > 0 && nombre != NULL && apellido != NULL && precio > 0 && tipoPasajero >= 0 && codigoVuelo != NULL) {
+	if (arr != NULL && len > 0 && id > 0 && nombre != NULL && apellido != NULL && precio > 0 && tipoPasajero >= 0 && codigoVuelo != NULL && estadoVuelo >= 0) {
 		indice = buscarEspacioLibre(arr, len);
-
+		printf("\nindice es: %d", indice);
 		if (indice != -1) {
+//			printf("\nEntre a la asignacion");
+//			printf("\nid: %d, nombre: %s, apellido: %s, precio: %.2f, tipo pasajero: %d, codigo vuelo: %s, estado vuelo: %d", id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
 			arr[indice].id = id;
 			strncpy(arr[indice].nombre, nombre, strlen(nombre));
 			strncpy(arr[indice].apellido, apellido, strlen(apellido));
 			arr[indice].precio = precio;
 			arr[indice].tipoPasajero = tipoPasajero;
 			strncpy(arr[indice].codigoVuelo, codigoVuelo, strlen(codigoVuelo));
+			arr[indice].estadoVuelo = estadoVuelo;
+			arr[indice].isEmpty = FALSE;
 			codigoError = 0;
 		} else {
 			puts("\n\nNo se pueden agregar más pasajeros");
@@ -204,6 +208,20 @@ int incrementarId(void) {
 	id++;
 
 	return id;
+}
+
+
+
+void imprimirPasajero(Pasajero pasajero) {
+	if (pasajero.isEmpty == FALSE) {
+		printf("|%6d", pasajero.id);
+		printf("|%20s", pasajero.nombre);
+		printf("|%20s", pasajero.apellido);
+		printf("|%20f", pasajero.precio);
+		printf("|%10s", pasajero.codigoVuelo);
+		printf("|%10d", pasajero.tipoPasajero);
+		printf("|%10d|", pasajero.estadoVuelo);
+	}
 }
 
 

@@ -128,7 +128,7 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 			buffer[strlen(buffer)-1] = '\0';
 
 			if (utn_tieneSoloLetras(buffer) && strlen(buffer) >= lenMinima) {
-				strncpy(stringAIngresar, buffer, sizeof(buffer));
+				strncpy(stringAIngresar, buffer, strlen(buffer));
 				codigoError = 0;
 				break;
 			} else {

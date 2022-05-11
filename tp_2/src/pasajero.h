@@ -55,10 +55,11 @@ int buscarPasajeroPorId(Pasajero arr[], int id, int len);
 /// @param nombre -> nombre del pasajero
 /// @param apellido -> apellido del pasajero
 /// @param precio -> precio del vuelo
-/// @param tipoPasajero -> PRIMERA_CLASE (1), EJECUTIVO (2), PREMIUM (3)
+/// @param tipoPasajero -> PRIMERA_CLASE (0), EJECUTIVO (1), PREMIUM (2)
 /// @param codigoVuelo -> valor alfanumerico
+/// @param estadoVuelo -> ACTIVO (0), DEMORADO (1), CANCELADO (2)
 /// @return En caso de exito (0), en caso de error (-1)
-int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apellido, float precio, int tipoPasajero, char * codigoVuelo );
+int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apellido, float precio, int tipoPasajero, char * codigoVuelo, int estadoVuelo );
 
 
 /// @brief Elimina un pasajero del array
@@ -100,5 +101,10 @@ int existePasajero(Pasajero arr[], int len, int id);
 /// @brief Incrementa el id por un, lo hace autoincremental
 ///
 int incrementarId(void);
+
+
+/// @brief Imprime los datos del pasajero dado
+///
+void imprimirPasajero(Pasajero pasajero);
 
 #endif /* PASAJERO_H_ */
