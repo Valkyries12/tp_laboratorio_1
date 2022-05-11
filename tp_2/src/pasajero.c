@@ -77,7 +77,7 @@ int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apell
 //	int edad;
 
 	codigoError = -1;
-	if (arr != NULL && len > 0 && id > 0 && nombre != NULL && apellido != NULL && precio > 0 && tipoPasajero > 0 && codigoVuelo != NULL) {
+	if (arr != NULL && len > 0 && id > 0 && nombre != NULL && apellido != NULL && precio > 0 && tipoPasajero >= 0 && codigoVuelo != NULL) {
 		indice = buscarEspacioLibre(arr, len);
 
 		if (indice != -1) {
@@ -149,7 +149,7 @@ int modificarPasajero(Pasajero arr[], int id, int opcionMenu, int len) {
 					codigoError = utn_getFloat(&arr[indice].precio, "\nIngrese el nuevo precio: ", "\nHa sucedido un error al modificar el precio\n", 578800, 2500, 3);
 					break;
 				case 4:
-					codigoError = utn_getInt(&arr[indice].tipoPasajero, "\nIngrese el tipo de pasajero [PRIMERA_CLASE (0), EJECUTIVO (1), PREMIUM (2)]: ", "\nHa ocurrido un error al modificar el tipo de pasajero\n", 3, 1, 3);
+					codigoError = utn_getInt(&arr[indice].tipoPasajero, "\nIngrese el tipo de pasajero [PRIMERA_CLASE (0), EJECUTIVO (1), PREMIUM (2)]: ", "\nHa ocurrido un error al modificar el tipo de pasajero\n", 2, 0, 3);
 					break;
 				case 5:
 					codigoError = utn_getString(arr[indice].codigoVuelo, "\nIngrese el nuevo código de vuelo: ", "\nHa sucedido un error al modificar el código de vuelo\n", 3, 6);
