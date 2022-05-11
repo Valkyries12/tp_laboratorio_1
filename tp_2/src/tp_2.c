@@ -55,28 +55,40 @@ int main(void) {
 						codigoError = utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nHa sucedido un error con el código de vuelo\n", 3, 6);
 					}
 					if (codigoError == 0) {
-						codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nHa ocurrido un error con el estado de vuelo\n", 2, 0, 3);
+						codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nHa ocurrido un error con el estado de vuelo.\n", 2, 0, 3);
 					}
 					if (codigoError == 0) {
-						codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nHa ocurrido un error con el tipo de pasajero", 2, 0, 3);
+						codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nHa ocurrido un error con el tipo de pasajero.\n", 2, 0, 3);
 					}
 					if (codigoError == 0) {
 						id = incrementarId();
 						agregarPasajero(pasajeros, MAXIMO_PASAJEROS, id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
 					}
+					utn_imprimirMensajes(codigoError, "\nSe han agregado los datos satisfactoriamente.\n", "\nHubo un error al agregar los datos.\n");
 					break;
 				case 2:
 
 					if (hayAlgoCargado(pasajeros, MAXIMO_PASAJEROS)) {
 						puts("=== Modificar pasajero ===");
 					} else {
-						puts("Debe haber al menos un pasajero cargado");
+						puts("Debe haber al menos un pasajero cargado.");
 					}
 					break;
 				case 3:
 
 					if (hayAlgoCargado(pasajeros, MAXIMO_PASAJEROS)) {
 						puts("=== Eliminar pasajero ===");
+
+						codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a eliminar: ", "\nID incorrecto. Reintente.\n", 15000, 150, 3);
+						if (codigoError == 0 && existePasajero(pasajeros, MAXIMO_PASAJEROS, id)) {
+							codigoError = eliminarPasajero(pasajeros, id, MAXIMO_PASAJEROS);
+
+							if (codigoError == 0) {
+								utn_imprimirMensajes(codigoError, "\nSe ha eliminado el pasajero satisfactoriamente.\n", "\nHa ocurrido un error al eliminar el pasajero.\n");
+							}
+						} else {
+							puts("\nPasajero inexistente.\n");
+						}
 					} else {
 						puts("Debe haber al menos un pasajero cargado");
 					}
@@ -99,7 +111,7 @@ int main(void) {
 	} while(opcionMenu != 5 && codigoError == 0);
 
 	if (codigoError != 0) {
-		puts("\nERROR FATAL");
+		puts("\nERROR FATAL =(");
 	}
 
 	puts("\n\nSaliendo...");
