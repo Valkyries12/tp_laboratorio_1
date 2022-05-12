@@ -76,16 +76,19 @@ int main(void) {
 						codigoError = utn_getInt(&id, "\n\nIngrese el ID del pasajero a modificar: ", "\nOpción inválida. Reintente.\n", 15000, 150, 3);
 						if (codigoError == 0 && existePasajero(pasajeros, MAXIMO_PASAJEROS, id)) {
 							indice = buscarPasajeroPorId(pasajeros, id, MAXIMO_PASAJEROS);
+							if (indice != -1) {
+								do {
+									imprimirPasajero(pasajeros[indice]);
+									codigoError = utn_getInt(&opcionMenu, "\n1- Modificar nombre. \n2- Modificar apellido. \n3- Modificar precio. \n4- Modificar tipo de pasajero. \n5- Modificar código de vuelo. \n6- Atras. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 6, 1, 3);
 
-							do {
-								imprimirPasajero(pasajeros[indice]);
-								codigoError = utn_getInt(&opcionMenu, "\n1- Modificar nombre. \n2- Modificar apellido. \n3- Modificar precio. \n4- Modificar tipo de pasajero. \n5- Modificar código de vuelo. \n6- Salir. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 6, 1, 3);
+									if (codigoError == 0 && opcionMenu != 6) {
+										codigoError = modificarPasajero(pasajeros, id, opcionMenu, MAXIMO_PASAJEROS);
+										utn_imprimirMensajes(codigoError, "\nSe han modificado los datos satisfactoriamente.\n", "\nHa ocurrido un error al modificar los datos.");
+									}
+								} while(opcionMenu != 6 && codigoError == 0);
+								opcionMenu = 0;
+							}
 
-								if (codigoError == 0 && opcionMenu != 6) {
-									codigoError = modificarPasajero(pasajeros, id, opcionMenu, MAXIMO_PASAJEROS);
-									utn_imprimirMensajes(codigoError, "\nSe han modificado los datos satisfactoriamente.\n", "\nHa ocurrido un error al modificar los datos.");
-								}
-							} while(opcionMenu != 6 && codigoError == 0);
 						}
 					} else {
 						puts("Debe haber al menos un pasajero cargado.");

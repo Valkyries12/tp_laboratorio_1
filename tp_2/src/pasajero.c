@@ -58,11 +58,8 @@ int buscarPasajeroPorId(Pasajero arr[], int id, int len) {
 	indice = -1;
 	if (arr != NULL && id > 0 && len > 0) {
 		for(int i = 0; i < len; i++) {
-			if (arr[i].id == id && arr[i].isEmpty == 0) {
+			if (arr[i].id == id && arr[i].isEmpty == FALSE) {
 				indice = i;
-				break;
-			} else {
-				printf("\nNo se ha encontrado el pasajero nº%d\n", id);
 				break;
 			}
 		}
@@ -193,6 +190,7 @@ int existePasajero(Pasajero arr[], int len, int id) {
 	int indice;
 
 	existe = FALSE;
+
 	if (arr != NULL && len > 0 && id > 0) {
 		indice = buscarPasajeroPorId(arr, id, len);
 		if (indice != -1) {
