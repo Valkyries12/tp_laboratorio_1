@@ -15,6 +15,9 @@
 #define TRUE 1
 #define FALSE 0
 
+char opcionTipoPasajero[][20] = {"PRIMERA_CLASE", "EJECUTIVO", "PREMIUM"};
+char opcionEstadoVuelo[][20] = {"ACTIVO", "DEMORADO", "CANCELADO"};
+
 int inicializarPasajeros(Pasajero arr[], int len) {
 	int codigoError;
 
@@ -214,14 +217,77 @@ int incrementarId(void) {
 
 void imprimirPasajero(Pasajero pasajero) {
 	if (pasajero.isEmpty == FALSE) {
-		printf("|%6d", pasajero.id);
+		printf("\n|%6d", pasajero.id);
 		printf("|%20s", pasajero.nombre);
 		printf("|%20s", pasajero.apellido);
 		printf("|%20f", pasajero.precio);
 		printf("|%10s", pasajero.codigoVuelo);
-		printf("|%10d", pasajero.tipoPasajero);
-		printf("|%10d|", pasajero.estadoVuelo);
+		printf("|%20s", opcionTipoPasajero[pasajero.tipoPasajero]);
+		printf("|%15s|\n", opcionEstadoVuelo[pasajero.estadoVuelo]);
 	}
 }
+
+
+
+void imprimirPasajeros(Pasajero arr[], int len) {
+	if (arr != NULL) {
+		for(int i = 0; i < len; i++) {
+			imprimirPasajero(arr[i]);
+		}
+	}
+}
+
+
+
+
+int ordenarPasajeros(Pasajero arr[], int len, int orden) {
+	int codigoError;
+	int estaOrdenado;
+
+	Pasajero auxPasajero;
+
+
+	codigoError = -1;
+	if (arr != NULL && len > 0 && (orden == 0 || orden == 1)) {
+		do {
+			estaOrdenado = TRUE;
+			len--;
+			if (orden == 1) {
+				//ordeno de forma ascendente
+				for (int i = 0; i < len; i++) {
+
+					if (strcmp(arr[i].apellido, arr[i + 1].apellido) > 0) {
+						if (arr[i].tipoPasajero > arr[i + 1].tipoPasajero) {
+							auxPasajero = arr[i];
+							arr[i] = arr[i + 1];
+							arr[i + 1] = auxPasajero;
+							estaOrdenado = FALSE;
+						}
+
+					}
+				}
+			} else {
+				//ordeno de forma descendente
+				for (int i = 0; i < len; i++) {
+
+					if (strcmp(arr[i].apellido, arr[i + 1].apellido) < 0) {
+						if (arr[i].tipoPasajero < arr[i + 1].tipoPasajero) {
+							auxPasajero = arr[i];
+							arr[i] = arr[i + 1];
+							arr[i + 1] = auxPasajero;
+							estaOrdenado = FALSE;
+						}
+
+					}
+				}
+			}
+
+		} while (estaOrdenado == FALSE);
+		codigoError = 0;
+	}
+
+	return codigoError;
+}
+
 
 

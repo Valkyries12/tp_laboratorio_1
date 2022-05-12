@@ -105,6 +105,23 @@ int incrementarId(void);
 
 /// @brief Imprime los datos del pasajero dado
 ///
+/// @param pasajero -> struct con los datos del pasajero
 void imprimirPasajero(Pasajero pasajero);
+
+
+/// @brief Imprime todos los pasajeros
+///
+/// @param arr -> array de pasajeros
+/// @param len -> longitud del array
+void imprimirPasajeros(Pasajero arr[], int len);
+
+
+/// @brief Ordena los pasajeros por apellido y tipo de pasajero
+///
+/// @param arr -> array de pasajeros
+/// @param len -> longitud del array
+/// @param orden -> 1 ascendente, 0 descendente
+/// @return En caso de exito (0), en caso de error (-1)
+int ordenarPasajeros(Pasajero arr[], int len, int orden);
 
 #endif /* PASAJERO_H_ */

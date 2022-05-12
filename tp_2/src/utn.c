@@ -126,7 +126,6 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 			printf("%s", mensaje);
 			fgets(buffer, sizeof(buffer), stdin);
 			buffer[strlen(buffer)-1] = '\0';
-
 			if (utn_tieneSoloLetras(buffer) && strlen(buffer) >= lenMinima) {
 				strncpy(stringAIngresar, buffer, strlen(buffer));
 				codigoError = 0;
@@ -262,6 +261,7 @@ int utn_getMail(char * mailAIngresar, char * mensaje, char * mensajeError, int m
 
 	return codigoError;
 }
+
 
 
 int utn_loguear(int * pIsLogged, int intentosMaximos) {
@@ -484,6 +484,8 @@ int utn_inicializarArrayDeFloats(float arr[], int len, float valorInicial) {
 
 	return codigoError;
 }
+
+
 
 
 

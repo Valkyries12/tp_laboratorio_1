@@ -22,8 +22,8 @@
 int main(void) {
 	setbuf(stdout, NULL);
 	Pasajero pasajeros[MAXIMO_PASAJEROS];
-	char opcionTipoPasajero[][20] = {"PRIMERA_CLASE", "EJECUTIVO", "PREMIUM"};
-	char opcionEstadoVuelo[][20] = {"ACTIVO", "DEMORADO", "CANCELADO"};
+//	char opcionTipoPasajero[][20] = {"PRIMERA_CLASE", "EJECUTIVO", "PREMIUM"};
+//	char opcionEstadoVuelo[][20] = {"ACTIVO", "DEMORADO", "CANCELADO"};
 	int codigoError;
 	int opcionMenu;
 	int id;
@@ -33,12 +33,14 @@ int main(void) {
 	char codigoVuelo[10];
 	int estadoVuelo;
 	int tipoPasajero;
+	int indice;
 
 	puts("=== INICIO DEL PROGRAMA === \n\n");
 
 	inicializarPasajeros(pasajeros, MAXIMO_PASAJEROS);
 
 	do {
+		puts("=== MENÚ PRINCIPAL ===");
 		codigoError = utn_getInt(&opcionMenu, "\n1- Alta de pasajero \n2- Modificar pasajero \n3- Baja de pasajero \n4- INFORMAR \n5- Salir \n\nIngrese una opción: ", "\nOpción inválida. Reintente\n", 5, 1, 3);
 		if (codigoError == 0) {
 			switch (opcionMenu) {
@@ -70,6 +72,21 @@ int main(void) {
 
 					if (hayAlgoCargado(pasajeros, MAXIMO_PASAJEROS)) {
 						puts("=== Modificar pasajero ===");
+
+						codigoError = utn_getInt(&id, "\n\nIngrese el ID del pasajero a modificar: ", "\nOpción inválida. Reintente.\n", 15000, 150, 3);
+						if (codigoError == 0 && existePasajero(pasajeros, MAXIMO_PASAJEROS, id)) {
+							indice = buscarPasajeroPorId(pasajeros, id, MAXIMO_PASAJEROS);
+
+							do {
+								imprimirPasajero(pasajeros[indice]);
+								codigoError = utn_getInt(&opcionMenu, "\n1- Modificar nombre. \n2- Modificar apellido. \n3- Modificar precio. \n4- Modificar tipo de pasajero. \n5- Modificar código de vuelo. \n6- Salir. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 6, 1, 3);
+
+								if (codigoError == 0 && opcionMenu != 6) {
+									codigoError = modificarPasajero(pasajeros, id, opcionMenu, MAXIMO_PASAJEROS);
+									utn_imprimirMensajes(codigoError, "\nSe han modificado los datos satisfactoriamente.\n", "\nHa ocurrido un error al modificar los datos.");
+								}
+							} while(opcionMenu != 6 && codigoError == 0);
+						}
 					} else {
 						puts("Debe haber al menos un pasajero cargado.");
 					}
@@ -98,7 +115,40 @@ int main(void) {
 					if (hayAlgoCargado(pasajeros, MAXIMO_PASAJEROS)) {
 						puts("=== INFORME ===");
 
-						imprimirPasajero(pasajeros[0]);
+						do{
+							codigoError = utn_getInt(&opcionMenu, "\n1- Listado pasajeros ordenados alfabéticamente por Apellido y Tipo de pasajero. \n2- Total y promedio de los precios de los pasajes. \n3- Listado de los pasajeros por Código de vuelo y estados de vuelos ACTIVO. \n4- Atras. \n\nIngrese una opción: ", "\nOpción incorrecta. Reintente.\n", 4, 1, 3);
+							if (codigoError == 0) {
+								switch (opcionMenu) {
+									case 1:
+										do {
+											codigoError = utn_getInt(&opcionMenu, "\n1- Ordenar de forma ascendente. \n2- Ordenar de forma descendente. \n3- Atras. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 3, 1, 3);
+											if (codigoError == 0) {
+												switch (opcionMenu) {
+													case 1:
+														codigoError = ordenarPasajeros(pasajeros, MAXIMO_PASAJEROS, 1);
+														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
+														imprimirPasajeros(pasajeros, MAXIMO_PASAJEROS);
+														break;
+													case 2:
+														codigoError = ordenarPasajeros(pasajeros, MAXIMO_PASAJEROS, 0);
+														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
+														imprimirPasajeros(pasajeros, MAXIMO_PASAJEROS);
+														break;
+													default:
+														break;
+												}
+											}
+										} while(opcionMenu != 3 && codigoError == 0);
+
+										break;
+									default:
+										break;
+								}
+							}
+						} while(opcionMenu != 4 && codigoError == 0);
+
+
+//						imprimirPasajero(pasajeros[0]);
 					} else {
 						puts("Debe haber al menos un pasajero cargado");
 					}
