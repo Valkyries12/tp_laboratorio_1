@@ -124,4 +124,16 @@ void imprimirPasajeros(Pasajero arr[], int len);
 /// @return En caso de exito (0), en caso de error (-1)
 int ordenarPasajeros(Pasajero arr[], int len, int orden);
 
+
+/// @brief Carga 10 usuarios
+///
+/// @param arr -> array de pasajeros
+/// @param len -> longitud del array
+/// @return En caso de exito (0), en caso de error (-1)
+int hacerCargaForzada(Pasajero arr[], int len);
+
+
+/// @brief Imprime la cabecera de la tabla de pasajeros
+void imprimirCabecera(void);
+
 #endif /* PASAJERO_H_ */

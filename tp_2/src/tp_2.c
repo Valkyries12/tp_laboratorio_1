@@ -41,7 +41,7 @@ int main(void) {
 
 	do {
 		puts("=== MENÚ PRINCIPAL ===");
-		codigoError = utn_getInt(&opcionMenu, "\n1- Alta de pasajero \n2- Modificar pasajero \n3- Baja de pasajero \n4- INFORMAR \n5- Salir \n\nIngrese una opción: ", "\nOpción inválida. Reintente\n", 5, 1, 3);
+		codigoError = utn_getInt(&opcionMenu, "\n1- Alta de pasajero \n2- Modificar pasajero \n3- Baja de pasajero \n4- INFORMAR \n5- Carga forzada. \n6- Salir \n\nIngrese una opción: ", "\nOpción inválida. Reintente\n", 6, 1, 3);
 		if (codigoError == 0) {
 			switch (opcionMenu) {
 				case 1:
@@ -127,6 +127,7 @@ int main(void) {
 													case 1:
 														codigoError = ordenarPasajeros(pasajeros, MAXIMO_PASAJEROS, 1);
 														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
+														imprimirCabecera();
 														imprimirPasajeros(pasajeros, MAXIMO_PASAJEROS);
 														break;
 													case 2:
@@ -153,12 +154,24 @@ int main(void) {
 						puts("Debe haber al menos un pasajero cargado");
 					}
 					break;
+				case 5:
+
+					puts("\n === Carga forzada ===");
+					if (!hayAlgoCargado(pasajeros, MAXIMO_PASAJEROS)) {
+						codigoError = hacerCargaForzada(pasajeros, MAXIMO_PASAJEROS);
+						utn_imprimirMensajes(codigoError, "\nSe ha realizado una carga forzada satisfactoriamente.\n", "\nHa sucedido un error al realizar la carga forzada\n");
+					} else {
+						puts("\nPara realizar la cargar forzada es necesario que no haya pasajeros cargados.\n");
+					}
+
+
+					break;
 				default:
 					break;
 			}
 		}
 
-	} while(opcionMenu != 5 && codigoError == 0);
+	} while(opcionMenu != 6 && codigoError == 0);
 
 	if (codigoError != 0) {
 		puts("\nERROR FATAL =(");

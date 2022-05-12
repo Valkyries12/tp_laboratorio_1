@@ -78,11 +78,9 @@ int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apell
 	int indice;
 //	int numeroDocumento;
 //	int edad;
-	printf("Dentro de agregar pasajero");
 	codigoError = -1;
 	if (arr != NULL && len > 0 && id > 0 && nombre != NULL && apellido != NULL && precio > 0 && tipoPasajero >= 0 && codigoVuelo != NULL && estadoVuelo >= 0) {
 		indice = buscarEspacioLibre(arr, len);
-		printf("\nindice es: %d", indice);
 		if (indice != -1) {
 //			printf("\nEntre a la asignacion");
 //			printf("\nid: %d, nombre: %s, apellido: %s, precio: %.2f, tipo pasajero: %d, codigo vuelo: %s, estado vuelo: %d", id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
@@ -217,14 +215,27 @@ int incrementarId(void) {
 
 void imprimirPasajero(Pasajero pasajero) {
 	if (pasajero.isEmpty == FALSE) {
-		printf("\n|%6d", pasajero.id);
+		printf("|%6d", pasajero.id);
 		printf("|%20s", pasajero.nombre);
 		printf("|%20s", pasajero.apellido);
 		printf("|%20f", pasajero.precio);
-		printf("|%10s", pasajero.codigoVuelo);
+		printf("|%15s", pasajero.codigoVuelo);
 		printf("|%20s", opcionTipoPasajero[pasajero.tipoPasajero]);
 		printf("|%15s|\n", opcionEstadoVuelo[pasajero.estadoVuelo]);
 	}
+}
+
+
+void imprimirCabecera(void) {
+
+		printf("|%6s", "ID");
+		printf("|%20s", "NOMBRE");
+		printf("|%20s", "APELLIDO");
+		printf("|%20s", "PRECIO");
+		printf("|%15s", "CÓDIGO VUELO");
+		printf("|%20s", "TIPO PASAJERO");
+		printf("|%15s|\n\n", "ESTADO VUELO");
+
 }
 
 
@@ -266,21 +277,21 @@ int ordenarPasajeros(Pasajero arr[], int len, int orden) {
 
 					}
 				}
-			} else {
-				//ordeno de forma descendente
-				for (int i = 0; i < len; i++) {
-
-					if (strcmp(arr[i].apellido, arr[i + 1].apellido) < 0) {
-						if (arr[i].tipoPasajero < arr[i + 1].tipoPasajero) {
-							auxPasajero = arr[i];
-							arr[i] = arr[i + 1];
-							arr[i + 1] = auxPasajero;
-							estaOrdenado = FALSE;
-						}
-
-					}
-				}
-			}
+			} //else {
+//				//ordeno de forma descendente
+//				for (int i = 0; i < len; i++) {
+//
+//					if (strcmp(arr[i].apellido, arr[i + 1].apellido) < 0) {
+//						if (arr[i].tipoPasajero < arr[i + 1].tipoPasajero) {
+//							auxPasajero = arr[i];
+//							arr[i] = arr[i + 1];
+//							arr[i + 1] = auxPasajero;
+//							estaOrdenado = FALSE;
+//						}
+//
+//					}
+//				}
+//			}
 
 		} while (estaOrdenado == FALSE);
 		codigoError = 0;
@@ -288,6 +299,34 @@ int ordenarPasajeros(Pasajero arr[], int len, int orden) {
 
 	return codigoError;
 }
+
+
+int hacerCargaForzada(Pasajero arr[], int len) {
+	int codigoError;
+	int id;
+	char nombres[][51] = {"Nicolas", "Andrea", "Carlos", "Lucas", "Maximiliano", "Hector", "Jesica", "Gabriel", "Horacio", "Oscar"};
+	char apellidos[][51] = {"Caruso", "Bollati", "Vitola", "Calvo", "Biglia", "Thomas", "Paulovies", "Marino", "Bollati", "Chananpa"};
+	float precios[] = {6500, 7200, 30255, 7900, 17456, 56789, 25400, 9800, 27890, 15600};
+	int tipoPasajeros[] = {1, 2, 0, 0, 1, 2, 0, 1, 1, 2};
+	char codigoVuelos[][10] = {"ARARAR", "QWEASD", "ASDQWE", "ZXCVBN", "QWERTY", "TYUGHJ", "TYUQWE", "ASDFGH", "UIOPJKL", "QWEASD"};
+	int estadoVuelos[] = {0, 2, 1, 1, 1, 2, 0, 0, 2, 1};
+	codigoError = -1;
+
+	if (arr != NULL) {
+		for(int i = 0; i < 10; i++) {
+			id = incrementarId();
+			codigoError = agregarPasajero(arr, len, id, nombres[i], apellidos[i], precios[i], tipoPasajeros[i], codigoVuelos[i], estadoVuelos[i]);
+			if (codigoError == -1) {
+				codigoError = -1;
+				break;
+			}
+			codigoError = 0;
+		}
+	}
+
+	return codigoError;
+}
+
 
 
 
