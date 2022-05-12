@@ -131,7 +131,7 @@ int main(void) {
 														imprimirPasajeros(pasajeros, MAXIMO_PASAJEROS);
 														break;
 													case 2:
-														codigoError = ordenarPasajeros(pasajeros, MAXIMO_PASAJEROS, 0);
+														codigoError = ordenarPasajeros(pasajeros, MAXIMO_PASAJEROS, 2);
 														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
 														imprimirPasajeros(pasajeros, MAXIMO_PASAJEROS);
 														break;

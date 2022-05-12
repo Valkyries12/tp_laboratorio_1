@@ -120,7 +120,7 @@ void imprimirPasajeros(Pasajero arr[], int len);
 ///
 /// @param arr -> array de pasajeros
 /// @param len -> longitud del array
-/// @param orden -> 1 ascendente, 0 descendente
+/// @param orden -> 1 ascendente, 2 descendente
 /// @return En caso de exito (0), en caso de error (-1)
 int ordenarPasajeros(Pasajero arr[], int len, int orden);
 

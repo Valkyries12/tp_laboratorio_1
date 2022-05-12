@@ -259,25 +259,58 @@ int ordenarPasajeros(Pasajero arr[], int len, int orden) {
 
 
 	codigoError = -1;
-	if (arr != NULL && len > 0 && (orden == 0 || orden == 1)) {
+	if (arr != NULL && len > 0 && (orden == 2 || orden == 1)) {
 		do {
 			estaOrdenado = TRUE;
 			len--;
-			if (orden == 1) {
-				//ordeno de forma ascendente
-				for (int i = 0; i < len; i++) {
+			switch (orden) {
+				case 1:
+					//ordeno de forma ascendente
+					for (int i = 0; i < len; i++) {
 
-					if (strcmp(arr[i].apellido, arr[i + 1].apellido) > 0) {
-						if (arr[i].tipoPasajero > arr[i + 1].tipoPasajero) {
-							auxPasajero = arr[i];
-							arr[i] = arr[i + 1];
-							arr[i + 1] = auxPasajero;
-							estaOrdenado = FALSE;
+						if (strcmp(arr[i].apellido, arr[i + 1].apellido) > 0) {
+							if (arr[i].tipoPasajero > arr[i + 1].tipoPasajero) {
+								auxPasajero = arr[i];
+								arr[i] = arr[i + 1];
+								arr[i + 1] = auxPasajero;
+								estaOrdenado = FALSE;
+							}
+
 						}
-
 					}
-				}
-			} //else {
+					break;
+				case 2:
+					//ordeno de forma descendente
+					for (int i = 0; i < len; i++) {
+						if (strcmp( arr[i + 1].apellido, arr[i].apellido) > 0) {
+							if (arr[i].tipoPasajero < arr[i + 1].tipoPasajero) {
+								auxPasajero = arr[i];
+								arr[i] = arr[i + 1];
+								arr[i + 1] = auxPasajero;
+								estaOrdenado = FALSE;
+							}
+
+						}
+					}
+					break;
+				default:
+					break;
+			}
+//			if (orden == 1) {
+//				//ordeno de forma ascendente
+//				for (int i = 0; i < len; i++) {
+//
+//					if (strcmp(arr[i].apellido, arr[i + 1].apellido) > 0) {
+//						if (arr[i].tipoPasajero > arr[i + 1].tipoPasajero) {
+//							auxPasajero = arr[i];
+//							arr[i] = arr[i + 1];
+//							arr[i + 1] = auxPasajero;
+//							estaOrdenado = FALSE;
+//						}
+//
+//					}
+//				}
+//			} //else {
 //				//ordeno de forma descendente
 //				for (int i = 0; i < len; i++) {
 //
@@ -304,16 +337,16 @@ int ordenarPasajeros(Pasajero arr[], int len, int orden) {
 int hacerCargaForzada(Pasajero arr[], int len) {
 	int codigoError;
 	int id;
-	char nombres[][51] = {"Nicolas", "Andrea", "Carlos", "Lucas", "Maximiliano", "Hector", "Jesica", "Gabriel", "Horacio", "Oscar"};
-	char apellidos[][51] = {"Caruso", "Bollati", "Vitola", "Calvo", "Biglia", "Thomas", "Paulovies", "Marino", "Bollati", "Chananpa"};
-	float precios[] = {6500, 7200, 30255, 7900, 17456, 56789, 25400, 9800, 27890, 15600};
-	int tipoPasajeros[] = {1, 2, 0, 0, 1, 2, 0, 1, 1, 2};
-	char codigoVuelos[][10] = {"ARARAR", "QWEASD", "ASDQWE", "ZXCVBN", "QWERTY", "TYUGHJ", "TYUQWE", "ASDFGH", "UIOPJKL", "QWEASD"};
-	int estadoVuelos[] = {0, 2, 1, 1, 1, 2, 0, 0, 2, 1};
+	char nombres[][51] = {"Malvina", "Martin", "Mariana", "Pedro", "Juan", "Nicolas", "Andrea", "Carlos", "Lucas", "Maximiliano", "Hector", "Jesica", "Gabriel", "Horacio", "Oscar"};
+	char apellidos[][51] = {"Sainz", "Godirio", "Valenzuela", "Acosta", "Lopez","Caruso", "Bollati", "Vitola", "Calvo", "Biglia", "Thomas", "Paulovies", "Marino", "Bollati", "Chananpa"};
+	float precios[] = {4500, 45000, 72345, 25000, 13200, 6500, 7200, 30255, 7900, 17456, 56789, 25400, 9800, 27890, 15600};
+	int tipoPasajeros[] = {1, 0, 1, 2 ,0, 1, 2, 0, 0, 1, 2, 0, 1, 1, 2};
+	char codigoVuelos[][10] = {"FGHQWE", "TYUQWE", "POILKJ", "FGHVBN", "YUIJKL","ARARAR", "QWEASD", "ASDQWE", "ZXCVBN", "QWERTY", "TYUGHJ", "TYUQWE", "ASDFGH", "UIOPJKL", "QWEASD"};
+	int estadoVuelos[] = {1, 2, 2, 0, 1, 0, 2, 1, 1, 1, 2, 0, 0, 2, 1};
 	codigoError = -1;
 
 	if (arr != NULL) {
-		for(int i = 0; i < 10; i++) {
+		for(int i = 0; i < 15; i++) {
 			id = incrementarId();
 			codigoError = agregarPasajero(arr, len, id, nombres[i], apellidos[i], precios[i], tipoPasajeros[i], codigoVuelos[i], estadoVuelos[i]);
 			if (codigoError == -1) {
