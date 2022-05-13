@@ -214,6 +214,7 @@ int incrementarId(void) {
 
 
 void imprimirPasajero(Pasajero pasajero) {
+	utn_convertirAMayuscula(pasajero.codigoVuelo);
 	if (pasajero.isEmpty == FALSE) {
 		printf("|%6d", pasajero.id);
 		printf("|%20s", pasajero.nombre);

@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
+
 #include "utn.h"
 
 #define TRUE 1
@@ -856,4 +858,20 @@ int utn_esNumerico(char arr[]){
 
 	return hasNumbers;
 }
+
+
+
+int utn_convertirAMayuscula(char * string) {
+	int codigoError;
+
+	codigoError = -1;
+	if (string != NULL) {
+		for(int i = 0; i < strlen(string); i++) {
+			string[i] = toupper(string[i]);
+		}
+	}
+
+	return codigoError;
+}
+
 

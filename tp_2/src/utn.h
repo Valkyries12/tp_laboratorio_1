@@ -303,4 +303,12 @@ int utn_tieneSoloLetras(char arr[]);
 int utn_esNumerico(char arr[]);
 
 
+
+/// @brief Convierte la palabra a mayus
+///
+/// @param string -> palabra a convertir
+/// return En caso de exito (0), en caso de error (-1)
+int utn_convertirAMayuscula(char * string);
+
+
 #endif /* UTN_H_ */
