@@ -360,4 +360,92 @@ int hacerCargaForzada(Pasajero arr[], int len) {
 
 
 
+int calcularTotalDeTodosLosPasajes(Pasajero arr[], float * total, int len) {
+	int codigoError;
+	float resultado;
+
+	resultado = 0;
+	codigoError = -1;
+
+	if (arr != NULL && total != NULL && len > 0) {
+		for(int i = 0; i < len; i++) {
+			if (arr[i].isEmpty) {
+				codigoError = 0;
+				break;
+			}
+			resultado += arr[i].precio;
+		}
+		* total = resultado;
+		codigoError = 0;
+	}
+
+	return codigoError;
+}
+
+
+
+int calcularPromedioDePasajes(Pasajero arr[], float * promedio, float total, int len) {
+	int codigoError;
+	int contador;
+	float resultado;
+
+	contador = 0;
+	codigoError = -1;
+
+	if (arr != NULL && promedio != NULL && total > 0 && len > 0) {
+		for(int i = 0; i < len; i++) {
+			if (arr[i].isEmpty) {
+				codigoError = 0;
+				break;
+			}
+			contador++;
+		}
+		resultado = total / contador;
+		* promedio = resultado;
+		codigoError = 0;
+	}
+
+	return codigoError;
+}
+
+
+
+int calcularCuantosSuperanPromedio(Pasajero arr[], float promedio, int * cantidadSuperanPromedio, int len) {
+	int codigoError;
+	int contador;
+
+	contador = 0;
+	codigoError = -1;
+	if (arr != NULL && promedio > 0 && cantidadSuperanPromedio != NULL && len > 0) {
+		for(int i = 0; i < len; i++) {
+			if (arr[i].isEmpty) {
+				codigoError = 0;
+				break;
+			}
+
+			if (arr[i].precio > promedio) {
+				contador++;
+			}
+
+		}
+		* cantidadSuperanPromedio = contador;
+		codigoError = 0;
+	}
+
+
+	return codigoError;
+}
+
+
+
+void imprimirCalculosDePasajeros(float totalPrecios, float promedio, int cantidadSuperanPromedio) {
+	printf("\n\nEl total de todos los precios es: %.2f", totalPrecios);
+	printf("\nEl promedio de precios es: %.2f", promedio);
+	printf("\nCantidad de pasajeros que superan el promedio: %d\n\n", cantidadSuperanPromedio);
+}
+
+
+
+
+
 

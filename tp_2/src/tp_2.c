@@ -34,6 +34,9 @@ int main(void) {
 	int estadoVuelo;
 	int tipoPasajero;
 	int indice;
+	float totalPrecios;
+	float promedio;
+	int cantidadSuperanPromedio;
 
 	puts("=== INICIO DEL PROGRAMA === \n\n");
 
@@ -119,7 +122,7 @@ int main(void) {
 						puts("=== INFORME ===");
 
 						do{
-							codigoError = utn_getInt(&opcionMenu, "\n1- Listado pasajeros ordenados alfabéticamente por Apellido y Tipo de pasajero. \n2- Total y promedio de los precios de los pasajes. \n3- Listado de los pasajeros por Código de vuelo y estados de vuelos ACTIVO. \n4- Atras. \n\nIngrese una opción: ", "\nOpción incorrecta. Reintente.\n", 4, 1, 3);
+							codigoError = utn_getInt(&opcionMenu, "\n1- Listado pasajeros ordenados alfabéticamente por Apellido y Tipo de pasajero. \n2- Total y promedio de los precios de los pasajes y cuantos pasajeros superan el promedio. \n3- Listado de los pasajeros por Código de vuelo y estados de vuelos ACTIVO. \n4- Atras. \n\nIngrese una opción: ", "\nOpción incorrecta. Reintente.\n", 4, 1, 3);
 							if (codigoError == 0) {
 								switch (opcionMenu) {
 									case 1:
@@ -143,6 +146,24 @@ int main(void) {
 												}
 											}
 										} while(opcionMenu != 3 && codigoError == 0);
+
+										break;
+									case 2:
+										codigoError = calcularTotalDeTodosLosPasajes(pasajeros, &totalPrecios, MAXIMO_PASAJEROS);
+										if (codigoError == 0) {
+											codigoError = calcularPromedioDePasajes(pasajeros, &promedio, totalPrecios, MAXIMO_PASAJEROS);
+										}
+
+										if (codigoError == 0) {
+											codigoError = calcularCuantosSuperanPromedio(pasajeros, promedio, &cantidadSuperanPromedio, MAXIMO_PASAJEROS);
+										}
+
+										utn_imprimirMensajes(codigoError, "\nSe han hecho los cálculos satisfactoriamente.\n", "\nHa sucedido un error al realizar los cálculos.\n");
+
+										if (codigoError == 0) {
+											imprimirCalculosDePasajeros(totalPrecios, promedio, cantidadSuperanPromedio);
+										}
+
 
 										break;
 									default:

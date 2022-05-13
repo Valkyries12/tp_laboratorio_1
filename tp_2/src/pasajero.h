@@ -136,4 +136,41 @@ int hacerCargaForzada(Pasajero arr[], int len);
 /// @brief Imprime la cabecera de la tabla de pasajeros
 void imprimirCabecera(void);
 
+
+/// @brief Calcula el total de los precios de todos los pasajeros
+///
+/// @param arr -> array de pasajeros
+/// @param total -> puntero del resultado calculado en la funcion
+/// @param len -> longitud del array
+/// @return En caso de exito (0), en caso de error (-1)
+int calcularTotalDeTodosLosPasajes(Pasajero arr[], float * total, int len);
+
+
+/// @brief Calcula el promedio de los precios de todos los pasajeros
+///
+/// @param arr -> array de pasajeros
+/// @param promedio -> puntero donde se guardara el resultado del promedio
+/// @param total -> total de todos los precios
+/// @param len -> longitud del array
+/// @return En caso de exito (0), en caso de error (-1)
+int calcularPromedioDePasajes(Pasajero arr[], float * promedio, float total, int len);
+
+
+/// @brief Calcula cuantos pasajeros superan el precio promedio
+///
+/// @param arr -> array de pasajeros
+/// @param promedio -> precio promedio
+/// @param cantidadSuperanPromedio -> puntero a variable donde se guardara el resultado
+/// @param len -> longitud del array
+/// return En caso de exito (0), en caso de error (-1)
+int calcularCuantosSuperanPromedio(Pasajero arr[], float promedio, int * cantidadSuperanPromedio, int len);
+
+
+/// @brief Imprime el total de precios, su promedio y la cantidad de pasajeros que superan el promedio
+///
+/// @param totalPrecios -> total de precio de todos los pasajes
+/// @param promedio -> promedio de precio de los pasajes vendidos
+/// @param cantidadSuperanPromedio -> cantidad de pasajeros que superan el precio promedio
+void imprimirCalculosDePasajeros(float totalPrecios, float promedio, int cantidadSuperanPromedio);
+
 #endif /* PASAJERO_H_ */
