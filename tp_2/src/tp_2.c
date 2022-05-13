@@ -51,25 +51,50 @@ int main(void) {
 				case 1:
 					puts("=== Alta de pasajero ===");
 					codigoError = utn_getString(nombre, "\nIngrese nombre del pasajero: ", "\nNombre inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
+//					if (codigoError == 0) {
+//						codigoError = utn_getString(apellido, "\nIngrese apellido del pasajero: ", "\nApellido inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
+//					}
+//					if (codigoError == 0) {
+//						codigoError = utn_getFloat(&precio, "\nIngrese precio del pasaje: ", "\nPrecio inválido. Debe contener solo números.\n", 750000, 2500, 3);
+//					}
+//					if (codigoError == 0) {
+//						codigoError = utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 letras.\n", 3, 6, 6);
+//					}
+//					if (codigoError == 0) {
+//						codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
+//					}
+//					if (codigoError == 0) {
+//						codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
+//					}
+//					if (codigoError == 0) {
+//						id = incrementarId();
+//						agregarPasajero(pasajeros, MAXIMO_PASAJEROS, id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
+//					}
 					if (codigoError == 0) {
 						codigoError = utn_getString(apellido, "\nIngrese apellido del pasajero: ", "\nApellido inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
+
+						if (codigoError == 0) {
+							codigoError = utn_getFloat(&precio, "\nIngrese precio del pasaje: ", "\nPrecio inválido. Debe contener solo números.\n", 750000, 2500, 3);
+
+							if (codigoError == 0) {
+								codigoError = utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 letras.\n", 3, 6, 6);
+
+								if (codigoError == 0) {
+									codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
+
+									if (codigoError == 0) {
+										codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
+
+										if (codigoError == 0) {
+											id = incrementarId();
+											agregarPasajero(pasajeros, MAXIMO_PASAJEROS, id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
+										}
+									}
+								}
+							}
+						}
 					}
-					if (codigoError == 0) {
-						codigoError = utn_getFloat(&precio, "\nIngrese precio del pasaje: ", "\nPrecio inválido. Debe contener solo números.\n", 750000, 2500, 3);
-					}
-					if (codigoError == 0) {
-						codigoError = utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 letras.\n", 3, 6, 6);
-					}
-					if (codigoError == 0) {
-						codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
-					}
-					if (codigoError == 0) {
-						codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
-					}
-					if (codigoError == 0) {
-						id = incrementarId();
-						agregarPasajero(pasajeros, MAXIMO_PASAJEROS, id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
-					}
+
 					utn_imprimirMensajes(codigoError, "\nSe han agregado los datos satisfactoriamente.\n", "\nHubo un error al agregar los datos.\n");
 					break;
 				case 2:
@@ -154,10 +179,11 @@ int main(void) {
 										codigoError = calcularTotalDeTodosLosPasajes(pasajeros, &totalPrecios, MAXIMO_PASAJEROS);
 										if (codigoError == 0) {
 											codigoError = calcularPromedioDePasajes(pasajeros, &promedio, totalPrecios, MAXIMO_PASAJEROS);
-										}
 
-										if (codigoError == 0) {
-											codigoError = calcularCuantosSuperanPromedio(pasajeros, promedio, &cantidadSuperanPromedio, MAXIMO_PASAJEROS);
+
+											if (codigoError == 0) {
+												codigoError = calcularCuantosSuperanPromedio(pasajeros, promedio, &cantidadSuperanPromedio, MAXIMO_PASAJEROS);
+											}
 										}
 
 										utn_imprimirMensajes(codigoError, "\nSe han hecho los cálculos satisfactoriamente.\n", "\nHa sucedido un error al realizar los cálculos.\n");
