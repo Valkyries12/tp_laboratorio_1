@@ -32,16 +32,17 @@ int utn_getInt(int * pNumeroIngresado, char * mensaje, char * mensajeError, int 
 			buffer[strlen(buffer)-1] = '\0';
 			if (utn_esNumerico(buffer)) {
 				auxNumeroIngresado = atoi(buffer);
-			}
-			if(auxNumeroIngresado >= minimo && auxNumeroIngresado <= maximo) {
-				*pNumeroIngresado = auxNumeroIngresado;
-				codigoError = 0;
-				break;
+				if(auxNumeroIngresado >= minimo && auxNumeroIngresado <= maximo) {
+					*pNumeroIngresado = auxNumeroIngresado;
+					codigoError = 0;
+					break;
 
+				}
+//				fflush(stdin);
 			} else{
 				printf("%s", mensajeError);
 			}
-			fflush(stdin);
+
 
 		}while(maximoDeReintentos > 0);
 	}
