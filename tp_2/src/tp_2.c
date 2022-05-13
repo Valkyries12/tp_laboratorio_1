@@ -50,21 +50,21 @@ int main(void) {
 			switch (opcionMenu) {
 				case 1:
 					puts("=== Alta de pasajero ===");
-					codigoError = utn_getString(nombre, "\nIngrese nombre del pasajero: ", "\nHa sucedido un error al ingresar el nombre\n", 3, 4);
+					codigoError = utn_getString(nombre, "\nIngrese nombre del pasajero: ", "\nNombre inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
 					if (codigoError == 0) {
-						codigoError = utn_getString(apellido, "\nIngrese apellido del pasajero: ", "\nHa sucedido un error al ingresar el apellido\n", 3, 4);
+						codigoError = utn_getString(apellido, "\nIngrese apellido del pasajero: ", "\nApellido inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
 					}
 					if (codigoError == 0) {
-						codigoError = utn_getFloat(&precio, "\nIngrese precio del pasaje: ", "\nHa sucedido un error al ingresar el precio\n", 750000, 2500, 3);
+						codigoError = utn_getFloat(&precio, "\nIngrese precio del pasaje: ", "\nPrecio inválido. Debe contener solo números.\n", 750000, 2500, 3);
 					}
 					if (codigoError == 0) {
-						codigoError = utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nHa sucedido un error con el código de vuelo\n", 3, 6);
+						codigoError = utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 letras.\n", 3, 6, 6);
 					}
 					if (codigoError == 0) {
-						codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nHa ocurrido un error con el estado de vuelo.\n", 2, 0, 3);
+						codigoError = utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
 					}
 					if (codigoError == 0) {
-						codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nHa ocurrido un error con el tipo de pasajero.\n", 2, 0, 3);
+						codigoError = utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
 					}
 					if (codigoError == 0) {
 						id = incrementarId();

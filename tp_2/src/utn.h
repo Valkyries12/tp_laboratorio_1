@@ -50,8 +50,9 @@ int utn_getCaracter(char * pCaracterIngresado,char * mensaje,char * mensajeError
 /// @param mensajeError -> Es el mensaje a ser mostrado en caso de error
 /// @param maximoReintentos -> Cantidad de reintentos en caso de error
 /// @param lenMinima -> longitud minima requerida de caracteres
+/// @param lenMaxima -> longitud maxima requerida de caracteres
 /// @return En caso de exito (0), en caso de error (-1)
-int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima);
+int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima, int lenMaxima);
 
 
 

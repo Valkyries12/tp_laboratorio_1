@@ -136,27 +136,27 @@ int modificarPasajero(Pasajero arr[], int id, int opcionMenu, int len) {
 		if (indice != -1) {
 			switch (opcionMenu) {
 				case 1:
-					codigoError = utn_getString(arr[indice].nombre, "\nIngrese nuevo nombre: ", "\nHa sucedido un error al modificar el nombre\n", 3, 4);
+					codigoError = utn_getString(arr[indice].nombre, "\nIngrese nuevo nombre: ", "\nNombre inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
 //					if (codigoError == 0) {
 //						strncpy(arr[indice].nombre, nuevoNombre, sizeof(nuevoNombre));
 //						puts("\nNombre modificado con éxito\n");
 //					}
 					break;
 				case 2:
-					codigoError = utn_getString(arr[indice].apellido, "\nIngrese nuevo apellido: ", "\nHa sucedido un error al modificar el apellido\n", 3, 4);
+					codigoError = utn_getString(arr[indice].apellido, "\nIngrese nuevo apellido: ", "\nApellido inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
 //					if (codigoError == 0) {
 //						strncpy(arr[indice].apellido, nuevoApellido, sizeof(nuevoApellido));
 //						puts("\nApellido modificado con éxito\n");
 //					}
 					break;
 				case 3:
-					codigoError = utn_getFloat(&arr[indice].precio, "\nIngrese el nuevo precio: ", "\nHa sucedido un error al modificar el precio\n", 578800, 2500, 3);
+					codigoError = utn_getFloat(&arr[indice].precio, "\nIngrese el nuevo precio: ", "\nPrecio inválido. Debe contener solo números.\n", 578800, 2500, 3);
 					break;
 				case 4:
-					codigoError = utn_getInt(&arr[indice].tipoPasajero, "\nIngrese el tipo de pasajero [PRIMERA_CLASE (0), EJECUTIVO (1), PREMIUM (2)]: ", "\nHa ocurrido un error al modificar el tipo de pasajero\n", 2, 0, 3);
+					codigoError = utn_getInt(&arr[indice].tipoPasajero, "\nIngrese el tipo de pasajero [PRIMERA_CLASE (0), EJECUTIVO (1), PREMIUM (2)]: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3);
 					break;
 				case 5:
-					codigoError = utn_getString(arr[indice].codigoVuelo, "\nIngrese el nuevo código de vuelo: ", "\nHa sucedido un error al modificar el código de vuelo\n", 3, 6);
+					codigoError = utn_getString(arr[indice].codigoVuelo, "\nIngrese el nuevo código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 letras.\n", 3, 6, 6);
 					break;
 				default:
 					break;
@@ -374,7 +374,7 @@ int hacerCargaForzada(Pasajero arr[], int len) {
 	char apellidos[][51] = {"Sainz", "Godirio", "Valenzuela", "Acosta", "Lopez","Caruso", "Bollati", "Vitola", "Calvo", "Biglia", "Thomas", "Paulovies", "Marino", "Bollati", "Chananpa"};
 	float precios[] = {4500, 45000, 72345, 25000, 13200, 6500, 7200, 30255, 7900, 17456, 56789, 25400, 9800, 27890, 15600};
 	int tipoPasajeros[] = {1, 0, 1, 2 ,0, 1, 2, 0, 0, 1, 2, 0, 1, 1, 2};
-	char codigoVuelos[][10] = {"FGHQWE", "TYUQWE", "POILKJ", "FGHVBN", "YUIJKL","ARARAR", "QWEASD", "ASDQWE", "ZXCVBN", "QWERTY", "TYUGHJ", "TYUQWE", "ASDFGH", "UIOPJKL", "QWEASD"};
+	char codigoVuelos[][10] = {"FGHQWE", "TYUQWE", "POILKJ", "FGHVBN", "YUIJKL","ARARAR", "QWEASD", "ASDQWE", "ZXCVBN", "QWERTY", "TYUGHJ", "TYUQWE", "ASDFGH", "UIOPJK", "QWEASD"};
 	int estadoVuelos[] = {1, 2, 2, 0, 1, 0, 2, 1, 1, 1, 2, 0, 0, 2, 1};
 	codigoError = -1;
 

@@ -114,19 +114,19 @@ int utn_getCaracter(char * pCaracterIngresado,char * mensaje,char * mensajeError
 
 
 
-int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima) {
+int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima, int lenMaxima) {
 	int codigoError;
 	char buffer[255];
 
 	codigoError = -1;
-	if(stringAIngresar != NULL && mensaje != NULL && mensajeError != NULL && maximoReintentos >= 0) {
+	if(stringAIngresar != NULL && mensaje != NULL && mensajeError != NULL && maximoReintentos >= 0 && lenMaxima > 0 && lenMinima > 0) {
 
 		do {
 			maximoReintentos--;
 			printf("%s", mensaje);
 			fgets(buffer, sizeof(buffer), stdin);
 			buffer[strlen(buffer)-1] = '\0';
-			if (utn_tieneSoloLetras(buffer) && strlen(buffer) >= lenMinima) {
+			if (utn_tieneSoloLetras(buffer) && strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
 				strncpy(stringAIngresar, buffer, strlen(buffer));
 				codigoError = 0;
 				break;
