@@ -1,11 +1,13 @@
 /*
- * asociado.c
+ * arrayPasajero.c
  *
- *  Created on: 5 may 2022
+ *  Created on: 10 may 2022
  *      Author: Nicolás Caruso
  */
 
+
 #include "pasajero.h"
+#include "arrayPasajero.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -248,6 +250,18 @@ void imprimirPasajeros(Pasajero arr[], int len) {
 
 
 
+void imprimirPasajerosPorEstado(Pasajero arr[], int len, int estado) {
+	if (arr != NULL && len > 0 && (estado >= 0 || estado <= 2) ) {
+		for(int i = 0; i < len; i++) {
+			if (arr[i].estadoVuelo == 0) {
+				imprimirPasajero(arr[i]);
+			}
+		}
+	}
+}
+
+
+
 
 int ordenarPasajeros(Pasajero arr[], int len, int orden) {
 	int codigoError;
@@ -294,42 +308,63 @@ int ordenarPasajeros(Pasajero arr[], int len, int orden) {
 				default:
 					break;
 			}
-//			if (orden == 1) {
-//				//ordeno de forma ascendente
-//				for (int i = 0; i < len; i++) {
-//
-//					if (strcmp(arr[i].apellido, arr[i + 1].apellido) > 0) {
-//						if (arr[i].tipoPasajero > arr[i + 1].tipoPasajero) {
-//							auxPasajero = arr[i];
-//							arr[i] = arr[i + 1];
-//							arr[i + 1] = auxPasajero;
-//							estaOrdenado = FALSE;
-//						}
-//
-//					}
-//				}
-//			} //else {
-//				//ordeno de forma descendente
-//				for (int i = 0; i < len; i++) {
-//
-//					if (strcmp(arr[i].apellido, arr[i + 1].apellido) < 0) {
-//						if (arr[i].tipoPasajero < arr[i + 1].tipoPasajero) {
-//							auxPasajero = arr[i];
-//							arr[i] = arr[i + 1];
-//							arr[i + 1] = auxPasajero;
-//							estaOrdenado = FALSE;
-//						}
-//
-//					}
-//				}
-//			}
-
 		} while (estaOrdenado == FALSE);
 		codigoError = 0;
 	}
 
 	return codigoError;
 }
+
+
+
+int ordenarPasajerosPorCodigo(Pasajero arr[], int len, int orden) {
+	int codigoError;
+	int estaOrdenado;
+
+	Pasajero auxPasajero;
+
+
+	codigoError = -1;
+	if (arr != NULL && len > 0 && (orden == 2 || orden == 1)) {
+		do {
+			estaOrdenado = TRUE;
+			len--;
+			switch (orden) {
+				case 1:
+					//ordeno de forma ascendente
+					for (int i = 0; i < len; i++) {
+
+						if (strcmp(arr[i].codigoVuelo, arr[i + 1].codigoVuelo) > 0) {
+								auxPasajero = arr[i];
+								arr[i] = arr[i + 1];
+								arr[i + 1] = auxPasajero;
+								estaOrdenado = FALSE;
+
+						}
+					}
+					break;
+				case 2:
+					//ordeno de forma descendente
+					for (int i = 0; i < len; i++) {
+						if (strcmp( arr[i + 1].codigoVuelo, arr[i].codigoVuelo) > 0) {
+								auxPasajero = arr[i];
+								arr[i] = arr[i + 1];
+								arr[i + 1] = auxPasajero;
+								estaOrdenado = FALSE;
+
+						}
+					}
+					break;
+				default:
+					break;
+			}
+		} while (estaOrdenado == FALSE);
+		codigoError = 0;
+	}
+
+	return codigoError;
+}
+
 
 
 int hacerCargaForzada(Pasajero arr[], int len) {
@@ -443,9 +478,4 @@ void imprimirCalculosDePasajeros(float totalPrecios, float promedio, int cantida
 	printf("\nEl promedio de precios es: %.2f", promedio);
 	printf("\nCantidad de pasajeros que superan el promedio: %d\n\n", cantidadSuperanPromedio);
 }
-
-
-
-
-
 

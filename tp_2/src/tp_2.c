@@ -12,6 +12,7 @@
 #include <stdlib.h>
 
 #include "pasajero.h"
+#include "arrayPasajero.h"
 #include "utn.h"
 
 #define TRUE 1
@@ -139,6 +140,7 @@ int main(void) {
 													case 2:
 														codigoError = ordenarPasajeros(pasajeros, MAXIMO_PASAJEROS, 2);
 														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
+														imprimirCabecera();
 														imprimirPasajeros(pasajeros, MAXIMO_PASAJEROS);
 														break;
 													default:
@@ -163,8 +165,30 @@ int main(void) {
 										if (codigoError == 0) {
 											imprimirCalculosDePasajeros(totalPrecios, promedio, cantidadSuperanPromedio);
 										}
+										break;
 
-
+									case 3:
+										do {
+											codigoError = utn_getInt(&opcionMenu, "\n1- Ordenar de forma ascendente. \n2- Ordenar de forma descendente. \n3- Atras. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 3, 1, 3);
+											if (codigoError == 0) {
+												switch (opcionMenu) {
+													case 1:
+														codigoError = ordenarPasajerosPorCodigo(pasajeros, MAXIMO_PASAJEROS, 1);
+														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
+														imprimirCabecera();
+														imprimirPasajerosPorEstado(pasajeros, MAXIMO_PASAJEROS, 0);
+														break;
+													case 2:
+														codigoError = ordenarPasajerosPorCodigo(pasajeros, MAXIMO_PASAJEROS, 2);
+														utn_imprimirMensajes(codigoError, "\nSe han ordenado los pasajeros satisfactoriamente.\n", "\nHa ocurrido un error al ordenar los pasajeros.\n");
+														imprimirCabecera();
+														imprimirPasajerosPorEstado(pasajeros, MAXIMO_PASAJEROS, 0);
+														break;
+													default:
+														break;
+												}
+											}
+										} while(opcionMenu != 3 && codigoError == 0);
 										break;
 									default:
 										break;
