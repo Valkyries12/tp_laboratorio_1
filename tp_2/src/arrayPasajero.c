@@ -75,14 +75,12 @@ int buscarPasajeroPorId(Pasajero arr[], int id, int len) {
 int agregarPasajero(Pasajero arr[], int len, int id, char * nombre, char * apellido, float precio, int tipoPasajero, char * codigoVuelo, int estadoVuelo ) {
 	int codigoError;
 	int indice;
-//	int numeroDocumento;
-//	int edad;
+
 	codigoError = -1;
 	if (arr != NULL && len > 0 && id > 0 && nombre != NULL && apellido != NULL && precio > 0 && tipoPasajero >= 0 && codigoVuelo != NULL && estadoVuelo >= 0) {
 		indice = buscarEspacioLibre(arr, len);
 		if (indice != -1) {
-//			printf("\nEntre a la asignacion");
-//			printf("\nid: %d, nombre: %s, apellido: %s, precio: %.2f, tipo pasajero: %d, codigo vuelo: %s, estado vuelo: %d", id, nombre, apellido, precio, tipoPasajero, codigoVuelo, estadoVuelo);
+
 			arr[indice].id = id;
 			strncpy(arr[indice].nombre, nombre, strlen(nombre));
 			strncpy(arr[indice].apellido, apellido, strlen(apellido));
@@ -125,11 +123,8 @@ int eliminarPasajero(Pasajero arr[], int id, int len) {
 int modificarPasajero(Pasajero arr[], int id, int opcionMenu, int len) {
 	int codigoError;
 	int indice;
-//	int tipoPasajero;
-//	char nuevoNombre[50];
-//	char nuevoApellido[50];
 
-	//PROBAR USANDO AUXILIARES Y ASIGNARLOS A LA PROPIEDAD DE LA ESTRUCTURA
+
 	codigoError = -1;
 	if (arr != NULL && id > 0 && opcionMenu > 0 && len > 0) {
 		indice = buscarPasajeroPorId(arr, id, len);
@@ -137,17 +132,11 @@ int modificarPasajero(Pasajero arr[], int id, int opcionMenu, int len) {
 			switch (opcionMenu) {
 				case 1:
 					codigoError = utn_getString(arr[indice].nombre, "\nIngrese nuevo nombre: ", "\nNombre inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
-//					if (codigoError == 0) {
-//						strncpy(arr[indice].nombre, nuevoNombre, sizeof(nuevoNombre));
-//						puts("\nNombre modificado con éxito\n");
-//					}
+
 					break;
 				case 2:
 					codigoError = utn_getString(arr[indice].apellido, "\nIngrese nuevo apellido: ", "\nApellido inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50);
-//					if (codigoError == 0) {
-//						strncpy(arr[indice].apellido, nuevoApellido, sizeof(nuevoApellido));
-//						puts("\nApellido modificado con éxito\n");
-//					}
+
 					break;
 				case 3:
 					codigoError = utn_getFloat(&arr[indice].precio, "\nIngrese el nuevo precio: ", "\nPrecio inválido. Debe contener solo números.\n", 578800, 2500, 3);
