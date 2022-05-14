@@ -107,6 +107,7 @@ int main(void) {
 							indice = buscarPasajeroPorId(pasajeros, id, MAXIMO_PASAJEROS);
 							if (indice != -1) {
 								do {
+									imprimirCabecera();
 									imprimirPasajero(pasajeros[indice]);
 									codigoError = utn_getInt(&opcionMenu, "\n1- Modificar nombre. \n2- Modificar apellido. \n3- Modificar precio. \n4- Modificar tipo de pasajero. \n5- Modificar código de vuelo. \n6- Atras. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 6, 1, 3);
 
