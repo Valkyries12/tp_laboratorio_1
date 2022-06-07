@@ -22,6 +22,12 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 		FILE* pArchivo;
 		pArchivo = fopen(path, "r");
 		codigoError = parser_PassengerFromText(pArchivo, pArrayListPassenger);
+
+		if (codigoError != -1) {
+			puts("\nSe han traido los datos con éxito.\n");
+		} else {
+			puts("\nNo se han podido traer los datos.\n");
+		}
 		fclose(pArchivo);
 	}
 
@@ -89,7 +95,20 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
  */
 int controller_ListPassenger(LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int codigoError;
+
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+		int len;
+		len = ll_len(pArrayListPassenger);
+		printf("len es: %d", len);
+		Passenger_imprimirCabecera();
+		for(int i = 0; i < len; i++) {
+			Passenger_imprimirPasajero(ll_get(pArrayListPassenger, i));
+		}
+	}
+
+    return codigoError;
 }
 
 /** \brief Ordenar pasajeros

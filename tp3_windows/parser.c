@@ -33,10 +33,11 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 				pasajero = Passenger_newParametros(idStr, nombreStr, apellidoStr, precioStr, tipoPasajeroStr, codigoVueloStr, estadoVueloStr);
 
 				if (pasajero != NULL) {
-					ll_add(pArrayListPassenger, pasajero);
-				} else {
-					printf("id del no cargado es: %s", idStr);
-					puts("\nNo se ha podido agregar al pasajero.\n");
+
+					if (ll_add(pArrayListPassenger, pasajero) == -1) {
+						free(pasajero);
+					}
+//					printf("\ndir de pasajero 1 y 2 es: %p  %p\n", pasajero[]);
 				}
 			}
 
