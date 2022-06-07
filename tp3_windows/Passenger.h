@@ -16,11 +16,14 @@ typedef struct
 	float precio;
 	int tipoPasajero;
 	char codigoVuelo[4];
+	int estadoVuelo;
 
 }Passenger;
 
+
+
 Passenger* Passenger_new();
-Passenger* Passenger_newParametros(char* idStr,char* nombreStr,char* tipoPasajeroStr);
+Passenger* Passenger_newParametros(char* idStr,char* nombreStr, char* apellidoStr, char* precioStr, char* tipoPasajeroStr, char* codigoVueloStr, char* estadoVueloStr);
 void Passenger_delete(Passenger* this);
 
 int Passenger_setId(Passenger* this,int id);
@@ -40,6 +43,23 @@ int Passenger_getTipoPasajero(Passenger* this,int* tipoPasajero);
 
 int Passenger_setPrecio(Passenger* this,float precio);
 int Passenger_getPrecio(Passenger* this,float* precio);
+
+int Passenger_setEstadoVuelo(Passenger* this, int estadoVuelo);
+int Passenger_getEstadoVuelo(Passenger* this, int estadoVuelo);
+
+
+int tipoPasajeroToInt(char* tipoPasajeroStr);
+
+
+
+int estadoVueloToInt(char* estadoVueloStr);
+
+
+/// @brief Imprime los datos del pasajero dado
+///
+/// @param pasajero -> struct con los datos del pasajero
+void Passenger_imprimirPasajero(Passenger pasajero);
+
 
 
 

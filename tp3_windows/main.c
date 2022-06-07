@@ -38,6 +38,9 @@ int main()
             case 1:
                 controller_loadFromText("data2.csv",listaPasajeros);
                 break;
+            case 6:
+            	controller_ListPassenger(listaPasajeros);
+            	break;
         }
     }while(optionMenu != 10 && codigoError == 0);
 

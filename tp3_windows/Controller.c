@@ -21,6 +21,8 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 	if (path != NULL && pArrayListPassenger != NULL)  {
 		FILE* pArchivo;
 		pArchivo = fopen(path, "r");
+		codigoError = parser_PassengerFromText(pArchivo, pArrayListPassenger);
+		fclose(pArchivo);
 	}
 
 

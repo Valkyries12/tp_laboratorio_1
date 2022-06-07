@@ -387,7 +387,7 @@ id,name,lastname,price,flycode,typePassenger,statusFlight
 386,Demeter,Fuentes,10000,TU6789B,EconomyClass,Aterrizado
 387,Juliann,Hernández,50000,TU6789B,EconomyClass,Aterrizado
 388,Shauna,Torres,25000,TU6789B,EconomyClass,Aterrizado
-389,Anna-maria,Araya,42000,TU6789B,EconomyClass,Aterrizado
+389,Anna maria,Araya,42000,TU6789B,EconomyClass,Aterrizado
 390,Ag,Flores,50000,TU6789B,EconomyClass,Aterrizado
 391,Sherwin,Espinoza,50000,MM0987B,ExecutiveClass,En Horario
 392,Vikki,Valenzuela,33000,MM0987B,ExecutiveClass,En Horario
