@@ -88,6 +88,49 @@ void Passenger_imprimirPasajero(Passenger* pPasajero);
 void Passenger_imprimirCabecera(void);
 
 
+/// @brief imprime el menu de sort
+/// @param linkedList -> linkedlist de pasajeros
+void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger);
+
+/// @brief imprime el submenu que contiene las opciones desc, asc
+/// @param orden -> puntero donde se guardara el criterio de ordenamiento. Desc(0), Asc(1)
+void Passenger_imprimirSortSubmenu(int* orden);
+
+
+/// @brief Compara 2 ID
+///
+/// @param pasajeroUno -> puntero generico del pasajero uno
+/// @param pasajeroDos -> puntero generico del pasajero dos
+/// @return Si es igual (0), si es asc (-1), si es desc (1)
+int Passenger_comparararPorID(void* pasajeroUno, void* pasajeroDos);
+
+
+
+/// @brief Compara 2 nombres
+///
+/// @param pasajeroUno -> puntero generico del pasajero uno
+/// @param pasajeroDos -> puntero generico del pasajero dos
+/// @return Si es igual (0), si es asc (-1), si es desc (1)
+int Passenger_comparararPorNombre(void* pasajeroUno, void* pasajeroDos);
+
+
+
+/// @brief Compara 2 apellidos
+///
+/// @param pasajeroUno -> puntero generico del pasajero uno
+/// @param pasajeroDos -> puntero generico del pasajero dos
+/// @return Si es igual (0), si es asc (-1), si es desc (1)
+int Passenger_comparararPorApellido(void* pasajeroUno, void* pasajeroDos);
+
+
+
+/// @brief Compara 2 precios
+///
+/// @param pasajeroUno -> puntero generico del pasajero uno
+/// @param pasajeroDos -> puntero generico del pasajero dos
+/// @return Si es igual (0), si es asc (-1), si es desc (1)
+int Passenger_comparararPorPrecio(void* pasajeroUno, void* pasajeroDos);
+
 
 
 #endif /* PASSENGER_H_ */

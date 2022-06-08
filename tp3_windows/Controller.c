@@ -120,6 +120,7 @@ int controller_ListPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_sortPassenger(LinkedList* pArrayListPassenger)
 {
+	Passenger_imprimirSortMenu(pArrayListPassenger);
     return 1;
 }
 

@@ -36,10 +36,13 @@ int main()
         switch(optionMenu)
         {
             case 1:
-                controller_loadFromText("data2.csv",listaPasajeros);
+                controller_loadFromText("data.csv",listaPasajeros);
                 break;
             case 6:
             	controller_ListPassenger(listaPasajeros);
+            	break;
+            case 7:
+            	controller_sortPassenger(listaPasajeros);
             	break;
         }
     }while(optionMenu != 10 && codigoError == 0);

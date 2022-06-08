@@ -344,7 +344,6 @@ int Passenger_estadoVueloToStr(int estadoVueloInt, char* estadoVueloStr) {
 
 
 void Passenger_imprimirPasajero(Passenger* pPasajero) {
-	//TODO hacer imprimir pasajero con getters y ponerlo dentro del controller
 	if (pPasajero != NULL) {
 		int id;
 		char nombre[50];
@@ -392,4 +391,212 @@ void Passenger_imprimirCabecera(void) {
 	printf("|%20s", "CÓDIGO VUELO");
 	printf("|%15s|\n", "ESTADO VUELO");
 }
+
+
+void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
+	int opcionMenu;
+	int codigoError;
+	int orden;//le paso un puntero al submenu asc / desc y al recibir rta del criterio de orden asd(1), desc(0)
+
+	do {
+		codigoError = utn_getInt(&opcionMenu, "\n1- Ordenar por ID. \n2- Ordenar por nombre. \n3- Ordenar por apellido. \n4- Ordenar por precio. \n5- Atras. \n\nIngrese una opción: ", "\nOpción inválidad. Solo se aceptan números del 1 al 5.\n", 5, 1, 3);
+		switch (opcionMenu) {
+			case 1:
+				//ordeno por ID
+				Passenger_imprimirSortSubmenu(&orden);
+
+				if (ll_sort(pArrayListPassenger, Passenger_comparararPorID, orden) != -1) {
+					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
+
+				}
+				break;
+			case 2:
+				//ordeno por nombre
+				Passenger_imprimirSortSubmenu(&orden);
+
+				if (ll_sort(pArrayListPassenger, Passenger_comparararPorNombre, orden) != -1) {
+					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
+
+				}
+				break;
+			case 3:
+				//ordeno por apellido
+				Passenger_imprimirSortSubmenu(&orden);
+
+				if (ll_sort(pArrayListPassenger, Passenger_comparararPorApellido, orden) != -1) {
+					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
+
+				}
+				break;
+			case 4:
+				//ordeno por precio
+				Passenger_imprimirSortSubmenu(&orden);
+
+				if (ll_sort(pArrayListPassenger, Passenger_comparararPorPrecio, orden) != -1) {
+					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
+
+				}
+				break;
+			default:
+				break;
+		}
+	} while(opcionMenu != 5 && codigoError == 0);
+}
+
+
+void Passenger_imprimirSortSubmenu(int* orden) {
+	int opcionMenu;
+	int codigoError;
+
+	do {
+		codigoError = utn_getInt(&opcionMenu, "\n1- Orden ascendente. \n2- Orden descendente. \n3- Atras. \n\nIngrese una opción: ", "\nOpción inválidad. Solo se aceptan números del 1 al 3.\n", 3, 1, 3);
+		switch (opcionMenu) {
+			case 1:
+				*orden = 1;
+				opcionMenu = 3;
+				puts("\nOrdenando...\n");
+				break;
+			case 2:
+				*orden = 0;
+				opcionMenu = 3;
+				puts("\nOrdenando...\n");
+				break;
+			default:
+				break;
+		}
+	} while(opcionMenu != 3 && codigoError == 0);
+}
+
+
+
+
+int Passenger_comparararPorID(void* pasajeroUno, void* pasajeroDos) {
+	int resultado;
+	int idUno;
+	int idDos;
+	Passenger* pPasajeroUno;
+	Passenger* pPasajeroDos;
+
+
+	resultado = 0;
+	if (pasajeroUno != NULL && pasajeroDos != NULL) {
+
+		pPasajeroUno = (Passenger*) pasajeroUno;
+		pPasajeroDos = (Passenger*) pasajeroDos;
+
+		if (Passenger_getId(pPasajeroUno, &idUno) != -1 &&
+			Passenger_getId(pPasajeroDos, &idDos) != -1)
+		{
+			//descendente
+			if (idUno > idDos) {
+				resultado = 1;
+			}//ascendente
+			else if(idUno < idDos) {
+				resultado = -1;
+			}
+		}
+
+	}
+
+	return resultado;
+}
+
+
+
+int Passenger_comparararPorNombre(void* pasajeroUno, void* pasajeroDos) {
+	int resultado;
+	char nombreUno[50];
+	char nombreDos[50];
+	Passenger* pPasajeroUno;
+	Passenger* pPasajeroDos;
+
+
+	resultado = 0;
+	if (pasajeroUno != NULL && pasajeroDos != NULL) {
+
+		pPasajeroUno = (Passenger*) pasajeroUno;
+		pPasajeroDos = (Passenger*) pasajeroDos;
+
+		if (Passenger_getNombre(pPasajeroUno, nombreUno) != -1 &&
+			Passenger_getNombre(pPasajeroDos, nombreDos) != -1)
+		{
+			//descendente
+			if (strcmp(nombreUno, nombreDos) > 0) {
+				resultado = 1;
+			}//ascendente
+			else if(strcmp(nombreUno, nombreDos) < 0) {
+				resultado = -1;
+			}
+		}
+
+	}
+
+	return resultado;
+}
+
+
+int Passenger_comparararPorApellido(void* pasajeroUno, void* pasajeroDos) {
+	int resultado;
+	char apellidoUno[50];
+	char apellidoDos[50];
+	Passenger* pPasajeroUno;
+	Passenger* pPasajeroDos;
+
+
+	resultado = 0;
+	if (pasajeroUno != NULL && pasajeroDos != NULL) {
+
+		pPasajeroUno = (Passenger*) pasajeroUno;
+		pPasajeroDos = (Passenger*) pasajeroDos;
+
+		if (Passenger_getApellido(pPasajeroUno, apellidoUno) != -1 &&
+			Passenger_getApellido(pPasajeroDos, apellidoDos) != -1)
+		{
+			//descendente
+			if (strcmp(apellidoUno, apellidoDos) > 0) {
+				resultado = 1;
+			}//ascendente
+			else if(strcmp(apellidoUno, apellidoDos) < 0) {
+				resultado = -1;
+			}
+		}
+
+	}
+
+	return resultado;
+}
+
+
+
+int Passenger_comparararPorPrecio(void* pasajeroUno, void* pasajeroDos) {
+	int resultado;
+	float precioUno;
+	float precioDos;
+	Passenger* pPasajeroUno;
+	Passenger* pPasajeroDos;
+
+
+	resultado = 0;
+	if (pasajeroUno != NULL && pasajeroDos != NULL) {
+
+		pPasajeroUno = (Passenger*) pasajeroUno;
+		pPasajeroDos = (Passenger*) pasajeroDos;
+
+		if (Passenger_getPrecio(pPasajeroUno, &precioUno) != -1 &&
+			Passenger_getPrecio(pPasajeroDos, &precioDos) != -1)
+		{
+			//descendente
+			if (precioUno > precioDos) {
+				resultado = 1;
+			}//ascendente
+			else if(precioUno < precioDos) {
+				resultado = -1;
+			}
+		}
+
+	}
+
+	return resultado;
+}
+
 
