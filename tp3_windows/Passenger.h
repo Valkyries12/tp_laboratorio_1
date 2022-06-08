@@ -89,10 +89,13 @@ void Passenger_imprimirCabecera(void);
 
 
 /// @brief imprime el menu de sort
+///
 /// @param linkedList -> linkedlist de pasajeros
-void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger);
+/// @return Retorna (0) en caso de exito, (-1) en caso de error
+int Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger);
 
 /// @brief imprime el submenu que contiene las opciones desc, asc
+///
 /// @param orden -> puntero donde se guardara el criterio de ordenamiento. Desc(0), Asc(1)
 void Passenger_imprimirSortSubmenu(int* orden);
 
@@ -130,6 +133,22 @@ int Passenger_comparararPorApellido(void* pasajeroUno, void* pasajeroDos);
 /// @param pasajeroDos -> puntero generico del pasajero dos
 /// @return Si es igual (0), si es asc (-1), si es desc (1)
 int Passenger_comparararPorPrecio(void* pasajeroUno, void* pasajeroDos);
+
+
+/// @brief busca pasajero mediante un id
+///
+/// @param pArrayListPassenger -> lista de pasajeros
+/// @param id -> id del pasajero a buscar
+/// return en caso de exito devuelve el indice , en caso de error (-1)
+int Passenger_buscarPorId(LinkedList* pArrayListPassenger, int id);
+
+
+/// @brief borrar un pasajero de la ll
+///
+/// @param pArrayListPassenger -> lista de pasajeros
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_borrarPasajero(LinkedList* pArrayListPassenger);
+
 
 
 

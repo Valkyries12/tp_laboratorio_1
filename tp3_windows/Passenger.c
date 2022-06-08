@@ -393,11 +393,12 @@ void Passenger_imprimirCabecera(void) {
 }
 
 
-void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
+int Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
 	int opcionMenu;
 	int codigoError;
 	int orden;//le paso un puntero al submenu asc / desc y al recibir rta del criterio de orden asd(1), desc(0)
 
+	codigoError = -1;
 	do {
 		codigoError = utn_getInt(&opcionMenu, "\n1- Ordenar por ID. \n2- Ordenar por nombre. \n3- Ordenar por apellido. \n4- Ordenar por precio. \n5- Atras. \n\nIngrese una opción: ", "\nOpción inválidad. Solo se aceptan números del 1 al 5.\n", 5, 1, 3);
 		switch (opcionMenu) {
@@ -406,8 +407,8 @@ void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
 				Passenger_imprimirSortSubmenu(&orden);
 
 				if (ll_sort(pArrayListPassenger, Passenger_comparararPorID, orden) != -1) {
-					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
-
+					codigoError = 0;
+					opcionMenu = 5;
 				}
 				break;
 			case 2:
@@ -415,8 +416,8 @@ void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
 				Passenger_imprimirSortSubmenu(&orden);
 
 				if (ll_sort(pArrayListPassenger, Passenger_comparararPorNombre, orden) != -1) {
-					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
-
+					codigoError = 0;
+					opcionMenu = 5;
 				}
 				break;
 			case 3:
@@ -424,8 +425,8 @@ void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
 				Passenger_imprimirSortSubmenu(&orden);
 
 				if (ll_sort(pArrayListPassenger, Passenger_comparararPorApellido, orden) != -1) {
-					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
-
+					codigoError = 0;
+					opcionMenu = 5;
 				}
 				break;
 			case 4:
@@ -433,14 +434,16 @@ void Passenger_imprimirSortMenu(LinkedList* pArrayListPassenger) {
 				Passenger_imprimirSortSubmenu(&orden);
 
 				if (ll_sort(pArrayListPassenger, Passenger_comparararPorPrecio, orden) != -1) {
-					puts("\nOrdenamiento realizado con éxito. Imprima desde el menu principal\n");
-
+					codigoError = 0;
+					opcionMenu = 5;
 				}
 				break;
 			default:
 				break;
 		}
 	} while(opcionMenu != 5 && codigoError == 0);
+
+	return codigoError;
 }
 
 
@@ -599,4 +602,56 @@ int Passenger_comparararPorPrecio(void* pasajeroUno, void* pasajeroDos) {
 	return resultado;
 }
 
+
+int Passenger_buscarPorId(LinkedList* pArrayListPassenger, int id) {
+	int indice;
+
+	indice = -1;
+	if (pArrayListPassenger != NULL && id > 0) {
+		int auxId;
+		int len;
+		Passenger* pPasajero;
+		len = ll_len(pArrayListPassenger);
+
+		for(int i = 0; i < len; i++) {
+			pPasajero = (Passenger*) ll_get(pArrayListPassenger, i);//devuelve void* por eso casteo(unboxing)
+
+			if (Passenger_getId(pPasajero, &auxId) != 1 && auxId == id) {
+				indice = i;
+				break;
+			}
+		}
+	}
+
+	return indice;
+}
+
+
+int Passenger_borrarPasajero(LinkedList* pArrayListPassenger) {
+	int codigoError;
+
+
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+		int len;
+		int id;
+		int indice;
+		len = ll_len(pArrayListPassenger);
+
+		codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a buscar: ", "\nError. ID inválido.\n", len, 1, 3);
+
+		if (codigoError != -1) {
+			indice = Passenger_buscarPorId(pArrayListPassenger, id);
+
+			if (indice != 1) {
+				codigoError = ll_remove(pArrayListPassenger, indice);
+			} else {
+				puts("\nID inexistente.\n");
+			}
+		}
+	}
+
+	return codigoError;
+
+}
 

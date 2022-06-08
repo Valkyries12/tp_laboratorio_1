@@ -36,13 +36,20 @@ int main()
         switch(optionMenu)
         {
             case 1:
-                controller_loadFromText("data.csv",listaPasajeros);
+                codigoError = controller_loadFromText("data.csv",listaPasajeros);
+                utn_imprimirMensajes(codigoError, "\nSe han traido los datos con éxito.\n", "\nNo se han podido traer los datos.\n");
                 break;
+            case 5:
+				codigoError = controller_removePassenger(listaPasajeros);
+            	utn_imprimirMensajes(codigoError, "\nSe ha eliminado el pasajero con éxito.\n", "\nNo se ha podido eliminar al pasajero.\n");
+				break;
             case 6:
-            	controller_ListPassenger(listaPasajeros);
+            	codigoError = controller_ListPassenger(listaPasajeros);
+            	utn_imprimirMensajes(codigoError, "\nSe ha listado con éxito.\n", "\nNo se ha podido listar.\n");
             	break;
             case 7:
-            	controller_sortPassenger(listaPasajeros);
+            	codigoError = controller_sortPassenger(listaPasajeros);
+            	utn_imprimirMensajes(codigoError, "\nOrdenamiento realizado con éxito. Imprima desde opción 6.\n", "\nNo se ha podido realizar el ordenamiento.\n");
             	break;
         }
     }while(optionMenu != 10 && codigoError == 0);

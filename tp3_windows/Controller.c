@@ -23,11 +23,6 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 		pArchivo = fopen(path, "r");
 		codigoError = parser_PassengerFromText(pArchivo, pArrayListPassenger);
 
-		if (codigoError != -1) {
-			puts("\nSe han traido los datos con éxito.\n");
-		} else {
-			puts("\nNo se han podido traer los datos.\n");
-		}
 		fclose(pArchivo);
 	}
 
@@ -83,7 +78,16 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_removePassenger(LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int codigoError;
+
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+
+		codigoError = Passenger_borrarPasajero(pArrayListPassenger);
+
+	}
+
+    return codigoError;
 }
 
 /** \brief Listar pasajeros
@@ -106,6 +110,8 @@ int controller_ListPassenger(LinkedList* pArrayListPassenger)
 		for(int i = 0; i < len; i++) {
 			Passenger_imprimirPasajero(ll_get(pArrayListPassenger, i));
 		}
+
+		codigoError = 0;
 	}
 
     return codigoError;
@@ -120,8 +126,15 @@ int controller_ListPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_sortPassenger(LinkedList* pArrayListPassenger)
 {
-	Passenger_imprimirSortMenu(pArrayListPassenger);
-    return 1;
+	int codigoError;
+
+	codigoError = -1;
+	//TODO clonar la lista para ordenar ymostrar porque si la guardo en el csv se va a guardar ordenada
+	if (pArrayListPassenger != NULL) {
+		codigoError = Passenger_imprimirSortMenu(pArrayListPassenger);
+
+	}
+    return codigoError;
 }
 
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo texto).
