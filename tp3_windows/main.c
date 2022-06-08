@@ -54,6 +54,11 @@ int main()
         }
     }while(optionMenu != 10 && codigoError == 0);
 
+    if (codigoError != 0) {
+    	puts("\nOops ha ocurrido un error =(.\n");
+    }
+    puts("Saliendo...");
+
 
     puts("\n\n=== FIN DEL PROGRAMA ===");
     return 0;

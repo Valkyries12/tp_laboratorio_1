@@ -636,6 +636,8 @@ int Passenger_borrarPasajero(LinkedList* pArrayListPassenger) {
 		int len;
 		int id;
 		int indice;
+		int opcionMenu;
+		Passenger* pPasajero;
 		len = ll_len(pArrayListPassenger);
 
 		codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a buscar: ", "\nError. ID inválido.\n", len, 1, 3);
@@ -644,7 +646,22 @@ int Passenger_borrarPasajero(LinkedList* pArrayListPassenger) {
 			indice = Passenger_buscarPorId(pArrayListPassenger, id);
 
 			if (indice != 1) {
-				codigoError = ll_remove(pArrayListPassenger, indice);
+				//si encuentro el indice traigo el puntero de pasajero
+				pPasajero = ll_get(pArrayListPassenger, indice);
+				Passenger_imprimirCabecera();
+				Passenger_imprimirPasajero(pPasajero);
+
+				do{
+					codigoError = utn_getInt(&opcionMenu, "\n1- Eliminar pasajero. \n2- Atras. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 2, 1, 3);
+					switch (opcionMenu) {
+						case 1:
+							codigoError = ll_remove(pArrayListPassenger, indice);
+							break;
+						default:
+							break;
+					}
+				} while((opcionMenu > 2 || opcionMenu < 1) && codigoError == 0);
+
 			} else {
 				puts("\nID inexistente.\n");
 			}
