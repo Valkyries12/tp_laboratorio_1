@@ -640,7 +640,7 @@ int Passenger_borrarPasajero(LinkedList* pArrayListPassenger) {
 		Passenger* pPasajero;
 		len = ll_len(pArrayListPassenger);
 
-		codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a buscar: ", "\nError. ID inválido.\n", len, 1, 3);
+		codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a eliminar: ", "\nError. ID inválido.\n", len, 1, 3);
 
 		if (codigoError != -1) {
 			indice = Passenger_buscarPorId(pArrayListPassenger, id);
@@ -671,4 +671,83 @@ int Passenger_borrarPasajero(LinkedList* pArrayListPassenger) {
 	return codigoError;
 
 }
+
+
+int Passenger_editarPasajero(LinkedList* pArrayListPassenger) {
+	int codigoError;
+
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+		int len;
+		int id;
+		int indice;
+		int opcionMenu;
+		char nuevoNombre[50];
+		char nuevoApellido[50];
+		float nuevoPrecio;
+		int nuevoTipoPasajero;
+		int nuevoEstadoVuelo;
+		Passenger* pPasajero;
+		len = ll_len(pArrayListPassenger);
+
+		codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a editar: ", "\nError. ID inválido.\n", len, 1, 3);
+
+		if (codigoError != -1) {
+			indice = Passenger_buscarPorId(pArrayListPassenger, id);
+
+			if (indice != 1) {
+				//si encuentro el indice traigo el puntero de pasajero
+				pPasajero = ll_get(pArrayListPassenger, indice);
+
+
+				do{
+					Passenger_imprimirCabecera();
+					Passenger_imprimirPasajero(pPasajero);
+					codigoError = utn_getInt(&opcionMenu, "\n1- Editar nombre del pasajero. \n2- Editar apellido del pasajero. \n3- Editar precio del ticket. \n4- Editar tipo de pasajero. \n5- Editar estado de vuelo. \n6- Atras. \n\nIngrese una opción: ", "\nOpción inválida. Reintente.\n", 6, 1, 3);
+					switch (opcionMenu) {
+						case 1:
+							codigoError = utn_getString(nuevoNombre, "\nIngrese nuevo nombre: ", "\nError. Solo se permiten caracteres.\n", 3, 4, 15);
+							if (codigoError != -1 && Passenger_setNombre(pPasajero, nuevoNombre) != -1) {
+								opcionMenu = 6;
+							}
+							break;
+						case 2:
+							codigoError = utn_getString(nuevoApellido, "\nIngrese nuevo apellido: ", "\nError. Solo se permiten caracteres.\n", 3, 4, 15);
+							if (codigoError != -1 && Passenger_setApellido(pPasajero, nuevoApellido) != -1) {
+								opcionMenu = 6;
+							}
+							break;
+						case 3:
+							codigoError = utn_getFloat(&nuevoPrecio, "\nIngrese el nuevo precio: ", "\nError. Sólo esta permitido números.\n", 500000, 3500, 3);
+							if (codigoError != -1 && Passenger_setPrecio(pPasajero, nuevoPrecio) != -1) {
+								opcionMenu = 6;
+							}
+							break;
+						case 4:
+							codigoError = utn_getInt(&nuevoTipoPasajero, "\nIngrese nuevo tipo pasajero [0] FirstClass [1] ExecutiveClass [2] EconomyClass: ", "\nOpción inválida. Reintente.\n", 2, 0, 3);
+							if (codigoError != -1 && Passenger_setTipoPasajero(pPasajero, nuevoTipoPasajero) != -1) {
+								opcionMenu = 6;
+							}
+							break;
+						case 5:
+							codigoError = utn_getInt(&nuevoEstadoVuelo, "\nIngrese nuevo estado de vuelo [0] En Horario [1] Aterrizado [2] En vuelo: ", "\nOpción inválida. Reintente.\n", 2, 0, 3);
+							if (codigoError != -1 && Passenger_setEstadoVuelo(pPasajero, nuevoEstadoVuelo) != -1) {
+								opcionMenu = 6;
+							}
+							break;
+						default:
+							break;
+					}
+				} while(opcionMenu != 6 && codigoError == 0);
+
+			} else {
+				puts("\nID inexistente.\n");
+			}
+		}
+	}
+
+	return codigoError;
+
+}
+
 

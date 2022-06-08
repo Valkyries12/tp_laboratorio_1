@@ -150,6 +150,13 @@ int Passenger_buscarPorId(LinkedList* pArrayListPassenger, int id);
 int Passenger_borrarPasajero(LinkedList* pArrayListPassenger);
 
 
+/// @brief edita un pasajero de la ll
+///
+/// @param pArrayListPassenger -> lista de pasajeros
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_editarPasajero(LinkedList* pArrayListPassenger);
+
+
 
 
 #endif /* PASSENGER_H_ */

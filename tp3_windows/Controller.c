@@ -66,7 +66,15 @@ int controller_addPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_editPassenger(LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int codigoError;
+
+	codigoError = 1;
+	if (pArrayListPassenger != NULL) {
+
+		codigoError = Passenger_editarPasajero(pArrayListPassenger);
+	}
+
+    return codigoError;
 }
 
 /** \brief Baja de pasajero
