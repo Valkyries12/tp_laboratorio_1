@@ -14,7 +14,7 @@
  *
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
-{
+{	//TODO fijarse de hacer que si la lista ya fue cargada una vez, al traer otra con un id > 1000 o algo cargado, no me duplique datos
 	int codigoError;
 
 	codigoError = -1;
@@ -54,7 +54,14 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
  */
 int controller_addPassenger(LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int codigoError;
+
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+		codigoError = Passenger_agregarPasajero(pArrayListPassenger);
+	}
+
+    return codigoError;
 }
 
 /** \brief Modificar datos de pasajero
@@ -85,7 +92,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
  *
  */
 int controller_removePassenger(LinkedList* pArrayListPassenger)
-{
+{//TODO fijarse el len al remover porque si borro 1 no puedo acceder al 1000. Tmb accede al borraro pero sin info
 	int codigoError;
 
 	codigoError = -1;
@@ -106,14 +113,14 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
  *
  */
 int controller_ListPassenger(LinkedList* pArrayListPassenger)
-{
+{//TODO clonar lista porque si ordeno al guardar en el archivo, se guardaran ordenados?
 	int codigoError;
 
 	codigoError = -1;
 	if (pArrayListPassenger != NULL) {
 		int len;
 		len = ll_len(pArrayListPassenger);
-		printf("len es: %d", len);
+//		printf("len es: %d", len);
 		Passenger_imprimirCabecera();
 		for(int i = 0; i < len; i++) {
 			Passenger_imprimirPasajero(ll_get(pArrayListPassenger, i));

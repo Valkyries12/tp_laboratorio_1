@@ -39,6 +39,10 @@ int main()
                 codigoError = controller_loadFromText("data.csv",listaPasajeros);
                 utn_imprimirMensajes(codigoError, "\nSe han traido los datos con éxito.\n", "\nNo se han podido traer los datos.\n");
                 break;
+            case 3:
+				codigoError = controller_addPassenger(listaPasajeros);
+				utn_imprimirMensajes(codigoError, "\nSe creado un nuevo pasajero.\n", "\nNo se ha podido crear un nuevo pasajero.\n");
+				break;
             case 4:
 				codigoError = controller_editPassenger(listaPasajeros);
 				utn_imprimirMensajes(codigoError, "\nSe ha modificado el pasajero con éxito.\n", "\nNo se ha podido modificar al pasajero.\n");

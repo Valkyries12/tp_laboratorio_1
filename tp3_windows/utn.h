@@ -56,6 +56,34 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 
 
 
+/// @brief  Solicita un texto al usuario, lo valida, verifica y devuelve el resultado
+///
+/// @param stringAIngresar -> puntero al resultado, alli se dejara la frase ingresada por el usuario
+/// @param mensaje -> Es el mensaje a ser mostrado
+/// @param mensajeError -> Es el mensaje a ser mostrado en caso de error
+/// @param maximoReintentos -> Cantidad de reintentos en caso de error
+/// @param lenMinima -> longitud minima requerida de caracteres
+/// @param lenMaxima -> longitud maxima requerida de caracteres
+/// @return En caso de exito (0), en caso de error (-1)
+int utn_getStringConNumero(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima, int lenMaxima);
+
+
+/// @brief verifica si la cadena tiene caracteres especiales
+///
+/// @param arr -> cadena a verificar
+/// @return en caso de encontrar caracteres especiales (TRUE), sino (FALSE)
+int utn_tieneCaracteresEspeciales(char arr[]);
+
+
+///// @brief  convierte un numero flotante en string
+/////
+///// @param numero -> numero flotante a convertir
+///// @param arr -> puntero a guardar el string
+///// @return En caso de exito (0), en caso de error (-1)
+//int utn_ftoa(float numero, char* arr);
+
+
+
 /// @brief Solicita al usuario un telefono (formato string), lo valida, verifica y devuelve resultado
 ///
 /// @param telefonoAIngresar -> puntero al resultado, alli se dejará el telefono ingresado por el usuario
@@ -294,6 +322,14 @@ int utn_imprimirString(char arr[]);
 /// @param arr -> array de chars
 /// @return En caso de tener solo letras TRUE (1), en caso de tener otro tipo de dato FALSE (0)
 int utn_tieneSoloLetras(char arr[]);
+
+
+
+/// @brief devuelve TRUE (1) o FALSE(0) dependiendo si solo tiene letras y numeros
+///
+/// @param arr -> array de chars
+/// @return En caso de tener solo letras y numeros TRUE (1), en caso de tener otro tipo de dato FALSE (0)
+int utn_tieneLetrasYNumeros(char arr[]);
 
 
 /// @brief devuelve TRUE (1) o FALSE(0) dependiendo si solo tiene números

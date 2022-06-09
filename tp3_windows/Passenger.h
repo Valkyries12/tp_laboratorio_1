@@ -158,5 +158,13 @@ int Passenger_editarPasajero(LinkedList* pArrayListPassenger);
 
 
 
+/// @brief agrega un pasajero a la ll
+///
+/// @param pArrayListPassenger -> lista de pasajeros
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_agregarPasajero(LinkedList* pArrayListPassenger);
+
+
+
 
 #endif /* PASSENGER_H_ */

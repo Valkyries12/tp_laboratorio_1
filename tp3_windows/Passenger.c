@@ -7,7 +7,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdlib.h>
 #include "utn.h"
 #include <string.h>
 #include "LinkedList.h"
@@ -37,24 +36,24 @@ Passenger* Passenger_new() {
 
 
 Passenger* Passenger_newParametros(char* idStr,char* nombreStr, char* apellidoStr, char* precioStr, char* tipoPasajeroStr, char* codigoVueloStr, char* estadoVueloStr) {
-	Passenger* pasajero;
+	Passenger* pPasajero;
 //	Passenger* auxPasajero;
 
-	pasajero = NULL;
+	pPasajero = NULL;
 //	auxPasajero = NULL;
 	//TODO -> una vez creado y pasado a pasajero . Auxpasajero hay que borrarlo con free?
 	//Si libero esa direccion no me borra pasajero al ser las dos iguales?
 	if (idStr != NULL && nombreStr && apellidoStr != NULL && precioStr != NULL  && tipoPasajeroStr != NULL && codigoVueloStr != NULL && estadoVueloStr != NULL) {
-		pasajero = Passenger_new(); //creo un nuevo pasajero en memoria
-		if (pasajero != NULL) {
+		pPasajero = Passenger_new(); //creo un nuevo pasajero en memoria
+		if (pPasajero != NULL) {
 
-			if (Passenger_setId(pasajero, atoi(idStr)) == 0 &&
-				Passenger_setNombre(pasajero, nombreStr) == 0 &&
-				Passenger_setApellido(pasajero, apellidoStr) == 0 &&
-				Passenger_setPrecio(pasajero, atof(precioStr)) == 0 &&
-				Passenger_setTipoPasajero(pasajero, Passenger_tipoPasajeroToInt(tipoPasajeroStr)) == 0 &&
-				Passenger_setCodigoVuelo(pasajero, codigoVueloStr) == 0 &&
-				Passenger_setEstadoVuelo(pasajero, Passenger_estadoVueloToInt(estadoVueloStr)) == 0
+			if (Passenger_setId(pPasajero, atoi(idStr)) == 0 &&
+				Passenger_setNombre(pPasajero, nombreStr) == 0 &&
+				Passenger_setApellido(pPasajero, apellidoStr) == 0 &&
+				Passenger_setPrecio(pPasajero, atof(precioStr)) == 0 &&
+				Passenger_setTipoPasajero(pPasajero, Passenger_tipoPasajeroToInt(tipoPasajeroStr)) == 0 &&
+				Passenger_setCodigoVuelo(pPasajero, codigoVueloStr) == 0 &&
+				Passenger_setEstadoVuelo(pPasajero, Passenger_estadoVueloToInt(estadoVueloStr)) == 0
 				) {
 				//TODO cambiar a algo mas coherente porque para que hacer setters con retorno si no lo uso
 				puts("\nSe ha cargado el pasajero\n");
@@ -62,12 +61,13 @@ Passenger* Passenger_newParametros(char* idStr,char* nombreStr, char* apellidoSt
 
 			} else {
 //				free(auxPasajero);
+				pPasajero = NULL;
 				printf("\nNo se ha podido crear al pasajero con id: %s.\n", idStr);
 			}
 		}
 	}
 
-	return pasajero;
+	return pPasajero;
 }
 
 
@@ -267,7 +267,7 @@ int Passenger_tipoPasajeroToInt(char* tipoPasajeroStr) {
 }
 
 
-int Passenger_TipoPasajeroToStr(int tipoPasajeroInt, char* tipoPasajeroStr) {
+int Passenger_tipoPasajeroToStr(int tipoPasajeroInt, char* tipoPasajeroStr) {
 	int codigoError;
 
 	codigoError = -1;
@@ -365,7 +365,7 @@ void Passenger_imprimirPasajero(Passenger* pPasajero) {
 		{
 
 			Passenger_estadoVueloToStr(estadoVuelo, estadoVueloStr);
-			Passenger_TipoPasajeroToStr(tipoPasajero, tipoPasajeroStr);
+			Passenger_tipoPasajeroToStr(tipoPasajero, tipoPasajeroStr);
 
 			printf("|%6d", id);
 			printf("|%20s", nombre);
@@ -749,5 +749,61 @@ int Passenger_editarPasajero(LinkedList* pArrayListPassenger) {
 	return codigoError;
 
 }
+
+
+
+int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
+	int codigoError;
+
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+		Passenger* auxpPasajero;
+		Passenger* pPasajero;
+		int id;
+		char auxId[10];
+		char nombre[50];
+		char apellido[50];
+		float precio;
+		char auxPrecio[50];
+		int tipoPasajero;
+		char auxTipoPasajero[50];
+		char codigoVuelo[50];
+		int estadoVuelo;
+		char auxEstadoVuelo[50];
+		int len;
+
+		len = ll_len(pArrayListPassenger) + 1;//calcula el id en base al len de la lista+1
+		id = len;
+
+		if (utn_getString(nombre, "\nIngrese nombre del pasajero: ", "\nError. Solo se permiten entre 4 y 20 caracteres.\n", 3, 4, 20) == 0 &&
+			utn_getString(apellido, "\nIngrese apellido del pasajero: ", "\nError. Solo se permiten entre 4 y 20 caracteres.\n", 3, 4, 20) == 0 &&
+			utn_getFloat(&precio, "\nIngrese el precio del ticket: ", "\nError. Solo se permite números.\n", 500000, 3500, 3) == 0 &&
+			utn_getInt(&tipoPasajero, "\nIngrese tipo pasajero [0] FirstClass [1] ExecutiveClass [2] EconomyClass: ", "\nOpción inválida. Reintente.\n", 2, 0, 3) == 0 &&
+			utn_getStringConNumero(codigoVuelo, "\nIngrese el codigo de vuelo: ", "\nError. Debe tener 7 caracteres alfanumericos.\n", 3, 7, 7) == 0 &&
+			utn_getInt(&estadoVuelo, "\nIngrese nuevo estado de vuelo [0] En Horario [1] Aterrizado [2] En vuelo: ", "\nOpción inválida. Reintente.\n", 2, 0, 3) == 0
+		)
+		{
+			//TODO manejar los errores retornados
+
+			Passenger_tipoPasajeroToStr(tipoPasajero, auxTipoPasajero);
+			Passenger_estadoVueloToStr(estadoVuelo, auxEstadoVuelo);
+			itoa(id, auxId, 10);
+			sprintf(auxPrecio, "%g", precio);
+			auxpPasajero = Passenger_newParametros(auxId, nombre, apellido, auxPrecio , auxTipoPasajero, codigoVuelo, auxEstadoVuelo);
+
+			if (auxpPasajero != NULL) {
+				pPasajero = auxpPasajero;
+				codigoError = ll_add(pArrayListPassenger, pPasajero);
+
+			}
+		}
+
+
+
+	}
+
+	return codigoError;
+}
+
 
 

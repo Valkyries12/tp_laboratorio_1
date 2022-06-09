@@ -149,6 +149,36 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 }
 
 
+int utn_getStringConNumero(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima, int lenMaxima) {
+	int codigoError;
+	char buffer[255];
+
+	codigoError = -1;
+	if(stringAIngresar != NULL && mensaje != NULL && mensajeError != NULL && maximoReintentos >= 0 && lenMaxima > 0 && lenMinima > 0) {
+
+		do {
+			maximoReintentos--;
+			printf("%s", mensaje);
+			fgets(buffer, sizeof(buffer), stdin);
+			buffer[strlen(buffer)-1] = '\0';
+			if (utn_tieneLetrasYNumeros(buffer) && strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
+				strcpy(stringAIngresar, buffer);
+				codigoError = 0;
+				break;
+			} else {
+				printf("%s", mensajeError);
+			}
+		} while(maximoReintentos > 0);
+
+
+	}
+
+
+
+	return codigoError;
+}
+
+
 
 int utn_getTelefono(char * telefonoAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int len) {
 	int codigoError;
@@ -830,6 +860,61 @@ int utn_tieneSoloLetras(char arr[]) {
 
 	return hasLetters;
 }
+
+
+int utn_tieneLetrasYNumeros(char arr[]) {
+	int hasLettersAndNumber;
+	int i;
+
+	i = 0;
+	hasLettersAndNumber = TRUE;
+	if (arr != NULL) {
+		while(arr[i] != '\0') {
+			if(utn_tieneCaracteresEspeciales(arr)) {
+				hasLettersAndNumber = FALSE;
+				break;
+			}
+			i++;
+		}
+	}
+
+	return hasLettersAndNumber;
+}
+
+
+int utn_tieneCaracteresEspeciales(char arr[]){
+   int i;
+   int tieneCaracterEspecial = FALSE;
+   for (i = 0; i < strlen(arr); ++i){
+      if(arr[i] == '!' || arr[i] == '@' || arr[i] == '#' || arr[i] == '$'
+      || arr[i] == '%' || arr[i] == '^' || arr[i] == '&' || arr[i] == '*'
+      || arr[i] == '(' || arr[i] == ')' || arr[i] == '-' || arr[i] == '{'
+      || arr[i] == '}' || arr[i] == '[' || arr[i] == ']' || arr[i] == ':'
+      || arr[i] == ';' || arr[i] == '"' || arr[i] == '\'' || arr[i] == '<'
+      || arr[i] == '>' || arr[i] == '.' || arr[i] == '/' || arr[i] == '?'
+      || arr[i] == '~' || arr[i] == '`' ){
+         printf("String is not allowed\n");
+         tieneCaracterEspecial = TRUE;
+         break;
+      }
+   }
+
+   return tieneCaracterEspecial;
+}
+
+
+
+//int utn_ftoa(float numero, char* arr) {
+//	int codigoError;
+//
+//	codigoError = -1;
+//
+//	if (numero > 0 && arr != NULL) {
+//
+//	}
+//
+//	return codigoError;
+//}
 
 
 
