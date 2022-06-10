@@ -779,7 +779,6 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
 
 
 		if (Passenger_traerUltimoId("ultimoID.txt", &ultimoId) != -1) {
-			printf("\nUltimoidarchivo es : %d", ultimoId);
 
 			id = ultimoId + 1;
 		}
@@ -838,8 +837,8 @@ int Passenger_guardarUltimoId(char* path, LinkedList* pArrayListPassenger) {
 
 			pArchivo = fopen(path, "w");
 			fprintf(pArchivo, itoa(ultimoId, ultimoIdStr, 10));
-			fclose(pArchivo);
-			codigoError = 0;
+			codigoError = fclose(pArchivo);
+
 		}
 	}
 
@@ -890,6 +889,56 @@ int Passenger_actualizarUltimoId(char* path, LinkedList* pArrayListPassenger) {
 				fprintf(pArchivo, itoa(ultimoId, ultimoIdStr, 10));
 				codigoError = fclose(pArchivo);
 			}
+		}
+	}
+
+	return codigoError;
+}
+
+
+
+int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger) {
+	int codigoError;
+	int len;
+//	char idStr[10];
+	int idInt;
+	char nombre[50];
+	char apellido[50];
+//	char precioStr[50];
+	float precio;
+	char codigoVueloStr[50];
+	char tipoPasajeroStr[50];
+	int tipoPasajero;
+	char estadoVueloStr[50];
+	int estadoVuelo;
+	Passenger* pPasajero;
+
+	codigoError = -1;
+	if (pFile != NULL && pArrayListPassenger != NULL) {
+		len = ll_len(pArrayListPassenger);
+		fprintf(pFile, "id,name,lastname,price,flycode,typePassenger,statusFlight\n");
+
+		for(int i = 0; i < len; i++) {
+			pPasajero = (Passenger*) ll_get(pArrayListPassenger, i);
+			if (Passenger_getId(pPasajero, &idInt) != -1 &&
+				Passenger_getNombre(pPasajero, nombre) != -1 &&
+				Passenger_getApellido(pPasajero, apellido) != -1 &&
+				Passenger_getCodigoVuelo(pPasajero, codigoVueloStr) != -1 &&
+				Passenger_getPrecio(pPasajero, &precio) != -1 &&
+				Passenger_getCodigoVuelo(pPasajero, codigoVueloStr) != -1 &&
+				Passenger_getTipoPasajero(pPasajero, &tipoPasajero) != -1 &&
+				Passenger_getEstadoVuelo(pPasajero, &estadoVuelo) != -1 &&
+				Passenger_estadoVueloToStr(estadoVuelo, estadoVueloStr) != -1 &&
+				Passenger_tipoPasajeroToStr(tipoPasajero, tipoPasajeroStr) != -1
+			)
+			{
+//				itoa(idInt, idStr, 10);
+//				sprintf(precioStr, "%g", precio);//convierto el precio flotante a string
+
+				fprintf(pFile, "%d,%s,%s,%f,%s,%s,%s\n", idInt, nombre, apellido, precio, codigoVueloStr, tipoPasajeroStr, estadoVueloStr);
+				codigoError = 0;
+			}
+
 		}
 	}
 

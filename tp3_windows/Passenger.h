@@ -192,4 +192,11 @@ int Passenger_actualizarUltimoId(char* path, LinkedList* pArrayListPassenger);
 
 
 
+/// @brief guarda los datos en el csv
+///
+/// @param pFile -> puntero al archivo abierto
+/// @param pArrayListPassenger -> lista de pasajeros
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger);
+
 #endif /* PASSENGER_H_ */

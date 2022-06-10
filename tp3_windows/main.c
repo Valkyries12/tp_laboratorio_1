@@ -64,6 +64,10 @@ int main()
             	codigoError = controller_sortPassenger(listaPasajeros);
             	utn_imprimirMensajes(codigoError, "\nOrdenamiento realizado con éxito. Imprima desde opción 6.\n", "\nNo se ha podido realizar el ordenamiento.\n");
             	break;
+            case 8:
+				codigoError = controller_saveAsText("data.csv", listaPasajeros);
+				utn_imprimirMensajes(codigoError, "\nGuardado en csv realizado con éxito.\n", "\nNo se ha podido realizar el guardado csv.\n");
+				break;
         }
     }while(optionMenu != 10 && codigoError == 0);
 

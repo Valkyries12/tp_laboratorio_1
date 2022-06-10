@@ -164,7 +164,18 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
 {
-    return 1;
+	int codigoError;
+	FILE* pArchivo;
+
+	codigoError = -1;
+	if (path != NULL && pArrayListPassenger != NULL) {
+		pArchivo = fopen(path, "w");
+		if (pArchivo != NULL) {
+			codigoError = Passenger_guardarComoTexto(pArchivo, pArrayListPassenger);
+			fclose(pArchivo);
+		}
+	}
+    return codigoError;
 }
 
 /** \brief Guarda los datos de los pasajeros en el archivo data.csv (modo binario).
