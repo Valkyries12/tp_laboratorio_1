@@ -14,7 +14,7 @@
  *
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
-{	//TODO si ultimo id guardado falla, me dice que no se trajeron los datos pero si se trajeorn. Asegurarme de limpiar ll
+{
 	int codigoError;
 	codigoError = -1;
 	if (path != NULL && pArrayListPassenger != NULL)  {
@@ -23,9 +23,12 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
 		codigoError = parser_PassengerFromText(pArchivo, pArrayListPassenger);
 
 		if (codigoError != -1) {
-			codigoError = Passenger_guardarUltimoId("ultimoID.txt", pArrayListPassenger);
+			//si falla al guardar el ultimo id limpio lista
+			if (Passenger_guardarUltimoId("ultimoID.txt", pArrayListPassenger) == -1) {
+				ll_clear(pArrayListPassenger);
+			}
 		}
-		fclose(pArchivo);
+		codigoError = fclose(pArchivo);
 	}
 
 

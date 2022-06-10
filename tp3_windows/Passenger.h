@@ -183,5 +183,13 @@ int Passenger_guardarUltimoId(char* path, LinkedList* pArrayListPassenger);
 int Passenger_traerUltimoId(char* path, int* ultimoId);
 
 
+/// @brief actualizo el archivo guardando el ultimo ID
+///
+/// @param path -> nombre del archivo
+/// @param pArrayListPassenger -> lista de pasajeros
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_actualizarUltimoId(char* path, LinkedList* pArrayListPassenger);
+
+
 
 #endif /* PASSENGER_H_ */
