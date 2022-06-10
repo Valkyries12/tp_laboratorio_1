@@ -14,22 +14,21 @@
  *
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
-{	//TODO fijarse de hacer que si la lista ya fue cargada una vez, al traer otra con un id > 1000 o algo cargado, no me duplique datos
+{	//TODO si ultimo id guardado falla, me dice que no se trajeron los datos pero si se trajeorn. Asegurarme de limpiar ll
 	int codigoError;
-
 	codigoError = -1;
 	if (path != NULL && pArrayListPassenger != NULL)  {
 		FILE* pArchivo;
 		pArchivo = fopen(path, "r");
 		codigoError = parser_PassengerFromText(pArchivo, pArrayListPassenger);
 
+		if (codigoError != -1) {
+			codigoError = Passenger_guardarUltimoId("ultimoID.txt", pArrayListPassenger);
+		}
 		fclose(pArchivo);
 	}
 
 
-//	if (pArchivo != NULL) {
-//
-//	}
     return codigoError;
 }
 
@@ -93,6 +92,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
  */
 int controller_removePassenger(LinkedList* pArrayListPassenger)
 {//TODO fijarse el len al remover porque si borro 1 no puedo acceder al 1000. Tmb accede al borraro pero sin info
+	//clonar lista para tomar el len? guardar el id delultimo y accedo por el ll_len para tener indice
 	int codigoError;
 
 	codigoError = -1;

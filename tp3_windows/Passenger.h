@@ -166,5 +166,22 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger);
 
 
 
+/// @brief crea un archivo y guarda el ultimo ID
+///
+/// @param path -> nombre del archivo
+/// @param pArrayListPassenger -> lista de pasajeros
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_guardarUltimoId(char* path, LinkedList* pArrayListPassenger);
+
+
+
+/// @brief trae el ultimo ID guardado en el archivo especificado
+///
+/// @param path -> nombre del archivo
+/// @param ultimoId -> puntero donde se guardara el ultimo id
+/// return en caso de exito(0) , en caso de error (-1)
+int Passenger_traerUltimoId(char* path, int* ultimoId);
+
+
 
 #endif /* PASSENGER_H_ */

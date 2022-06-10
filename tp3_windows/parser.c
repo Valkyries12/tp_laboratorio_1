@@ -24,10 +24,10 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 		char tipoPasajeroStr[50];
 		char codigoVueloStr[10];
 		char estadoVueloStr[50];
-		int len;
-		int auxId;
+//		int len;
+//		int auxId;
 
-		len = ll_len(pArrayListPassenger);
+	//	len = ll_len(pArrayListPassenger);
 
 		codigoError = fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",idStr, nombreStr, apellidoStr, precioStr, codigoVueloStr, tipoPasajeroStr, estadoVueloStr);
 		do {
@@ -36,15 +36,17 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 			if (codigoError == 7) {
 
 				//si ya hay algo cargado en la lista me hace que los id traidos sean consecutivos y coherentes con los que tengo
-				if (len > 0) {
-					auxId = atoi(idStr) + len;
-					itoa(auxId, idStr, 10);
-				}
+//				if (len > 0) {
+//					auxId = atoi(idStr) + len;
+//					itoa(auxId, idStr, 10);
+//				}
 				pPasajero = Passenger_newParametros(idStr, nombreStr, apellidoStr, precioStr, tipoPasajeroStr, codigoVueloStr, estadoVueloStr);
 
 				if (pPasajero != NULL) {
 
-					if (ll_add(pArrayListPassenger, pPasajero) == -1) {
+					if (ll_add(pArrayListPassenger, pPasajero) != -1) {
+						//TODO guardar ultimo id en archivo aca?
+					} else {
 						free(pPasajero);
 					}
 //					printf("\ndir de pasajero 1 y 2 es: %p  %p\n", pasajero[]);

@@ -759,7 +759,10 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
 	if (pArrayListPassenger != NULL) {
 		Passenger* auxpPasajero;
 		Passenger* pPasajero;
+		Passenger* ultimoPasajero;
+//		Passenger* pPasajeroExistente;
 		int id;
+		int ultimoId;
 		char auxId[10];
 		char nombre[50];
 		char apellido[50];
@@ -772,7 +775,23 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
 		char auxEstadoVuelo[50];
 		int len;
 
-		len = ll_len(pArrayListPassenger) + 1;//calcula el id en base al len de la lista+1
+		len = ll_len(pArrayListPassenger)-1;
+		printf("len antes es: %d", len);
+		//TODO yo voy a empezar con una lista de 1000, traigo el ultimo pasajero y si es menor a lo que traje anteriormente leañado 1
+		ultimoPasajero =  ll_get(pArrayListPassenger, len);
+		if (ultimoPasajero != NULL) {
+			Passenger_getId(ultimoPasajero, &ultimoId);
+		}
+
+		//TODO traigo el ultimo id del archivo y lo comparo con el ultimo que tengo
+		//si exsite el ultimo pasajero al len le sumo 1 sino existe le sumo 2. Para hacer id
+		if (ll_get(pArrayListPassenger, ll_len(pArrayListPassenger) ) != NULL ){
+			len = ll_len(pArrayListPassenger) + 1;//calcula el id en base al len de la lista+1
+			printf("len es: %d", len);
+		}
+		printf("len despuess es: %d", ll_len(pArrayListPassenger));
+
+
 		id = len;
 
 		if (utn_getString(nombre, "\nIngrese nombre del pasajero: ", "\nError. Solo se permiten entre 4 y 20 caracteres.\n", 3, 4, 20) == 0 &&
@@ -787,8 +806,8 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
 
 			Passenger_tipoPasajeroToStr(tipoPasajero, auxTipoPasajero);
 			Passenger_estadoVueloToStr(estadoVuelo, auxEstadoVuelo);
-			itoa(id, auxId, 10);
-			sprintf(auxPrecio, "%g", precio);
+			itoa(id, auxId, 10);//convierto el id int a string
+			sprintf(auxPrecio, "%g", precio);//convierto el precio flotante a string
 			auxpPasajero = Passenger_newParametros(auxId, nombre, apellido, auxPrecio , auxTipoPasajero, codigoVuelo, auxEstadoVuelo);
 
 			if (auxpPasajero != NULL) {
@@ -799,6 +818,58 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
 		}
 
 
+
+	}
+
+	return codigoError;
+}
+
+
+
+int Passenger_guardarUltimoId(char* path, LinkedList* pArrayListPassenger) {
+	int codigoError;
+	FILE* pArchivo;
+	int ultimoId;
+	char ultimoIdStr[10];
+	Passenger* pUltimoPasajero;
+
+	codigoError = -1;
+	if (path != NULL && pArrayListPassenger != NULL) {
+
+		pUltimoPasajero = ll_get(pArrayListPassenger, ll_len(pArrayListPassenger)-1);
+		if (pUltimoPasajero != NULL && Passenger_getId(pUltimoPasajero, &ultimoId) != -1) {
+
+			pArchivo = fopen(path, "w");
+			fprintf(pArchivo, itoa(ultimoId, ultimoIdStr, 10));
+			fclose(pArchivo);
+			codigoError = 0;
+		}
+	}
+
+	return codigoError;
+}
+
+
+
+int Passenger_traerUltimoId(char* path, int* ultimoId) {
+	int codigoError;
+	FILE* pArchivo;
+	char ultimoIdStr[10];
+	int ultimoIdInt;
+
+	codigoError = -1;
+	if (path != NULL && ultimoId != NULL) {
+		pArchivo = fopen(path, "r");
+
+		if (pArchivo != NULL) {
+			fgets(ultimoIdStr, sizeof(char)*10, pArchivo);
+			ultimoIdInt = atoi(ultimoIdStr);
+			*ultimoId = ultimoIdInt;
+
+			if(fclose(pArchivo) != -1) {
+				codigoError = 0;
+			}
+		}
 
 	}
 
