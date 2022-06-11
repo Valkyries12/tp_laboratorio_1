@@ -123,6 +123,8 @@ int main()
             case 10:
             	if (isSaved == FALSE) {
             		puts("\nNo se puede salir sin guardar el archivo.\n");
+            	} else {
+            		ll_deleteLinkedList(listaPasajeros);
             	}
         }
     }while(!(optionMenu == 10 && isSaved == TRUE));
