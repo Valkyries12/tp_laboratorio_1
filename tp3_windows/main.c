@@ -29,7 +29,9 @@ int main()
     int optionMenu = 0;
     int codigoError;
     int cantidadPasajeros;
+    int isSaved;
 
+    isSaved = FALSE;
 
     setbuf(stdout, NULL);
 
@@ -100,6 +102,9 @@ int main()
             	} else {
             		codigoError = controller_saveAsText("data.csv", listaPasajeros);
             		utn_imprimirMensajes(codigoError, "\nGuardado en csv realizado con éxito.\n", "\nNo se ha podido realizar el guardado csv.\n");
+            		if (codigoError != -1) {
+            			isSaved = TRUE;
+            		}
             	}
 
 				break;
@@ -109,15 +114,18 @@ int main()
             	} else {
             		codigoError = controller_saveAsBinary("data.bin", listaPasajeros);
             		utn_imprimirMensajes(codigoError, "\nGuardado en bin realizado con éxito.\n", "\nNo se ha podido realizar el guardado bin.\n");
+            		if (codigoError != -1) {
+						isSaved = TRUE;
+					}
             	}
 
 				break;
             case 10:
-            	if (cantidadPasajeros == 0) {
+            	if (isSaved == FALSE) {
             		puts("\nNo se puede salir sin guardar el archivo.\n");
             	}
         }
-    }while(optionMenu != 10);
+    }while(!(optionMenu == 10 && isSaved == TRUE));
 
     if (codigoError != 0) {
     	puts("\nOops ha ocurrido un error fatal =(.\n");
