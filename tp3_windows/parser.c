@@ -26,6 +26,9 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 		char estadoVueloStr[50];
 
 
+		if (ll_len(pArrayListPassenger) > 0) {
+			ll_clear(pArrayListPassenger);
+		}
 		codigoError = fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",idStr, nombreStr, apellidoStr, precioStr, codigoVueloStr, tipoPasajeroStr, estadoVueloStr);
 		do {
 			codigoError = fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",idStr, nombreStr, apellidoStr, precioStr, codigoVueloStr, tipoPasajeroStr, estadoVueloStr);
@@ -64,6 +67,10 @@ int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 	codigoError = -1;
 	if (pFile != NULL && pArrayListPassenger != NULL) {
 		Passenger* pPasajero;
+
+		if (ll_len(pArrayListPassenger) > 0) {
+			ll_clear(pArrayListPassenger);
+		}
 
 		do {
 			pPasajero = Passenger_new();

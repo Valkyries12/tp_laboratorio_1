@@ -41,8 +41,7 @@ Passenger* Passenger_newParametros(char* idStr,char* nombreStr, char* apellidoSt
 
 	pPasajero = NULL;
 //	auxPasajero = NULL;
-	//TODO -> una vez creado y pasado a pasajero . Auxpasajero hay que borrarlo con free?
-	//Si libero esa direccion no me borra pasajero al ser las dos iguales?
+
 	if (idStr != NULL && nombreStr && apellidoStr != NULL && precioStr != NULL  && tipoPasajeroStr != NULL && codigoVueloStr != NULL && estadoVueloStr != NULL) {
 		pPasajero = Passenger_new(); //creo un nuevo pasajero en memoria
 		if (pPasajero != NULL) {
@@ -55,9 +54,7 @@ Passenger* Passenger_newParametros(char* idStr,char* nombreStr, char* apellidoSt
 				Passenger_setCodigoVuelo(pPasajero, codigoVueloStr) == 0 &&
 				Passenger_setEstadoVuelo(pPasajero, Passenger_estadoVueloToInt(estadoVueloStr)) == 0
 				) {
-				//TODO cambiar a algo mas coherente porque para que hacer setters con retorno si no lo uso
-				puts("\nSe ha cargado el pasajero\n");
-//				pasajero = auxPasajero;
+
 
 			} else {
 //				free(auxPasajero);
@@ -611,8 +608,7 @@ int Passenger_buscarPorId(LinkedList* pArrayListPassenger, int id) {
 		int auxId;
 		int len;
 		Passenger* pPasajero;
-//TODO revisar
-//		Passenger_traerUltimoId("ultimoID.txt", &len);
+
 		len = ll_len(pArrayListPassenger);
 
 		for(int i = 0; i < len; i++) {
@@ -792,7 +788,6 @@ int Passenger_agregarPasajero(LinkedList* pArrayListPassenger) {
 			utn_getInt(&estadoVuelo, "\nIngrese nuevo estado de vuelo [0] En Horario [1] Aterrizado [2] En vuelo: ", "\nOpción inválida. Reintente.\n", 2, 0, 3) == 0
 		)
 		{
-			//TODO manejar los errores retornados
 
 			Passenger_tipoPasajeroToStr(tipoPasajero, auxTipoPasajero);
 			Passenger_estadoVueloToStr(estadoVuelo, auxEstadoVuelo);

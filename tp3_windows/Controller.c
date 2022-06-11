@@ -112,8 +112,7 @@ int controller_editPassenger(LinkedList* pArrayListPassenger)
  *
  */
 int controller_removePassenger(LinkedList* pArrayListPassenger)
-{//TODO fijarse el len al remover porque si borro 1 no puedo acceder al 1000. Tmb accede al borraro pero sin info
-	//clonar lista para tomar el len? guardar el id delultimo y accedo por el ll_len para tener indice
+{
 	int codigoError;
 
 	codigoError = -1;
@@ -134,7 +133,7 @@ int controller_removePassenger(LinkedList* pArrayListPassenger)
  *
  */
 int controller_ListPassenger(LinkedList* pArrayListPassenger)
-{//TODO clonar lista porque si ordeno al guardar en el archivo, se guardaran ordenados?
+{
 	int codigoError;
 
 	codigoError = -1;
@@ -165,7 +164,6 @@ int controller_sortPassenger(LinkedList* pArrayListPassenger)
 	int codigoError;
 
 	codigoError = -1;
-	//TODO clonar la lista para ordenar ymostrar porque si la guardo en el csv se va a guardar ordenada
 	if (pArrayListPassenger != NULL) {
 		codigoError = Passenger_imprimirSortMenu(pArrayListPassenger);
 
