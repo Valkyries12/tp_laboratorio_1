@@ -900,11 +900,9 @@ int Passenger_actualizarUltimoId(char* path, LinkedList* pArrayListPassenger) {
 int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger) {
 	int codigoError;
 	int len;
-//	char idStr[10];
 	int idInt;
 	char nombre[50];
 	char apellido[50];
-//	char precioStr[50];
 	float precio;
 	char codigoVueloStr[50];
 	char tipoPasajeroStr[50];
@@ -920,7 +918,8 @@ int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger) {
 
 		for(int i = 0; i < len; i++) {
 			pPasajero = (Passenger*) ll_get(pArrayListPassenger, i);
-			if (Passenger_getId(pPasajero, &idInt) != -1 &&
+			if (pPasajero != NULL &&
+				Passenger_getId(pPasajero, &idInt) != -1 &&
 				Passenger_getNombre(pPasajero, nombre) != -1 &&
 				Passenger_getApellido(pPasajero, apellido) != -1 &&
 				Passenger_getCodigoVuelo(pPasajero, codigoVueloStr) != -1 &&
@@ -932,8 +931,7 @@ int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger) {
 				Passenger_tipoPasajeroToStr(tipoPasajero, tipoPasajeroStr) != -1
 			)
 			{
-//				itoa(idInt, idStr, 10);
-//				sprintf(precioStr, "%g", precio);//convierto el precio flotante a string
+
 
 				fprintf(pFile, "%d,%s,%s,%f,%s,%s,%s\n", idInt, nombre, apellido, precio, codigoVueloStr, tipoPasajeroStr, estadoVueloStr);
 				codigoError = 0;
@@ -943,6 +941,31 @@ int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger) {
 	}
 
 	return codigoError;
+}
+
+
+
+int Passenger_guardarComoBinario(FILE* pFile, LinkedList* pArrayListPassenger) {
+	int codigoError;
+	int len;
+	Passenger* pPasajero;
+
+	codigoError = -1;
+	if (pFile != NULL && pArrayListPassenger != NULL) {
+		len = ll_len(pArrayListPassenger);
+//		fprintf(pFile, "id,name,lastname,price,flycode,typePassenger,statusFlight\n");
+
+		for(int i = 0; i < len; i++) {
+			pPasajero = (Passenger*) ll_get(pArrayListPassenger, i);
+			if (pPasajero != NULL) {
+				fwrite(pPasajero, sizeof(Passenger), 1, pFile);
+			}
+			codigoError = 0;
+		}
+	}
+
+	return codigoError;
+
 }
 
 

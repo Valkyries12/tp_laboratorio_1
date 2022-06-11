@@ -24,10 +24,7 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 		char tipoPasajeroStr[50];
 		char codigoVueloStr[10];
 		char estadoVueloStr[50];
-//		int len;
-//		int auxId;
 
-	//	len = ll_len(pArrayListPassenger);
 
 		codigoError = fscanf(pFile,"%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n",idStr, nombreStr, apellidoStr, precioStr, codigoVueloStr, tipoPasajeroStr, estadoVueloStr);
 		do {
@@ -35,21 +32,13 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 //			printf("\n idStr es: %s, nombreStr es: %s, apellidoStr es: %s, precioStr es: %s, tipoPasajeroStr es: %s, codigoVueloStr es: %s, estadoVueloStr es: %s\n", idStr,nombreStr,apellidoStr,precioStr,tipoPasajeroStr,codigoVueloStr,estadoVueloStr);
 			if (codigoError == 7) {
 
-				//si ya hay algo cargado en la lista me hace que los id traidos sean consecutivos y coherentes con los que tengo
-//				if (len > 0) {
-//					auxId = atoi(idStr) + len;
-//					itoa(auxId, idStr, 10);
-//				}
 				pPasajero = Passenger_newParametros(idStr, nombreStr, apellidoStr, precioStr, tipoPasajeroStr, codigoVueloStr, estadoVueloStr);
 
 				if (pPasajero != NULL) {
 
-					if (ll_add(pArrayListPassenger, pPasajero) != -1) {
-						//TODO guardar ultimo id en archivo aca?
-					} else {
+					if (ll_add(pArrayListPassenger, pPasajero) == -1) {
 						free(pPasajero);
 					}
-//					printf("\ndir de pasajero 1 y 2 es: %p  %p\n", pasajero[]);
 				}
 			}
 
@@ -70,6 +59,27 @@ int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
  */
 int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 {
+	int codigoError;
 
-    return 1;
+	codigoError = -1;
+	if (pFile != NULL && pArrayListPassenger != NULL) {
+		Passenger* pPasajero;
+
+		do {
+			pPasajero = Passenger_new();
+
+			if (pPasajero != NULL && fread(pPasajero, sizeof(Passenger), 1, pFile) == 1) {//fread devuelve 1 si leyo una fila
+
+				if (ll_add(pArrayListPassenger, pPasajero) == -1) {
+					free(pPasajero);
+				}
+			}
+
+
+		} while(!feof(pFile));
+		codigoError = 0;
+	}
+
+
+	return codigoError;
 }

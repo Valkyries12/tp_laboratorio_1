@@ -44,7 +44,25 @@ int controller_loadFromText(char* path , LinkedList* pArrayListPassenger)
  */
 int controller_loadFromBinary(char* path , LinkedList* pArrayListPassenger)
 {
-    return 1;
+	FILE* pArchivo;
+	int codigoError;
+
+	codigoError = -1;
+	if (path != NULL && pArrayListPassenger != NULL) {
+
+		pArchivo = fopen("data.bin", "rb");
+		codigoError = parser_PassengerFromBinary(pArchivo, pArrayListPassenger);
+
+		if (codigoError != -1) {
+			//si falla al guardar el ultimo id limpio lista
+			if (Passenger_guardarUltimoId("ultimoID.txt", pArrayListPassenger) == -1) {
+				ll_clear(pArrayListPassenger);
+			}
+		}
+		codigoError = fclose(pArchivo);
+	}
+
+    return codigoError;
 }
 
 /** \brief Alta de pasajero
@@ -187,6 +205,19 @@ int controller_saveAsText(char* path , LinkedList* pArrayListPassenger)
  */
 int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 {
-    return 1;
+	FILE* pArchivo;
+	int codigoError;
+
+	codigoError = -1;
+	if (path != NULL && pArrayListPassenger != NULL) {
+		pArchivo = fopen(path, "wb");
+
+		if (pArchivo != NULL) {
+			codigoError = Passenger_guardarComoBinario(pArchivo, pArrayListPassenger);
+			fclose(pArchivo);
+		}
+	}
+
+    return codigoError;
 }
 

@@ -39,6 +39,10 @@ int main()
                 codigoError = controller_loadFromText("data.csv",listaPasajeros);
                 utn_imprimirMensajes(codigoError, "\nSe han traido los datos con éxito.\n", "\nNo se han podido traer los datos.\n");
                 break;
+            case 2:
+				codigoError = controller_loadFromBinary("data.bin",listaPasajeros);
+				utn_imprimirMensajes(codigoError, "\nSe han traido los datos con éxito.\n", "\nNo se han podido traer los datos.\n");
+				break;
             case 3:
             	if (ll_len(listaPasajeros) == 0) {
             		puts("\nPrimero debes traer los datos del archivo.\n");
@@ -67,6 +71,10 @@ int main()
             case 8:
 				codigoError = controller_saveAsText("data.csv", listaPasajeros);
 				utn_imprimirMensajes(codigoError, "\nGuardado en csv realizado con éxito.\n", "\nNo se ha podido realizar el guardado csv.\n");
+				break;
+            case 9:
+				codigoError = controller_saveAsBinary("data.bin", listaPasajeros);
+				utn_imprimirMensajes(codigoError, "\nGuardado en bin realizado con éxito.\n", "\nNo se ha podido realizar el guardado bin.\n");
 				break;
         }
     }while(optionMenu != 10 && codigoError == 0);
