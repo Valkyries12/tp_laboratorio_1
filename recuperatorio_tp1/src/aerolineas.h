@@ -20,6 +20,19 @@
 void imprimirInformeDeCostos(char * nombreAerolinea, float precio, float precioConDescuento, float precioConInteres, float precioBTC, float precioUnitario);
 
 
+/// @brief Imprime el menú
+///
+/// @param kilometros -> km actuales
+/// @param precioAerolinea -> precio final de aerolinea
+/// @param precioLatam -> precio final latam
+/// @return no retorna nada
+void imprimirMenu(float kilometros, float precioAerolinea, float precioLatam);
 
+
+
+/// @brief Realiza la carga forzada
+///
+/// @return en caaso de exito (0), en caso de error (-1)
+int hacerCargaForzada(void);
 
 #endif /* AEROLINEAS_H_ */
