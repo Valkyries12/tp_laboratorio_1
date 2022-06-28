@@ -98,11 +98,25 @@ int main(void) {
 
 						codigoError = utn_getInt(&id, "\nIngrese el ID del pasajero a eliminar: ", "\nID incorrecto. Reintente.\n", 15000, 150, 3);
 						if (codigoError == 0 && existePasajero(pasajeros, MAXIMO_PASAJEROS, id)) {
-							codigoError = eliminarPasajero(pasajeros, id, MAXIMO_PASAJEROS);
 
-							if (codigoError == 0) {
-								utn_imprimirMensajes(codigoError, "\nSe ha eliminado el pasajero satisfactoriamente.\n", "\nHa ocurrido un error al eliminar el pasajero.\n");
-							}
+							indice = buscarPasajeroPorId(pasajeros, id, MAXIMO_PASAJEROS);
+							do {
+								imprimirCabecera();
+								imprimirPasajero(pasajeros[indice]);
+								codigoError = utn_getInt(&opcionMenu, "\n1. Borrar pasajero. \n2. Atras. \n\nIngrese una opcion: ", "\nOpción inválida. Reintente.\n", 2, 1, 3);
+								switch (opcionMenu) {
+									case 1:
+										codigoError = eliminarPasajero(pasajeros, id, MAXIMO_PASAJEROS);
+										utn_imprimirMensajes(codigoError, "\nSe ha eliminado el pasajero satisfactoriamente.\n", "\nHa ocurrido un error al eliminar el pasajero.\n");
+										opcionMenu = 2;
+										break;
+									default:
+										break;
+								}
+							} while(opcionMenu != 2);
+
+
+
 						} else {
 							puts("\nPasajero inexistente.\n");
 						}
