@@ -129,7 +129,7 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 			printf("%s", mensaje);
 			fgets(buffer, sizeof(buffer), stdin);
 			buffer[strlen(buffer)-1] = '\0';
-			if (utn_tieneSoloLetras(buffer) && strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
+			if (strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
 				strcpy(stringAIngresar, buffer);
 				codigoError = 0;
 				break;
