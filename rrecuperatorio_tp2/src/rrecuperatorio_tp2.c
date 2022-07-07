@@ -53,7 +53,7 @@ int main(void) {
 					if ( utn_getString(nombre, "\nIngrese nombre del pasajero: ", "\nNombre inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50) != -1 &&
 						 utn_getString(apellido, "\nIngrese apellido del pasajero: ", "\nApellido inválido. Debe tener entre 4 y 50 caracteres.\n", 3, 4, 50) != -1 &&
 						 utn_getFloat(&precio, "\nIngrese precio del pasaje: ", "\nPrecio inválido. Debe contener solo números entre 2500 y 750000.\n", 750000, 2500, 3) != -1 &&
-						 utn_getString(codigoVuelo, "\nIngrese código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 caracteres alfanumericos.\n", 3, 6, 6) != -1 &&
+						 getCodigoVuelo(codigoVuelo, "\nIngrese código de vuelo: ", "\nCódigo de vuelo inválido. Debe tener 6 caracteres alfanumericos.\n", 3, 6, 6) != -1 &&
 						 utn_getInt(&estadoVuelo, "\nIngrese el estado de vuelo 0-> activo, 1-> demorado, 2-> cancelado: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3) != -1 &&
 						 utn_getInt(&tipoPasajero, "\nIngrese el tipo de pasajero 0-> primera clase, 1-> ejecutivo, 2-> premium: ", "\nOpción inválida. Debe estar entre 0 y 2.\n", 2, 0, 3) != -1
 						)

@@ -296,6 +296,27 @@ int utn_imprimirString(char arr[]);
 int utn_tieneSoloLetras(char arr[]);
 
 
+/// @brief devuelve TRUE (1) o FALSE(0) dependiendo si solo tiene signos de puntuacion
+///
+/// @param arr -> array de chars
+/// @return En caso de tener solo signos TRUE (1), en caso de tener otro tipo de dato FALSE (0)
+int utn_tieneSignos(char arr[]);
+
+
+/// @brief devuelve TRUE (1) o FALSE(0) dependiendo si solo tiene letras y numeros
+///
+/// @param arr -> array de chars
+/// @return En caso de tener solo letras y numeros TRUE (1), en caso de tener otro tipo de dato FALSE (0)
+int utn_tieneLetrasYNumeros(char arr[]);
+
+
+/// @brief verifica si la cadena tiene caracteres especiales
+///
+/// @param arr -> cadena a verificar
+/// @return en caso de encontrar caracteres especiales (TRUE), sino (FALSE)
+int utn_tieneCaracteresEspeciales(char arr[]);
+
+
 /// @brief devuelve TRUE (1) o FALSE(0) dependiendo si solo tiene números
 ///
 /// @param arr -> array de chars

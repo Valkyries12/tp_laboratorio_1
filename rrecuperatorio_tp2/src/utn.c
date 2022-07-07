@@ -129,7 +129,8 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 			printf("%s", mensaje);
 			fgets(buffer, sizeof(buffer), stdin);
 			buffer[strlen(buffer)-1] = '\0';
-			if (strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
+			if (utn_tieneSoloLetras(buffer) && strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
+
 				strcpy(stringAIngresar, buffer);
 				codigoError = 0;
 				break;
@@ -145,6 +146,8 @@ int utn_getString(char * stringAIngresar, char * mensaje, char * mensajeError, i
 
 	return codigoError;
 }
+
+
 
 
 
@@ -827,6 +830,46 @@ int utn_tieneSoloLetras(char arr[]) {
 	}
 
 	return hasLetters;
+}
+
+
+int utn_tieneLetrasYNumeros(char arr[]) {
+	int hasLettersAndNumber;
+	int i;
+
+	i = 0;
+	hasLettersAndNumber = TRUE;
+	if (arr != NULL) {
+		while(arr[i] != '\0') {
+			if(utn_tieneCaracteresEspeciales(arr)) {
+				hasLettersAndNumber = FALSE;
+				break;
+			}
+			i++;
+		}
+	}
+
+	return hasLettersAndNumber;
+}
+
+
+int utn_tieneCaracteresEspeciales(char arr[]){
+   int i;
+   int tieneCaracterEspecial = FALSE;
+   for (i = 0; i < strlen(arr); ++i){
+      if(arr[i] == '!' || arr[i] == '@' || arr[i] == '#' || arr[i] == '$'
+      || arr[i] == '%' || arr[i] == '^' || arr[i] == '&' || arr[i] == '*'
+      || arr[i] == '(' || arr[i] == ')' || arr[i] == '-' || arr[i] == '{'
+      || arr[i] == '}' || arr[i] == '[' || arr[i] == ']' || arr[i] == ':'
+      || arr[i] == ';' || arr[i] == '"' || arr[i] == '\'' || arr[i] == '<'
+      || arr[i] == '>' || arr[i] == '.' || arr[i] == '/' || arr[i] == '?'
+      || arr[i] == '~' || arr[i] == '`' ){
+         tieneCaracterEspecial = TRUE;
+         break;
+      }
+   }
+
+   return tieneCaracterEspecial;
 }
 
 

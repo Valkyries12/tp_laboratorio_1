@@ -177,4 +177,16 @@ int calcularCuantosSuperanPromedio(Pasajero arr[], float promedio, int * cantida
 void imprimirCalculosDePasajeros(float totalPrecios, float promedio, int cantidadSuperanPromedio);
 
 
+
+/// @brief  Solicita un codigo vuelo al usuario, lo valida, verifica y devuelve el resultado
+///
+/// @param stringAIngresar -> puntero al resultado, alli se dejara la frase ingresada por el usuario
+/// @param mensaje -> Es el mensaje a ser mostrado
+/// @param mensajeError -> Es el mensaje a ser mostrado en caso de error
+/// @param maximoReintentos -> Cantidad de reintentos en caso de error
+/// @param lenMinima -> longitud minima requerida de caracteres
+/// @param lenMaxima -> longitud maxima requerida de caracteres
+/// @return En caso de exito (0), en caso de error (-1)
+int getCodigoVuelo(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima, int lenMaxima);
+
 #endif /* ARRAYPASAJERO_H_ */

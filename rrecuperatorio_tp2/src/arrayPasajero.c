@@ -472,3 +472,34 @@ void imprimirCalculosDePasajeros(float totalPrecios, float promedio, int cantida
 	printf("\nCantidad de pasajeros que superan el promedio: %d\n\n", cantidadSuperanPromedio);
 }
 
+
+
+int getCodigoVuelo(char * stringAIngresar, char * mensaje, char * mensajeError, int maximoReintentos, int lenMinima, int lenMaxima) {
+	int codigoError;
+	char buffer[255];
+
+	codigoError = -1;
+	if(stringAIngresar != NULL && mensaje != NULL && mensajeError != NULL && maximoReintentos >= 0 && lenMaxima > 0 && lenMinima > 0) {
+
+		do {
+			maximoReintentos--;
+			printf("%s", mensaje);
+			fgets(buffer, sizeof(buffer), stdin);
+			buffer[strlen(buffer)-1] = '\0';
+			if (utn_tieneLetrasYNumeros(buffer) && strlen(buffer) >= lenMinima && strlen(buffer) <= lenMaxima) {
+
+				strcpy(stringAIngresar, buffer);
+				codigoError = 0;
+				break;
+			} else {
+				printf("%s", mensajeError);
+			}
+		} while(maximoReintentos > 0);
+
+
+	}
+
+
+
+	return codigoError;
+}
