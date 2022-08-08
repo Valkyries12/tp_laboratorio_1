@@ -364,13 +364,13 @@ void Passenger_imprimirPasajero(Passenger* pPasajero) {
 			Passenger_estadoVueloToStr(estadoVuelo, estadoVueloStr);
 			Passenger_tipoPasajeroToStr(tipoPasajero, tipoPasajeroStr);
 
-			printf("|%6d", id);
+			printf("\n|%6d", id);
 			printf("|%20s", nombre);
 			printf("|%20s", apellido);
 			printf("|%20.2f", precio);
 			printf("|%15s", tipoPasajeroStr);
 			printf("|%20s", codigoVuelo);
-			printf("|%15s|\n", estadoVueloStr);
+			printf("|%15s|", estadoVueloStr);
 
 		}
 
@@ -961,6 +961,79 @@ int Passenger_guardarComoBinario(FILE* pFile, LinkedList* pArrayListPassenger) {
 
 	return codigoError;
 
+}
+
+
+int Passenger_verificarIgualdadCodigoVuelo(Passenger* pPasajero, char* codigoVuelo) {
+	int retorno;
+	char auxCodigoVuelo[50];
+	retorno = FALSE;
+	if (pPasajero != NULL && codigoVuelo != NULL) {
+
+		if (Passenger_getCodigoVuelo(pPasajero, auxCodigoVuelo) != -1 && strcmp(codigoVuelo, auxCodigoVuelo) == 0) {
+			retorno = TRUE;
+		}
+
+	}
+
+	return retorno;
+}
+
+
+
+int Passenger_verificarIgualdadTipoPasajero(Passenger* pPasajero, int tipoPasajeroCriterio) {
+	int retorno;
+	int tipoPasajeroActual;
+
+	retorno = 0;
+	if (pPasajero != NULL && tipoPasajeroCriterio > -1 && Passenger_getTipoPasajero(pPasajero, &tipoPasajeroActual) != -1) {
+		if (tipoPasajeroActual == tipoPasajeroCriterio) {
+			retorno = 1;
+		}
+	}
+
+	return retorno;
+}
+
+
+
+int Passenger_imprimirCantidadTipoPasajero(int firstClass, int executiveClass, int economyClass) {
+	int codigoError;
+
+	codigoError = -1;
+	if (firstClass > -1 && executiveClass > -1 && economyClass > -1) {
+		printf("\n%20s %20s %20s", "PRIMERA_CLASE", "CLASE EJECUTIVA", "CLASE ECONÓMICA");
+		printf("\n%20d %20d %20d", firstClass, executiveClass, economyClass);
+		codigoError = 0;
+	}
+
+	return codigoError;
+}
+
+
+
+void Passenger_listarPasajeroConMillas(Passenger* pPasajero) {
+	float millas;
+	float precio;
+	int tipoPasajero;
+	Passenger_imprimirPasajero(pPasajero);
+	if (Passenger_getPrecio(pPasajero, &precio) != -1 && Passenger_getTipoPasajero(pPasajero, &tipoPasajero) != -1) {
+		millas = precio / 100;
+	}
+
+	switch (tipoPasajero) {
+		case 0:
+			millas *= 2;
+			break;
+		case 1:
+			millas *= 3;
+			break;
+		default:
+
+			break;
+	}
+
+	printf("|%10.2f millas", millas);
 }
 
 

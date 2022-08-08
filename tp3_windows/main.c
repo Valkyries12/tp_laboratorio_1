@@ -40,7 +40,7 @@ int main()
     LinkedList* listaPasajeros = ll_newLinkedList();
     do{
     	cantidadPasajeros = ll_len(listaPasajeros);
-    	codigoError = utn_getInt(&optionMenu, "\n1. Cargar los datos de los pasajeros desde el archivo data.csv (modo texto). \n2. Cargar los datos de los pasajeros desde el archivo data.csv (modo binario). \n3. Alta de pasajero. \n4. Modificar datos de pasajero. \n5. Baja de pasajero. \n6. Listar pasajeros. \n7. Ordenar pasajeros. \n8. Guardar los datos de los pasajeros en el archivo data.csv (modo texto). \n9. Guardar los datos de los pasajeros en el archivo data.bin (modo binario). \n10. Salir. \n\nIngrese una opción: ", "\nError. Sólo se permite números del 1 al 10.\n", 10, 1, 3);
+    	codigoError = utn_getInt(&optionMenu, "\n1. Cargar los datos de los pasajeros desde el archivo data.csv (modo texto). \n2. Cargar los datos de los pasajeros desde el archivo data.csv (modo binario). \n3. Alta de pasajero. \n4. Modificar datos de pasajero. \n5. Baja de pasajero. \n6. Listar pasajeros. \n7. Ordenar pasajeros. \n8. Guardar los datos de los pasajeros en el archivo data.csv (modo texto). \n9. Guardar los datos de los pasajeros en el archivo data.bin (modo binario). \n10- INFORMES. \n11. Salir. \n\nIngrese una opción: ", "\nError. Sólo se permite números del 1 al 10.\n", 11, 1, 3);
         switch(optionMenu)
         {
             case 1:
@@ -121,13 +121,21 @@ int main()
 
 				break;
             case 10:
+            	if (cantidadPasajeros == 0) {
+            		puts("\nNo existen pasajeros. Primero debes generar el archivo.\n");
+            	} else {
+
+            		codigoError = controller_hacerInforme(listaPasajeros);
+            	}
+            	break;
+            case 11:
             	if (isSaved == FALSE) {
             		puts("\nNo se puede salir sin guardar el archivo.\n");
             	} else {
             		ll_deleteLinkedList(listaPasajeros);
             	}
         }
-    }while(!(optionMenu == 10 && isSaved == TRUE));
+    }while(!(optionMenu == 11 && isSaved == TRUE));
 
     if (codigoError != 0) {
     	puts("\nOops ha ocurrido un error fatal =(.\n");

@@ -4,6 +4,7 @@
 #include "parser.h"
 #include "LinkedList.h"
 #include "Passenger.h"
+#include "utn.h"
 
 
 /** \brief Carga los datos de los pasajeros desde el archivo data.csv (modo texto).
@@ -218,4 +219,59 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 
     return codigoError;
 }
+
+
+int controller_hacerInforme(LinkedList* pArrayListPassenger) {
+	int codigoError;
+	int optionMenu;
+	LinkedList* pFilteredByCodigoVuelo;
+	FILE* pArchivo;
+	int firstClass;
+	int economyClass;
+	int executiveClass;
+
+	pFilteredByCodigoVuelo = ll_newLinkedList();
+	codigoError = -1;
+	if (pArrayListPassenger != NULL) {
+
+		do {
+			codigoError = utn_getInt(&optionMenu, "\n1- Pasajeros por clase. \n2- Generar archivo de vuelos. \n3- Calcular millas acumuladas. \n4- Salir. \n\nIngrese una opcion: ", "\nOpción inválida. Reintente.\n", 4, 1, 3);
+			switch (optionMenu) {
+				case 1:
+					puts("\n=== PASAJEROS POR CLASE ===\n");// 0 primera, 1 ejecutiva y 2 economica son los tipos
+					firstClass = ll_count(pArrayListPassenger, Passenger_verificarIgualdadTipoPasajero, 0);
+					executiveClass = ll_count(pArrayListPassenger, Passenger_verificarIgualdadTipoPasajero, 1);
+					economyClass = ll_count(pArrayListPassenger, Passenger_verificarIgualdadTipoPasajero, 2);
+					codigoError = Passenger_imprimirCantidadTipoPasajero(firstClass, executiveClass, economyClass);
+					utn_imprimirMensajes(codigoError, "\nSe han impreso la cantidad de tipo de pasajeros con éxito.\n", "\nHa ocurrido un error al imprimir.\n");
+					break;
+				case 2:
+					puts("\n=== GENERAR ARCHIVOS DE VUELO ===\n");
+					pFilteredByCodigoVuelo = ll_filter(pArrayListPassenger, Passenger_verificarIgualdadCodigoVuelo, "BA2491A");
+					if (pFilteredByCodigoVuelo != NULL) {
+						pArchivo = fopen("pasajerosFiltrados.csv", "w");
+
+						if (pArchivo != NULL) {
+							codigoError = Passenger_guardarComoTexto(pArchivo, pFilteredByCodigoVuelo);
+							fclose(pArchivo);
+						}
+
+					}
+					utn_imprimirMensajes(codigoError, "\nSe han guardado los datos con éxito.\n", "\nHa ocurrido un error al guardar datos.\n");
+					break;
+				case 3:
+					puts("\n=== CALCULAR MILLAS ACUMULADAS ===\n");
+					codigoError = ll_map(pArrayListPassenger, Passenger_listarPasajeroConMillas);
+					utn_imprimirMensajes(codigoError, "\nSe han listado los datos con éxito.\n", "\nHa ocurrido un error al listar datos.\n");
+					break;
+				default:
+					break;
+			}
+
+		} while (optionMenu != 4);
+	}
+
+	return codigoError;
+}
+
 

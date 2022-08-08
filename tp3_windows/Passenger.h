@@ -208,4 +208,35 @@ int Passenger_guardarComoTexto(FILE* pFile, LinkedList* pArrayListPassenger);
 /// return en caso de exito(0) , en caso de error (-1)
 int Passenger_guardarComoBinario(FILE* pFile, LinkedList* pArrayListPassenger);
 
+
+/// @brief Verifica la igualda del codigo de vuelo
+///
+/// @param pElement -> pasajero
+/// @param codigoVuelo -> criterio a comparar
+/// @return en caso de igualdad (TRUE), en caso contrario (FALSE)
+int Passenger_verificarIgualdadCodigoVuelo(Passenger* pPasajero, char* codigoVuelo);
+
+
+/// @brief Verifica la igualdad del tipoPasajero
+///
+/// @param pPasajero -> puntero de pasajero
+/// @param tipoPasajero -> tipo pasajero a verificar
+/// @return En caso de igualdad (1), en caso contrario (0)
+int Passenger_verificarIgualdadTipoPasajero(Passenger* pPasajero, int tipoPasajero);
+
+
+
+/// @brief Imprime la cantidad de pasajeros por cara tipoClase
+///
+/// @param firstClass -> cantidad de primera clase
+/// @param executiveClass -> cantidad clase ejecutiva
+/// @param economyClass -> cantidad clase economica
+int Passenger_imprimirCantidadTipoPasajero(int firstClass, int executiveClass, int economyClass);
+
+
+
+void Passenger_listarPasajeroConMillas(Passenger* pPasajero);
+
+
+
 #endif /* PASSENGER_H_ */

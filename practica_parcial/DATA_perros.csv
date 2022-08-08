@@ -1,0 +1,1001 @@
+ID_cachorro,Nombre,Dias,Raza,Reservado,Genero
+1,Sibelle,382,ChowChow,SI,H
+2,Davine,285,Border Collie,NO,M
+3,Ursola,236,Ovejero,SI,H
+4,Helga,175,Caniche,SI,H
+5,Charisse,411,Shih Tzu,NO,M
+6,Renaldo,415,Pitbull,NO,H
+7,Gal,332,Ovejero,SI,M
+8,Markos,322,Coquer,NO,H
+9,Drugi,62,Coquer,NO,H
+10,Johnathon,636,Labrador,SI,H
+11,Hercule,244,Pitbull,SI,M
+12,Sasha,195,Bulldog,NO,H
+13,Claude,450,Coquer,NO,M
+14,Olive,680,Shih Tzu,NO,M
+15,Nate,317,Rottweiler,NO,H
+16,Aldus,79,Jack Russell,NO,M
+17,Vasily,394,Labrador,SI,M
+18,Alleyn,300,Coquer,SI,M
+19,Renie,325,Jack Russell,SI,M
+20,Carleen,229,Pitbull,NO,H
+21,Kellsie,317,Pug,NO,M
+22,Lesli,123,Rottweiler,SI,M
+23,Duky,648,Ovejero,NO,M
+24,Franky,345,Boxer,SI,H
+25,Gillan,620,Ovejero,NO,H
+26,Artus,72,Ovejero,SI,M
+27,Clerc,308,Caniche,NO,H
+28,Robinson,171,Shih Tzu,SI,M
+29,Norbie,507,Boxer,SI,H
+30,Elfrida,492,Boxer,SI,M
+31,Genevra,54,Coquer,SI,H
+32,Delores,489,Boxer,NO,M
+33,Andy,693,Jack Russell,NO,H
+34,Elston,59,Callejero,SI,M
+35,Thane,110,Rottweiler,SI,M
+36,Aloise,685,Caniche,NO,M
+37,Dedie,201,Shih Tzu,SI,H
+38,Mikael,240,Bulldog,NO,H
+39,Bobbee,683,Jack Russell,NO,H
+40,Lanie,284,Pug,NO,M
+41,Maribelle,532,Shih Tzu,SI,H
+42,Phillis,363,Coquer,NO,H
+43,Ric,342,Coquer,NO,M
+44,Mignonne,298,Shih Tzu,NO,H
+45,Barbabra,464,Labrador,SI,M
+46,Padget,714,Rottweiler,SI,H
+47,Revkah,644,Coquer,NO,H
+48,Caprice,234,Boxer,NO,M
+49,Conroy,258,Border Collie,SI,M
+50,Yancey,234,Bulldog,SI,H
+51,Fay,552,Caniche,SI,M
+52,Carilyn,154,ChowChow,NO,H
+53,Emanuel,121,Rottweiler,NO,H
+54,Normand,420,ChowChow,SI,M
+55,Torrie,647,Bulldog,SI,H
+56,Dagmar,570,Boxer,SI,M
+57,Derry,248,Pitbull,SI,H
+58,Bayard,271,Pitbull,NO,M
+59,Brian,185,Rottweiler,NO,H
+60,Gina,499,Coquer,SI,H
+61,Arlie,134,Caniche,SI,H
+62,Rutledge,520,ChowChow,SI,M
+63,Corney,214,Labrador,NO,H
+64,Zita,243,Pitbull,SI,H
+65,Dal,292,Chihuahua,SI,H
+66,Florencia,148,Labrador,NO,M
+67,Bobbie,416,Callejero,SI,H
+68,Reilly,686,Bulldog,NO,H
+69,Daisy,476,Bulldog,NO,M
+70,Corinna,55,Pug,NO,M
+71,Zarah,665,Rottweiler,SI,H
+72,Codi,383,Border Collie,SI,M
+73,Luce,107,Pitbull,NO,M
+74,Rusty,145,Rottweiler,NO,H
+75,Myrtie,550,ChowChow,SI,H
+76,Alan,530,Border Collie,NO,H
+77,Zaria,433,Shih Tzu,NO,H
+78,Gage,159,Boxer,SI,H
+79,Mickie,129,Bulldog,SI,H
+80,Aaren,202,Coquer,NO,H
+81,Renae,602,Rottweiler,SI,H
+82,Grazia,606,Caniche,NO,H
+83,Zared,323,Border Collie,NO,M
+84,Erv,290,Jack Russell,SI,H
+85,Jobyna,466,Callejero,NO,H
+86,Faina,709,Pug,NO,M
+87,Port,193,Pug,NO,M
+88,Letty,245,Pitbull,NO,M
+89,Max,293,Border Collie,NO,H
+90,Wilden,670,Callejero,SI,M
+91,Hedwiga,111,Ovejero,NO,H
+92,Cahra,601,Ovejero,SI,M
+93,Salomi,610,Labrador,SI,H
+94,Goober,503,Callejero,NO,H
+95,Newton,239,Ovejero,NO,H
+96,Rodger,72,Pitbull,NO,M
+97,Billi,137,Rottweiler,SI,H
+98,Selle,448,Shih Tzu,SI,M
+99,Spenser,119,Bulldog,SI,M
+100,Deb,547,Chihuahua,SI,H
+101,Maxwell,122,Labrador,SI,M
+102,Christoph,714,Border Collie,SI,M
+103,Regen,244,Rottweiler,SI,H
+104,Ranique,713,Bulldog,SI,H
+105,Constantia,564,ChowChow,NO,M
+106,Wolfy,316,Caniche,SI,M
+107,Hilde,149,Border Collie,NO,M
+108,Cathi,347,Labrador,NO,M
+109,Korella,538,Jack Russell,SI,H
+110,Bess,443,Boxer,SI,M
+111,Cesaro,621,Jack Russell,NO,H
+112,Elyse,347,Shih Tzu,NO,H
+113,Bobina,286,Rottweiler,SI,M
+114,Tiphani,83,Shih Tzu,SI,H
+115,Kermit,382,Bulldog,SI,H
+116,Blinni,284,Jack Russell,SI,M
+117,Morry,449,ChowChow,NO,M
+118,Berk,603,ChowChow,NO,H
+119,Beck,622,Rottweiler,NO,M
+120,Salvatore,661,Coquer,SI,M
+121,Si,46,Border Collie,SI,M
+122,Kienan,690,Bulldog,NO,H
+123,Noellyn,230,Coquer,SI,H
+124,Udall,500,Shih Tzu,NO,H
+125,Carolyne,241,Jack Russell,NO,H
+126,Bessy,627,Labrador,NO,M
+127,Darcie,517,Border Collie,SI,M
+128,Evaleen,364,Border Collie,SI,H
+129,Addi,721,Coquer,SI,H
+130,Moselle,175,Rottweiler,NO,M
+131,Alejandro,136,Rottweiler,NO,H
+132,Dianne,698,Labrador,SI,M
+133,Leoine,417,Rottweiler,SI,H
+134,Fonzie,674,Shih Tzu,NO,H
+135,Ivar,636,Border Collie,NO,H
+136,Walsh,220,Bulldog,SI,M
+137,Eilis,541,Jack Russell,NO,H
+138,Zechariah,368,Ovejero,NO,H
+139,Cody,437,ChowChow,SI,H
+140,Dion,660,Chihuahua,SI,M
+141,Bryn,70,Caniche,SI,M
+142,Egbert,637,Rottweiler,NO,H
+143,Sherye,616,Callejero,SI,H
+144,Maude,222,Caniche,SI,H
+145,Stephenie,454,Boxer,SI,M
+146,Dolores,677,Pug,SI,M
+147,Vanda,362,Labrador,NO,H
+148,Nerita,329,Border Collie,SI,H
+149,Lynnell,165,ChowChow,NO,H
+150,Ara,683,Callejero,SI,H
+151,Joete,589,Shih Tzu,NO,H
+152,Caryl,176,Chihuahua,NO,M
+153,Luis,528,ChowChow,NO,H
+154,Valentino,472,Ovejero,SI,M
+155,Barron,688,Bulldog,NO,M
+156,Etta,210,Chihuahua,NO,M
+157,Alissa,488,Shih Tzu,SI,M
+158,Othilie,528,Border Collie,NO,M
+159,Maxine,410,Ovejero,SI,H
+160,Doy,695,Labrador,SI,M
+161,Cull,501,Rottweiler,NO,M
+162,Bendicty,83,Labrador,SI,M
+163,Faunie,312,Coquer,NO,M
+164,Cymbre,418,Callejero,NO,H
+165,Briana,93,Boxer,NO,H
+166,Lynn,565,Callejero,NO,M
+167,Lucila,134,Border Collie,SI,M
+168,Jonathon,386,Chihuahua,SI,H
+169,Warren,126,Rottweiler,SI,M
+170,Lethia,434,Jack Russell,SI,H
+171,Jessalyn,55,Labrador,NO,H
+172,Ingrid,320,Pug,SI,M
+173,Merrel,571,Labrador,NO,H
+174,Jemimah,406,Border Collie,NO,H
+175,Tadeo,402,Shih Tzu,SI,H
+176,Faulkner,179,Rottweiler,NO,H
+177,Yardley,453,Coquer,SI,M
+178,Kyrstin,207,Pitbull,NO,H
+179,Sharia,473,Callejero,SI,M
+180,Tomaso,62,Border Collie,NO,M
+181,Alvira,338,Boxer,NO,H
+182,Elva,194,Shih Tzu,NO,M
+183,Mickey,80,Bulldog,NO,M
+184,Modesta,311,Labrador,SI,H
+185,Jamal,479,Shih Tzu,SI,H
+186,Niccolo,145,Jack Russell,SI,M
+187,Gun,685,Ovejero,SI,M
+188,Mignon,530,Boxer,SI,M
+189,Somerset,220,ChowChow,SI,M
+190,Maryann,73,Boxer,SI,M
+191,Lay,686,Jack Russell,SI,H
+192,Ianthe,121,Pitbull,NO,M
+193,Joan,624,Rottweiler,NO,H
+194,Mikael,613,Caniche,SI,M
+195,Craggy,697,Pitbull,NO,H
+196,Darrell,455,Shih Tzu,SI,H
+197,Willamina,557,Bulldog,SI,M
+198,Donni,313,Coquer,NO,M
+199,Bendick,205,Pitbull,NO,M
+200,Glenine,59,Rottweiler,SI,H
+201,Orrin,413,Bulldog,NO,H
+202,Filippa,99,Pug,NO,H
+203,Wiatt,342,Pitbull,SI,H
+204,Roman,430,Rottweiler,NO,M
+205,Ashil,321,Coquer,NO,H
+206,Locke,404,Bulldog,SI,H
+207,Otto,119,Chihuahua,SI,H
+208,Leontyne,394,Chihuahua,NO,H
+209,Wilbur,213,Pug,NO,M
+210,Hilly,273,Jack Russell,SI,H
+211,Boonie,401,Jack Russell,NO,H
+212,Alvan,594,Labrador,NO,M
+213,Ichabod,514,Rottweiler,SI,M
+214,Serge,229,Bulldog,NO,M
+215,Gail,161,Coquer,SI,M
+216,Derby,45,Bulldog,SI,H
+217,Allegra,426,Pitbull,SI,H
+218,Codi,109,Jack Russell,NO,M
+219,Frannie,427,Pug,SI,H
+220,Catherine,71,Jack Russell,SI,M
+221,Philippine,106,Pitbull,NO,M
+222,Roma,344,Labrador,SI,M
+223,Sapphire,538,Pitbull,NO,H
+224,Temple,552,Border Collie,SI,M
+225,Olly,600,Callejero,SI,M
+226,Dell,651,Jack Russell,NO,H
+227,Malcolm,244,Ovejero,SI,H
+228,Ronda,435,Jack Russell,NO,M
+229,Bertie,168,Shih Tzu,SI,M
+230,Kristi,283,Caniche,SI,M
+231,Mallissa,624,Chihuahua,SI,M
+232,Kyle,622,Labrador,SI,M
+233,Bordie,228,Shih Tzu,SI,M
+234,Roley,412,Pug,SI,M
+235,Lemmie,512,Bulldog,NO,M
+236,Boyce,114,Callejero,NO,H
+237,Lezley,556,ChowChow,NO,M
+238,Vassili,642,Shih Tzu,NO,M
+239,Maryjo,244,Border Collie,SI,H
+240,Rakel,406,Pug,SI,M
+241,Sharline,556,Pitbull,SI,M
+242,Desi,145,Rottweiler,NO,M
+243,Giacopo,319,Callejero,SI,M
+244,Fifine,470,Bulldog,NO,H
+245,Maxwell,625,Coquer,SI,H
+246,Randell,721,Boxer,NO,M
+247,Merralee,375,Coquer,NO,M
+248,Theodor,728,Shih Tzu,SI,H
+249,Jammal,467,Shih Tzu,NO,M
+250,Calvin,80,Pitbull,NO,H
+251,Eb,88,Boxer,SI,H
+252,Bryn,563,Pug,SI,H
+253,Sabina,593,Jack Russell,NO,H
+254,Candida,219,Caniche,NO,H
+255,Ellery,344,Jack Russell,NO,M
+256,Oby,197,Pug,NO,M
+257,Carlin,624,Labrador,NO,H
+258,Rivy,392,Callejero,SI,M
+259,Lamar,613,Shih Tzu,NO,H
+260,Ailene,391,ChowChow,SI,H
+261,Trisha,481,Border Collie,SI,M
+262,Costa,311,ChowChow,SI,M
+263,Martynne,516,ChowChow,NO,M
+264,Kim,509,Bulldog,NO,M
+265,Lucien,238,Ovejero,SI,M
+266,Cody,95,Bulldog,NO,H
+267,Hew,464,Callejero,NO,M
+268,Suzi,705,Caniche,SI,M
+269,Wilie,273,Caniche,SI,M
+270,Mayne,513,Pug,NO,H
+271,Westbrook,481,Rottweiler,SI,M
+272,Joshuah,397,Shih Tzu,NO,M
+273,Leonora,148,Chihuahua,SI,M
+274,Fernanda,212,Shih Tzu,NO,M
+275,Inessa,114,Caniche,NO,H
+276,Alaric,677,Ovejero,SI,M
+277,Alfy,182,Chihuahua,NO,H
+278,Gabriela,704,Jack Russell,SI,M
+279,Normand,595,Rottweiler,SI,H
+280,Gaven,281,Pitbull,SI,H
+281,Shannah,126,Rottweiler,SI,M
+282,Sergeant,149,Chihuahua,SI,H
+283,Kendre,96,Callejero,SI,M
+284,Madelina,493,Rottweiler,SI,H
+285,Aldwin,370,Shih Tzu,NO,M
+286,Ewell,658,Border Collie,NO,H
+287,Ninette,143,Coquer,NO,M
+288,Donaugh,617,Border Collie,NO,H
+289,Beryle,422,Labrador,NO,H
+290,Fayre,486,Callejero,SI,H
+291,Almira,161,Ovejero,NO,H
+292,Inez,167,Coquer,NO,M
+293,Shea,383,Boxer,SI,M
+294,Godart,317,Rottweiler,NO,H
+295,Meade,127,Bulldog,NO,H
+296,Rustie,120,Rottweiler,NO,H
+297,Una,409,Bulldog,SI,H
+298,Nobie,655,ChowChow,NO,H
+299,Gabriela,216,Caniche,SI,M
+300,Biron,605,Ovejero,SI,H
+301,Jessi,582,Callejero,SI,H
+302,Conn,367,Boxer,SI,M
+303,Amelie,201,Ovejero,SI,M
+304,Ansel,495,Pitbull,SI,H
+305,Bunni,672,Border Collie,SI,M
+306,Cammy,236,Shih Tzu,SI,M
+307,Denys,663,Ovejero,SI,H
+308,Cesaro,580,Callejero,NO,M
+309,Connie,722,Caniche,NO,M
+310,Obidiah,407,Pitbull,NO,M
+311,Cosetta,676,Boxer,NO,H
+312,Leisha,134,Pug,NO,M
+313,Kelwin,449,Ovejero,SI,M
+314,Dasie,485,Jack Russell,SI,H
+315,Kellie,360,Bulldog,SI,H
+316,Joy,597,Chihuahua,SI,H
+317,Ase,535,Shih Tzu,SI,H
+318,Pincus,46,Pitbull,NO,M
+319,Willyt,418,Jack Russell,SI,H
+320,Miranda,88,Bulldog,SI,M
+321,Stan,155,Chihuahua,NO,M
+322,Bee,486,Boxer,SI,M
+323,Pedro,598,Caniche,NO,H
+324,Delcine,217,Boxer,SI,M
+325,Rory,629,Shih Tzu,SI,M
+326,Stella,536,Caniche,SI,H
+327,Fanni,573,Boxer,NO,M
+328,Emmy,500,Shih Tzu,NO,M
+329,Ced,298,Rottweiler,NO,H
+330,Gerda,478,Bulldog,SI,M
+331,Edgar,639,Pug,SI,M
+332,Dante,456,ChowChow,NO,M
+333,Harriott,528,Pug,SI,H
+334,Gustavus,337,Callejero,NO,H
+335,Shirley,341,Pitbull,SI,M
+336,Philippe,440,Rottweiler,SI,M
+337,Zita,313,Jack Russell,SI,M
+338,Nevsa,209,ChowChow,SI,M
+339,Chase,598,Ovejero,NO,M
+340,Rozalin,556,Boxer,NO,H
+341,Anabelle,677,Labrador,SI,M
+342,Caritta,655,Callejero,NO,H
+343,Sutherlan,498,Jack Russell,SI,H
+344,Mona,190,Caniche,NO,M
+345,Eran,422,Callejero,NO,M
+346,Ludovika,446,Jack Russell,SI,M
+347,Gennifer,615,Coquer,SI,M
+348,Noland,611,Callejero,NO,H
+349,Leone,433,Coquer,NO,M
+350,Dennis,188,Bulldog,NO,H
+351,Paulina,194,Callejero,SI,M
+352,Nadiya,263,Coquer,SI,M
+353,Roosevelt,698,Boxer,NO,H
+354,Robina,488,Bulldog,SI,M
+355,Clemmie,520,Caniche,SI,M
+356,Tabitha,330,Labrador,NO,M
+357,Alvinia,544,Labrador,SI,H
+358,Cos,418,Ovejero,NO,H
+359,Burg,202,Pug,SI,M
+360,Kessia,706,Coquer,NO,H
+361,Marchelle,48,Pitbull,SI,H
+362,Fletcher,106,ChowChow,SI,M
+363,Ervin,225,Caniche,SI,M
+364,Fred,288,Boxer,NO,H
+365,Rancell,261,Coquer,NO,H
+366,Shannan,546,Boxer,SI,M
+367,Hillyer,601,Coquer,NO,M
+368,Hilary,607,Pug,NO,H
+369,Clarita,365,Pug,NO,H
+370,Caria,682,Ovejero,NO,M
+371,Florentia,314,Jack Russell,NO,H
+372,Edgard,555,Pug,NO,M
+373,Hermy,238,Ovejero,SI,H
+374,Willey,84,Ovejero,SI,H
+375,Dun,109,Bulldog,NO,M
+376,Angy,247,Shih Tzu,SI,M
+377,Rock,438,Pitbull,NO,M
+378,Beth,586,Pug,NO,H
+379,Bethina,686,Callejero,NO,M
+380,Clarine,554,Pitbull,SI,M
+381,Creight,256,Chihuahua,NO,M
+382,Terri,344,Bulldog,SI,H
+383,Margalo,411,Pug,SI,H
+384,Jordanna,68,Coquer,NO,M
+385,Miguel,214,ChowChow,SI,H
+386,Olivia,227,Callejero,SI,H
+387,Anitra,188,ChowChow,NO,M
+388,Cynthea,693,Border Collie,SI,M
+389,Giff,244,Pitbull,SI,M
+390,Velma,293,Caniche,NO,H
+391,Enid,140,Rottweiler,NO,M
+392,Valeda,470,ChowChow,SI,H
+393,Mavra,225,Coquer,NO,H
+394,Harvey,190,Labrador,NO,M
+395,Glenn,519,Border Collie,NO,H
+396,Ellsworth,511,Jack Russell,SI,H
+397,Lilian,46,Callejero,NO,M
+398,Susan,696,Caniche,NO,M
+399,Bevin,116,ChowChow,SI,M
+400,Alexei,529,Ovejero,SI,M
+401,Fee,279,Ovejero,SI,H
+402,Isabeau,198,Chihuahua,NO,H
+403,Lonna,504,Pug,NO,H
+404,Nobe,470,Callejero,NO,H
+405,Kingston,267,Jack Russell,NO,H
+406,Celinka,497,Shih Tzu,NO,H
+407,Ileane,91,Boxer,SI,H
+408,Ely,300,Shih Tzu,SI,M
+409,Mercedes,104,Jack Russell,SI,H
+410,Sophi,696,Labrador,SI,M
+411,Madella,147,Chihuahua,SI,M
+412,Gregor,478,Chihuahua,SI,H
+413,Kennett,448,Pitbull,SI,M
+414,Glenn,533,Coquer,SI,M
+415,Case,203,Jack Russell,NO,M
+416,Rosy,417,Jack Russell,SI,H
+417,Reed,164,Boxer,NO,M
+418,Buiron,545,Jack Russell,SI,M
+419,Shandee,69,Pug,SI,H
+420,Pennie,474,Ovejero,SI,M
+421,Heall,581,Chihuahua,NO,M
+422,Amber,49,Shih Tzu,SI,H
+423,Pammy,419,Border Collie,SI,H
+424,Darren,538,Caniche,NO,H
+425,Imogen,111,Ovejero,NO,H
+426,Shari,117,ChowChow,SI,M
+427,Cornelia,366,Jack Russell,NO,H
+428,Ros,304,Chihuahua,SI,M
+429,Ardyce,654,Rottweiler,SI,H
+430,Birdie,296,Jack Russell,SI,M
+431,Guillemette,73,Jack Russell,NO,M
+432,Lanni,53,Border Collie,NO,H
+433,Frazer,89,Pug,NO,H
+434,Maxine,46,Labrador,SI,H
+435,Kathi,99,Bulldog,SI,M
+436,Berri,78,Bulldog,SI,H
+437,Corny,650,Ovejero,NO,H
+438,Junie,333,Chihuahua,NO,M
+439,Randene,304,Labrador,SI,M
+440,Aimee,495,Border Collie,NO,M
+441,Rachel,172,Callejero,SI,M
+442,Cody,670,Bulldog,SI,H
+443,Brandtr,670,Callejero,NO,H
+444,Angeli,653,Ovejero,NO,M
+445,Peggy,412,Shih Tzu,NO,H
+446,Emmanuel,268,ChowChow,SI,H
+447,Caril,468,Rottweiler,SI,M
+448,Isador,710,ChowChow,SI,M
+449,Shanon,309,Pitbull,SI,H
+450,Melisse,660,Shih Tzu,NO,H
+451,Bendicty,474,Ovejero,NO,M
+452,Erick,85,Coquer,NO,M
+453,Reena,121,Bulldog,NO,H
+454,Sonny,53,ChowChow,NO,M
+455,Ryley,530,Callejero,SI,M
+456,Frederico,45,Callejero,SI,H
+457,Hyacinthe,185,Jack Russell,NO,H
+458,Corny,549,Border Collie,NO,H
+459,Michale,231,Bulldog,NO,H
+460,Blair,603,Shih Tzu,NO,M
+461,Joseito,388,Coquer,SI,H
+462,Margareta,49,Pug,NO,M
+463,Wayland,644,Shih Tzu,SI,M
+464,Rolf,418,Shih Tzu,SI,M
+465,Quillan,102,Pitbull,NO,H
+466,Tamra,644,Callejero,NO,M
+467,Rici,73,Bulldog,NO,H
+468,Mallory,587,Pitbull,NO,H
+469,Bartlet,607,Callejero,NO,M
+470,Aundrea,580,Jack Russell,NO,H
+471,Darill,415,Coquer,NO,M
+472,Karee,103,Caniche,NO,M
+473,Lance,507,Shih Tzu,SI,H
+474,Petronilla,607,Bulldog,SI,M
+475,Jade,458,Pitbull,SI,H
+476,Doti,547,Chihuahua,SI,H
+477,Chaunce,549,Pug,SI,M
+478,Costanza,314,Boxer,SI,M
+479,Dulce,130,Ovejero,NO,H
+480,Rene,467,Pitbull,NO,M
+481,Alfreda,86,Border Collie,NO,M
+482,Ronald,489,Labrador,SI,H
+483,Baxy,75,Labrador,SI,M
+484,Pietra,424,Pitbull,NO,H
+485,Morse,377,Pug,NO,H
+486,Hilary,193,Border Collie,NO,H
+487,Neall,420,Chihuahua,NO,H
+488,Cozmo,214,Callejero,SI,H
+489,Martha,576,Coquer,SI,M
+490,Dev,445,Rottweiler,NO,H
+491,Astrid,624,ChowChow,NO,H
+492,Derby,632,Coquer,NO,H
+493,Cami,527,Labrador,NO,M
+494,Lorraine,106,Caniche,NO,H
+495,Darwin,689,Border Collie,NO,H
+496,Vickie,546,Boxer,SI,H
+497,Mannie,324,Labrador,SI,H
+498,Doug,539,Rottweiler,SI,M
+499,Arluene,85,Ovejero,SI,M
+500,Pauli,452,Pug,NO,H
+501,Jack,587,Coquer,NO,M
+502,Bert,116,Border Collie,NO,M
+503,Lorilyn,175,Jack Russell,SI,H
+504,Hobie,135,Ovejero,NO,M
+505,Clerissa,466,Bulldog,SI,M
+506,Devora,447,Pug,SI,M
+507,Aida,63,ChowChow,NO,H
+508,Meghan,103,ChowChow,NO,H
+509,Hugo,617,Rottweiler,SI,H
+510,Biron,405,Boxer,SI,M
+511,Filmore,486,Chihuahua,SI,M
+512,Lenette,612,Border Collie,NO,H
+513,Timi,184,Bulldog,SI,M
+514,Reggy,680,Labrador,NO,M
+515,Bendite,405,Coquer,SI,H
+516,Annelise,352,Jack Russell,NO,H
+517,Elle,490,ChowChow,SI,H
+518,Batsheva,658,Ovejero,SI,H
+519,Esmeralda,607,Bulldog,SI,H
+520,Merci,263,Boxer,NO,H
+521,Waylin,370,Shih Tzu,SI,M
+522,Friederike,564,Rottweiler,SI,M
+523,Gretna,646,Border Collie,NO,M
+524,Carma,209,Rottweiler,SI,H
+525,Shepard,615,Caniche,NO,M
+526,Gwenette,132,Jack Russell,SI,H
+527,Wilden,349,Bulldog,NO,M
+528,Annabelle,688,Pug,SI,M
+529,Garrick,148,Pitbull,SI,H
+530,Chalmers,155,ChowChow,NO,H
+531,Jard,342,Pitbull,SI,H
+532,Beverlie,648,Pug,NO,H
+533,Juana,161,Jack Russell,SI,M
+534,Martie,162,Pug,NO,M
+535,Zeke,279,Rottweiler,SI,H
+536,Baird,622,Chihuahua,NO,H
+537,Erl,331,Chihuahua,NO,M
+538,Joya,468,Jack Russell,NO,M
+539,Rudy,455,ChowChow,SI,M
+540,Brunhilda,605,Pug,SI,H
+541,Cairistiona,525,ChowChow,SI,M
+542,Cash,388,Rottweiler,NO,M
+543,Philipa,350,ChowChow,NO,M
+544,Alverta,623,Bulldog,SI,M
+545,Osbourne,109,Rottweiler,SI,H
+546,Zacharias,191,Labrador,SI,M
+547,Jessamine,716,Labrador,SI,H
+548,Meyer,159,Pitbull,NO,H
+549,Sile,59,Caniche,SI,M
+550,Karna,644,Bulldog,NO,H
+551,Edna,617,Bulldog,SI,H
+552,Ramonda,346,Rottweiler,NO,H
+553,Benedikta,235,Border Collie,NO,M
+554,Ninette,317,Caniche,SI,M
+555,Corbie,476,Border Collie,SI,H
+556,Nehemiah,383,Border Collie,SI,H
+557,Justis,587,Ovejero,NO,H
+558,Isaak,679,Callejero,SI,H
+559,Zara,647,Coquer,SI,H
+560,Lars,238,Rottweiler,SI,H
+561,Tyler,440,Pug,SI,H
+562,Adolphe,497,Coquer,SI,M
+563,Skyler,266,Labrador,SI,H
+564,Clemmie,561,Pitbull,SI,M
+565,Steven,477,Border Collie,NO,M
+566,Gabi,150,Jack Russell,SI,H
+567,Gauthier,275,Pug,SI,M
+568,Clim,180,Rottweiler,NO,M
+569,Lauri,664,Labrador,SI,M
+570,Alasdair,451,Ovejero,SI,H
+571,Jakie,184,Coquer,NO,H
+572,Hilton,296,Jack Russell,NO,M
+573,Karola,522,Boxer,NO,M
+574,Webb,412,Chihuahua,NO,M
+575,Margarethe,231,Callejero,SI,M
+576,Ky,443,Rottweiler,SI,H
+577,Olympe,299,Labrador,NO,H
+578,Frank,79,Boxer,NO,M
+579,Emanuel,284,Rottweiler,NO,H
+580,Bryn,697,Rottweiler,NO,M
+581,Jenn,658,ChowChow,NO,H
+582,Peta,241,Chihuahua,SI,M
+583,Beckie,297,Coquer,SI,H
+584,Beauregard,706,Boxer,SI,H
+585,Celisse,570,Chihuahua,SI,H
+586,Carly,217,ChowChow,NO,H
+587,Zak,498,ChowChow,SI,M
+588,Mimi,364,Callejero,NO,M
+589,Evered,546,Pug,NO,H
+590,Luca,194,Boxer,NO,H
+591,Ruthe,411,Rottweiler,SI,H
+592,Cleavland,92,Jack Russell,SI,M
+593,Nathan,128,ChowChow,SI,M
+594,Junie,99,ChowChow,SI,M
+595,Brena,334,Rottweiler,NO,M
+596,Archibold,560,Boxer,NO,H
+597,Peggi,371,Ovejero,NO,M
+598,Fania,196,Bulldog,SI,M
+599,Marcellus,88,Pug,NO,M
+600,Tiffie,672,Rottweiler,NO,H
+601,Benji,561,Rottweiler,NO,M
+602,Murdock,291,Bulldog,SI,M
+603,Letty,669,Labrador,SI,H
+604,Herb,46,Border Collie,NO,M
+605,Sidoney,345,Ovejero,SI,H
+606,Cobb,560,Ovejero,NO,M
+607,Guthrey,429,Pug,SI,M
+608,Aldridge,349,Pitbull,SI,H
+609,Larissa,131,Coquer,NO,H
+610,Kleon,45,Boxer,NO,M
+611,Preston,119,Shih Tzu,SI,H
+612,Candace,569,Shih Tzu,NO,H
+613,Raimund,91,Shih Tzu,SI,M
+614,Adah,729,Labrador,SI,M
+615,Zacherie,723,Chihuahua,SI,H
+616,Chad,114,Jack Russell,NO,H
+617,Prentiss,609,Ovejero,SI,M
+618,Robinson,140,Pitbull,SI,H
+619,Shana,562,Pitbull,NO,M
+620,Morris,329,Shih Tzu,SI,H
+621,Kati,364,Coquer,NO,H
+622,Neall,500,Jack Russell,SI,H
+623,Artemis,531,Labrador,NO,M
+624,Chester,629,Labrador,SI,M
+625,Nannette,708,Labrador,NO,H
+626,Gennifer,346,Border Collie,SI,H
+627,Marlow,426,Chihuahua,SI,H
+628,Gerta,597,Pug,NO,M
+629,Bertrando,199,Chihuahua,SI,M
+630,Erich,396,Pitbull,NO,M
+631,Roddy,285,Shih Tzu,SI,H
+632,Nikolos,526,Coquer,SI,H
+633,Kinsley,711,ChowChow,NO,H
+634,Lexine,529,Labrador,SI,M
+635,Maurizio,570,Bulldog,NO,H
+636,Gardener,680,Rottweiler,SI,M
+637,Phillie,322,Jack Russell,NO,M
+638,Adrianna,686,Pug,SI,H
+639,Nan,381,Pitbull,SI,H
+640,Cobb,481,ChowChow,NO,H
+641,Adan,139,Bulldog,SI,M
+642,Darya,98,Rottweiler,SI,M
+643,Billi,82,Pug,SI,M
+644,Leelah,268,Boxer,SI,H
+645,Fields,310,Bulldog,NO,M
+646,Enrika,424,Callejero,NO,H
+647,Miguel,672,Coquer,SI,H
+648,Larina,587,Jack Russell,NO,H
+649,Ruddie,193,Labrador,SI,H
+650,Melesa,600,Jack Russell,NO,H
+651,Pieter,214,Labrador,NO,H
+652,Carla,427,Bulldog,SI,M
+653,Fitz,300,Pug,SI,M
+654,Karil,546,Pitbull,SI,M
+655,Shane,206,Pug,SI,M
+656,Malachi,257,Pitbull,SI,M
+657,Kandy,185,Ovejero,NO,M
+658,Sascha,132,ChowChow,NO,H
+659,Agretha,492,Caniche,NO,M
+660,Timmy,430,Pug,SI,M
+661,Eyde,207,Shih Tzu,NO,M
+662,Orren,547,Ovejero,NO,H
+663,Bogey,217,Coquer,SI,M
+664,Mel,117,Rottweiler,NO,M
+665,Alli,475,Rottweiler,NO,M
+666,Gaylor,185,Border Collie,SI,M
+667,Clio,250,Bulldog,SI,H
+668,Johnna,529,Jack Russell,NO,M
+669,Lew,446,Jack Russell,SI,H
+670,Carny,584,Pug,SI,M
+671,Cullan,409,Bulldog,NO,M
+672,Mela,420,Coquer,SI,H
+673,Falito,164,Pitbull,SI,M
+674,Maurizio,435,Pug,SI,M
+675,Sutherland,549,ChowChow,SI,M
+676,Krystle,240,Bulldog,NO,M
+677,Franny,218,Jack Russell,NO,H
+678,Helenelizabeth,275,Pitbull,SI,M
+679,Regina,616,Border Collie,NO,H
+680,Silvie,535,Jack Russell,SI,M
+681,Kim,256,Pitbull,NO,M
+682,Carmen,549,Coquer,NO,M
+683,Ichabod,529,Coquer,NO,H
+684,Frances,87,Labrador,SI,M
+685,Joyce,263,ChowChow,SI,M
+686,Dom,564,Coquer,SI,H
+687,Jodi,325,ChowChow,NO,H
+688,Kiel,329,Callejero,SI,M
+689,Basilius,525,Border Collie,NO,H
+690,Orella,324,Caniche,SI,M
+691,Jo-anne,98,Caniche,NO,H
+692,Derward,234,Ovejero,NO,M
+693,Mufinella,213,Boxer,NO,H
+694,Manon,549,Rottweiler,SI,H
+695,Heda,375,Rottweiler,SI,H
+696,Minnnie,229,Pug,NO,H
+697,Marlon,47,Rottweiler,NO,M
+698,Cindi,336,Boxer,NO,M
+699,Denice,299,Caniche,SI,M
+700,Marty,68,Chihuahua,SI,M
+701,Holly,458,Jack Russell,SI,M
+702,Freddi,528,Chihuahua,NO,M
+703,Field,621,Caniche,SI,H
+704,Gustave,498,Boxer,NO,H
+705,Jedd,686,Boxer,SI,M
+706,Tommy,163,Caniche,NO,H
+707,Ashien,671,Caniche,NO,M
+708,Nataniel,67,Pug,SI,H
+709,Morganica,622,Labrador,SI,M
+710,Carolus,249,Shih Tzu,NO,M
+711,Obediah,449,Labrador,SI,H
+712,Margarette,228,Shih Tzu,SI,M
+713,Hugo,119,Caniche,SI,H
+714,Lacey,108,Caniche,SI,M
+715,Christie,564,Caniche,NO,M
+716,Pollyanna,433,Pug,NO,M
+717,Smitty,657,Boxer,SI,H
+718,Perry,140,Jack Russell,SI,H
+719,Inna,471,Chihuahua,SI,H
+720,Carmelina,228,Ovejero,SI,M
+721,Elisabetta,364,Labrador,SI,M
+722,Cristiano,583,Rottweiler,NO,M
+723,Demetris,104,Boxer,SI,H
+724,Charlene,592,Caniche,SI,H
+725,Forster,531,Pitbull,SI,H
+726,Blinnie,373,Jack Russell,SI,M
+727,Mozelle,565,Chihuahua,SI,M
+728,Norton,534,ChowChow,SI,H
+729,Lionello,667,Ovejero,SI,M
+730,Benito,248,Callejero,NO,M
+731,Josias,472,Chihuahua,SI,M
+732,Vinny,231,Bulldog,NO,M
+733,Brod,723,Border Collie,NO,H
+734,Richard,483,Labrador,SI,M
+735,Regina,343,Labrador,NO,M
+736,Chrystal,123,Pug,NO,H
+737,Brewster,557,Chihuahua,NO,M
+738,Audrie,108,Jack Russell,NO,M
+739,Peyton,129,ChowChow,SI,M
+740,Catharine,458,Bulldog,NO,M
+741,Bogey,345,Ovejero,SI,H
+742,Wyndham,612,Labrador,NO,H
+743,Ralina,337,Boxer,SI,H
+744,Justus,441,Border Collie,NO,M
+745,Polly,160,Boxer,SI,M
+746,Donny,155,Bulldog,NO,H
+747,Ailey,284,Callejero,NO,M
+748,Dalenna,521,Ovejero,NO,H
+749,Aleda,265,Boxer,SI,M
+750,Gal,545,Pitbull,NO,M
+751,Nikkie,306,Shih Tzu,SI,M
+752,Ransom,502,Chihuahua,SI,M
+753,Myrwyn,182,Shih Tzu,SI,H
+754,Roger,725,Boxer,SI,H
+755,Riane,333,Bulldog,NO,M
+756,Charleen,392,Chihuahua,NO,M
+757,Freddi,163,Boxer,SI,M
+758,Alfredo,680,Boxer,SI,H
+759,Ivie,706,Callejero,NO,H
+760,Filmore,412,Caniche,NO,M
+761,Jodee,432,Shih Tzu,SI,H
+762,Bevan,461,Chihuahua,NO,H
+763,Marlow,676,Border Collie,SI,H
+764,Magda,510,Border Collie,NO,M
+765,Logan,46,Boxer,SI,H
+766,Winnie,543,Rottweiler,SI,H
+767,Traver,238,Pug,NO,H
+768,Sascha,287,Pitbull,NO,H
+769,Thomasina,721,Boxer,NO,H
+770,Clayton,614,Caniche,NO,H
+771,Dyna,105,Ovejero,SI,M
+772,Paolina,629,Labrador,SI,H
+773,Bessie,649,Shih Tzu,NO,H
+774,Truda,547,Callejero,NO,H
+775,Briny,406,Chihuahua,SI,H
+776,Woodman,414,Border Collie,NO,M
+777,Marijo,458,Rottweiler,NO,H
+778,Mendy,590,Coquer,NO,H
+779,Rozamond,241,Pitbull,SI,H
+780,Florri,202,ChowChow,SI,H
+781,Laney,690,ChowChow,SI,H
+782,Amy,199,Boxer,SI,M
+783,Hailey,372,Caniche,SI,H
+784,Karlotte,432,Bulldog,SI,H
+785,Gaby,580,Jack Russell,NO,H
+786,Almeta,425,Coquer,NO,M
+787,Evangeline,127,Labrador,SI,H
+788,Alvera,662,Shih Tzu,SI,M
+789,Sam,503,Coquer,NO,H
+790,Lucie,591,Ovejero,SI,H
+791,Pyotr,711,Labrador,SI,M
+792,Hedwiga,587,Boxer,SI,M
+793,Lilah,123,Pug,SI,H
+794,Melisenda,550,Chihuahua,SI,M
+795,Matthias,367,Coquer,SI,H
+796,Talya,85,Border Collie,NO,M
+797,Nichols,624,Chihuahua,NO,H
+798,Errol,79,Caniche,NO,H
+799,Jessamyn,682,Coquer,NO,H
+800,Shoshanna,544,Shih Tzu,SI,H
+801,Justin,355,Ovejero,SI,H
+802,Gilberte,150,Pug,NO,M
+803,Gregory,110,Labrador,NO,M
+804,Eloise,523,Bulldog,SI,M
+805,Raquel,561,Bulldog,NO,M
+806,Reynolds,158,ChowChow,NO,H
+807,Tera,214,Callejero,NO,H
+808,Kassia,146,Shih Tzu,SI,M
+809,Sisely,46,Jack Russell,NO,M
+810,Merilee,485,Pitbull,SI,H
+811,Katalin,123,Chihuahua,SI,H
+812,Nerta,119,Chihuahua,NO,M
+813,Jocelin,239,Pitbull,NO,M
+814,William,161,Chihuahua,NO,M
+815,Yalonda,68,Rottweiler,NO,H
+816,Roanne,721,Ovejero,NO,H
+817,Celie,162,Coquer,NO,M
+818,Larry,699,Ovejero,NO,H
+819,Lira,257,Rottweiler,SI,H
+820,Tully,395,Border Collie,NO,M
+821,Richmond,368,Ovejero,NO,M
+822,Onida,100,ChowChow,NO,H
+823,Christalle,131,Chihuahua,NO,M
+824,Juanita,616,ChowChow,SI,H
+825,Averill,64,Bulldog,SI,H
+826,Lanna,496,Labrador,SI,H
+827,Maury,495,Rottweiler,NO,M
+828,Carmine,724,Shih Tzu,NO,H
+829,Damaris,462,Ovejero,SI,H
+830,Lemuel,182,Pug,NO,H
+831,Gaelan,159,Pitbull,SI,H
+832,Susy,344,Coquer,SI,M
+833,Cary,136,Callejero,NO,H
+834,Ingrim,434,Chihuahua,NO,H
+835,Bevvy,622,Chihuahua,NO,H
+836,Giffie,223,ChowChow,NO,M
+837,Skippie,674,Rottweiler,NO,H
+838,Roy,483,Rottweiler,SI,H
+839,Alain,45,Callejero,SI,M
+840,Sara-ann,206,Ovejero,SI,M
+841,Franciska,548,Rottweiler,SI,H
+842,Tiffanie,116,Labrador,NO,H
+843,Darla,216,Boxer,SI,H
+844,Carla,137,Callejero,NO,H
+845,Hildegarde,712,ChowChow,SI,H
+846,Augustina,670,Chihuahua,NO,M
+847,Sidney,126,Caniche,SI,H
+848,Cissiee,55,Caniche,SI,H
+849,Hazlett,45,Coquer,NO,M
+850,Uriel,491,Border Collie,SI,M
+851,Wini,694,ChowChow,NO,H
+852,Valdemar,389,Ovejero,NO,M
+853,Rhoda,531,Caniche,SI,M
+854,Roldan,75,Chihuahua,SI,M
+855,Husein,119,Border Collie,NO,H
+856,Mayer,353,Labrador,NO,H
+857,Agnola,103,Ovejero,NO,M
+858,Alisa,438,Border Collie,NO,H
+859,Jimmie,415,Shih Tzu,SI,M
+860,Joellyn,210,Border Collie,NO,H
+861,Patton,611,Bulldog,NO,M
+862,Biron,86,Chihuahua,SI,H
+863,Gina,431,Coquer,NO,H
+864,Barbara,164,Bulldog,NO,H
+865,Clari,52,Shih Tzu,NO,M
+866,Anastasie,188,ChowChow,SI,M
+867,Ulises,647,Bulldog,SI,H
+868,Lavena,188,Border Collie,NO,M
+869,Winny,54,Shih Tzu,SI,M
+870,Edvard,353,Boxer,SI,M
+871,Ginevra,328,Bulldog,NO,H
+872,Damaris,448,Bulldog,SI,M
+873,Sharon,185,Callejero,SI,M
+874,Rosalia,318,Pitbull,NO,H
+875,Deva,91,Caniche,SI,M
+876,Arleyne,76,Rottweiler,NO,M
+877,Charis,495,Shih Tzu,SI,H
+878,Putnam,249,Callejero,SI,M
+879,Jarib,123,Pug,NO,H
+880,Shena,210,Coquer,SI,M
+881,Thor,531,ChowChow,SI,M
+882,Sauveur,173,Pitbull,SI,H
+883,Abey,559,Boxer,SI,H
+884,Jeralee,287,Labrador,SI,M
+885,Bellanca,379,Caniche,SI,M
+886,Barbra,664,Chihuahua,SI,H
+887,Maurene,469,Coquer,SI,M
+888,Wilbur,487,Boxer,NO,H
+889,Mallissa,107,Ovejero,SI,H
+890,Russell,322,Shih Tzu,NO,M
+891,Free,477,Jack Russell,SI,M
+892,Aila,545,Shih Tzu,SI,M
+893,Ricca,323,Jack Russell,NO,M
+894,Thebault,464,Rottweiler,SI,M
+895,Philly,414,Chihuahua,SI,M
+896,Nataniel,383,Rottweiler,SI,M
+897,Reade,705,ChowChow,SI,M
+898,Alameda,537,Border Collie,NO,M
+899,Cammy,221,Pug,SI,H
+900,Hamlen,556,Pitbull,SI,M
+901,Hillary,316,Pug,NO,H
+902,Caryl,551,Shih Tzu,NO,M
+903,Maxie,205,Coquer,NO,M
+904,Lana,86,Rottweiler,SI,H
+905,Fabien,107,Chihuahua,SI,H
+906,Vania,92,Pug,SI,M
+907,Ferne,719,Rottweiler,NO,H
+908,Grata,650,Ovejero,SI,M
+909,Damita,135,Caniche,NO,M
+910,Dorian,606,Border Collie,NO,H
+911,Clo,650,Jack Russell,SI,M
+912,Terrel,657,Bulldog,SI,H
+913,Doralynne,406,Labrador,SI,H
+914,Eleanore,594,Boxer,SI,M
+915,Joe,360,Pug,NO,H
+916,Alisa,187,Bulldog,SI,H
+917,Bridget,637,Boxer,NO,M
+918,Ailene,196,Labrador,NO,M
+919,Alverta,608,Shih Tzu,NO,H
+920,Brian,59,Pug,NO,M
+921,Filip,194,Caniche,SI,H
+922,Martina,509,Labrador,SI,H
+923,Stevena,608,Border Collie,SI,M
+924,Annora,63,Caniche,NO,M
+925,Yolane,371,Caniche,SI,M
+926,Guido,467,Pitbull,SI,M
+927,Lona,158,Ovejero,NO,M
+928,Clarabelle,549,Jack Russell,NO,M
+929,Angie,128,Chihuahua,NO,H
+930,Sherm,321,Callejero,NO,H
+931,Gallagher,464,Caniche,SI,H
+932,Orin,461,Callejero,SI,H
+933,Josy,411,Boxer,SI,H
+934,Nita,329,Coquer,NO,H
+935,Angelita,612,Caniche,SI,H
+936,Twyla,612,Coquer,NO,M
+937,Tiffie,395,Chihuahua,SI,M
+938,Gardie,355,ChowChow,SI,M
+939,Penni,230,Pitbull,SI,M
+940,Eloise,587,Coquer,SI,H
+941,Justina,622,Ovejero,NO,H
+942,Casi,276,Shih Tzu,SI,H
+943,Ingaberg,710,Bulldog,SI,H
+944,Sherry,237,Callejero,SI,H
+945,Farris,428,Pug,NO,H
+946,Gabbie,45,Labrador,NO,M
+947,Thorin,301,Bulldog,NO,M
+948,Fanchon,511,ChowChow,NO,H
+949,Barnett,687,Labrador,NO,M
+950,Aprilette,659,Callejero,SI,H
+951,Brian,601,Rottweiler,SI,M
+952,Kaylee,478,Callejero,SI,H
+953,Launce,56,ChowChow,SI,M
+954,Kimbell,83,Rottweiler,NO,H
+955,Carolynn,672,Labrador,NO,H
+956,Clarita,163,Caniche,SI,H
+957,Read,465,Pug,SI,M
+958,Lauryn,453,Shih Tzu,SI,M
+959,Pepillo,76,Border Collie,SI,H
+960,Gayleen,68,Pitbull,NO,H
+961,Karmen,372,Border Collie,SI,H
+962,Cassandra,441,Boxer,NO,H
+963,Dyanna,344,Pug,SI,H
+964,Hogan,62,Ovejero,NO,H
+965,Jenelle,75,Rottweiler,NO,M
+966,Vanya,607,Coquer,NO,H
+967,Gail,508,Border Collie,NO,H
+968,Rebbecca,297,Ovejero,NO,M
+969,Conant,319,Boxer,NO,M
+970,Alane,358,Shih Tzu,NO,M
+971,Mikey,505,Jack Russell,SI,H
+972,Christine,407,Coquer,NO,H
+973,Denise,92,Bulldog,SI,M
+974,Malva,625,Labrador,NO,M
+975,Simon,250,Ovejero,NO,H
+976,Rube,711,Caniche,SI,H
+977,Artemis,192,Jack Russell,SI,H
+978,Veradis,283,Labrador,NO,M
+979,Trstram,647,Pitbull,SI,H
+980,Hilary,307,Jack Russell,SI,H
+981,Georgy,552,Shih Tzu,SI,M
+982,Mellisa,133,Coquer,NO,H
+983,Ignacio,603,Pitbull,SI,H
+984,Lu,714,Boxer,SI,H
+985,Milt,589,Jack Russell,SI,M
+986,Gilbertina,140,Boxer,SI,M
+987,Hanna,219,Shih Tzu,SI,M
+988,Devy,112,Caniche,NO,M
+989,Abeu,384,Jack Russell,SI,M
+990,Ellswerth,411,Jack Russell,SI,H
+991,Monro,495,Ovejero,SI,M
+992,Jesus,608,Caniche,NO,H
+993,Samuele,501,Shih Tzu,NO,M
+994,Allie,164,Bulldog,SI,H
+995,Charil,292,Ovejero,SI,H
+996,Moises,210,Ovejero,SI,M
+997,Rica,70,Pug,NO,H
+998,Jammal,609,Rottweiler,NO,H
+999,Loy,370,Ovejero,SI,M
+1000,Rebe,651,Shih Tzu,SI,M

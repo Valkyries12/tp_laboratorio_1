@@ -1,7 +1,16 @@
+/*
+ * LinkedList.c
+ *
+ *  Created on: 20 jul 2022
+ *      Author: Nico
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
+#include "Venta.h"
 
 
 static Node* getNode(LinkedList* this, int nodeIndex);
@@ -538,6 +547,30 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 }
 
 
+LinkedList* ll_map(LinkedList* this, void (*fn)(void* element)) {
+	int codigoError;
+	int len;
+	Venta* pVenta;
 
+	codigoError = -1;
+	if (this != NULL && fn != NULL) {
+
+		len = ll_len(this);
+		for (int i = 0; i < len; i++) {
+			pVenta = (Venta*) ll_get(this, i);
+
+			//esto iria si me devuelve codigoError
+//			if (pVenta == NULL || fn(pVenta) == -1) {
+//				break;
+//			}
+			if (pVenta != NULL) {
+				fn(pVenta);
+				codigoError = 0;
+			}
+		}
+	}
+
+	return this;
+}
 
 

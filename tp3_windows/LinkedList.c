@@ -2,6 +2,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
+#include "Passenger.h"
+
+#define TRUE 1
+#define FALSE 0
 
 
 static Node* getNode(LinkedList* this, int nodeIndex);
@@ -538,6 +542,73 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 }
 
 
+int ll_count(LinkedList* this, int(*pFunc)(void* element, int criterioElem),int criterio) {
+	int retorno;
+	int len;
+	Passenger* pPasajero;
+
+	retorno = 0;
+	if (this != NULL && pFunc != NULL && criterio > -1) {
+		len = ll_len(this);
+
+		for (int i = 0; i < len; i++) {
+			pPasajero = (Passenger*) ll_get(this, i);
+
+			if (pPasajero != NULL) {
+				retorno += pFunc(pPasajero, criterio);
+			}
+		}
+	}
+
+	return retorno;
+}
 
 
+//le paso criterio sino como hago?
+LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void* element, char* criterioElem), char* criterio) {
+	LinkedList* pPasajerosFiltrados;
+	pPasajerosFiltrados = ll_newLinkedList();
+	int len;
+	Passenger* pPasajero;
+
+	if (this != NULL && pFunc != NULL && criterio != NULL) {
+		len = ll_len(this);
+		for (int i = 0; i < len ; i++) {
+			pPasajero = (Passenger*) ll_get(this, i);
+
+			//si puntero no es NULL y pFunc es igual al criterio lo pongo en la nueva ll
+			if (pPasajero != NULL && pFunc(pPasajero, criterio) == TRUE) {
+				ll_add(pPasajerosFiltrados, pPasajero);
+
+			}
+
+
+		}
+
+	}
+
+	return pPasajerosFiltrados;
+}
+
+
+
+int ll_map(LinkedList* this, void (*pFunc)(void* pElement)) {
+	int codigoError;
+	int len;
+	Passenger* pPasajero;
+
+	codigoError = -1;
+	if (this != NULL && pFunc != NULL) {
+		len = ll_len(this);
+		for (int i = 0; i < len; i++) {
+
+			pPasajero = (Passenger*) ll_get(this, i);
+			if (pPasajero != NULL) {
+				pFunc(pPasajero);
+			}
+		}
+	}
+
+	return codigoError;
+}
 
