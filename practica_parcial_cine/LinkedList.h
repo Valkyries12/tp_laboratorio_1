@@ -64,7 +64,23 @@ LinkedList* ll_subList(LinkedList* this,int from,int to);
 LinkedList* ll_clone(LinkedList* this);
 int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order);
 
-LinkedList* ll_map(LinkedList* this, void (*fn)(void* element));
+//LinkedList* ll_map(LinkedList* this, void (*fn)(void* element));
+
+int ll_map(LinkedList* this, int (*fn)(void* pEntidad));
+
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* pEntidad));
+
+
+
+/** \brief Cuenta y acumula la cantidad de algunaa propiedad especificada por  pFunc.
+ *
+ * \param pArrayListVentas LinkedList*
+ * \param fn -> funcion criterio para acumular
+ * \return int -> un acumulador
+ *
+ */
+int ll_contador(LinkedList* this, int (*fn)(void* pEntidad, int criterio), int criterio);
+
 
 
 

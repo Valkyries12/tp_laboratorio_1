@@ -12,6 +12,9 @@
 #include "LinkedList.h"
 #include "Venta.h"
 
+#define TRUE 1
+#define FALSE 0
+
 
 static Node* getNode(LinkedList* this, int nodeIndex);
 static int addNode(LinkedList* this, int nodeIndex,void* pElement);
@@ -547,30 +550,98 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 }
 
 
-LinkedList* ll_map(LinkedList* this, void (*fn)(void* element)) {
+//LinkedList* ll_map(LinkedList* this, void (*fn)(void* pEntidad)) {
+//	int codigoError;
+//	int len;
+//	void* pEntidad;
+//
+//	codigoError = -1;
+//	if (this != NULL && fn != NULL) {
+//
+//		len = ll_len(this);
+//		for (int i = 0; i < len; i++) {
+//			pEntidad = ll_get(this, i);
+//
+//			//esto iria si me devuelve codigoError
+////			if (pVenta == NULL || fn(pVenta) == -1) {
+////				break;
+////			}
+//			if (pEntidad != NULL) {
+//				fn(pEntidad);
+//				codigoError = 0;
+//			}
+//		}
+//	}
+//
+//	return this;
+//}
+
+
+int ll_map(LinkedList* this, int (*fn)(void* pEntidad)) {
 	int codigoError;
 	int len;
-	Venta* pVenta;
+	void* pEntidad;
 
 	codigoError = -1;
 	if (this != NULL && fn != NULL) {
 
 		len = ll_len(this);
 		for (int i = 0; i < len; i++) {
-			pVenta = (Venta*) ll_get(this, i);
+			pEntidad = ll_get(this, i);
 
-			//esto iria si me devuelve codigoError
-//			if (pVenta == NULL || fn(pVenta) == -1) {
-//				break;
-//			}
-			if (pVenta != NULL) {
-				fn(pVenta);
-				codigoError = 0;
+			if (pEntidad == NULL || fn(pEntidad) == -1) {
+				break;
+			}
+			codigoError = 0;
+
+		}
+	}
+
+	return codigoError;
+}
+
+
+LinkedList* ll_filter(LinkedList* this, int (*fn)(void* pEntidad)) {
+	LinkedList* pArrayFilteredList;
+	void* pEntidad;
+	int len;
+
+	pEntidad = NULL;
+	pArrayFilteredList = NULL;
+	if (this != NULL && fn != NULL) {
+
+		pArrayFilteredList = ll_newLinkedList();
+		len = ll_len(this);
+		for (int i = 0; i < len; i++) {
+			pEntidad = ll_get(this, i);
+
+			if (pEntidad != NULL && fn(pEntidad) == TRUE) {
+				ll_add(pArrayFilteredList, pEntidad);
 			}
 		}
 	}
 
-	return this;
+	return pArrayFilteredList;
 }
 
 
+int ll_contador(LinkedList* this, int (*fn)(void* pEntidad, int criterio), int criterio) {
+	int resultado;
+	int len;
+	void* pEntidad;
+
+	resultado = 0;
+	if (this != NULL && fn != NULL) {
+		len = ll_len(this);
+
+		for (int i = 0; i < len; i++) {
+			pEntidad = ll_get(this, i);
+
+			if (pEntidad != NULL) {
+				resultado += fn(pEntidad, criterio);
+			}
+		}
+	}
+
+	return resultado;
+}

@@ -1,9 +1,10 @@
 /*
  * Venta.c
  *
- *  Created on: 21 jul 2022
+ *  Created on: 9 ago 2022
  *      Author: Nico
  */
+
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,26 +29,30 @@ Venta* new_venta() {
 }
 
 
-Venta* new_ventaParametros(char strIdVenta[], char nombre_pelicula[], char strDia[], char horario[], char strSala[], char strCantidad_entradas[], char strMonto[]) {
+Venta* new_ventaParametros(char* strId, char* strNombre, char* strDia, char* strHorario, char* strSala, char* strCantidadEntradas, char* strMonto) {
+	//Entidad a crear para llenar con datos del archivo
 	Venta* this;
-	Venta* auxPVenta;
+	Venta* auxThis;
 
 	this = NULL;
+	auxThis = NULL;
 
-	if (strIdVenta != NULL && nombre_pelicula != NULL && strDia != NULL && horario != NULL && strSala != NULL && strCantidad_entradas != NULL && strMonto != NULL) {
+	if (strId != NULL && strNombre != NULL && strDia != NULL && strHorario != NULL && strSala != NULL && strCantidadEntradas != NULL && strMonto != NULL) {
 
-		auxPVenta = new_venta();
-		if (auxPVenta != NULL) {
-			this = auxPVenta;
+		auxThis = new_venta();
+		if (auxThis != NULL) {
+			this = auxThis;
 
 			if (
-				setIdVenta(this, atoi(strIdVenta)) == -1 ||
-				setNombrePelicula(this, nombre_pelicula) == -1 ||
+				setId(this, atoi(strId)) == -1 ||
+				setNombre(this, strNombre) == -1 ||
 				setDia(this, atoi(strDia)) == -1 ||
-				setHorario(this, horario) == -1 ||
+				setHorario(this, strHorario) == -1 ||
 				setSala(this, atoi(strSala)) == -1 ||
-				setCantidadEntradas(this, atoi(strCantidad_entradas)) == -1 ||
+				setCantidadEntradas(this, atoi(strCantidadEntradas)) == -1 ||
 				setMonto(this, atof(strMonto)) == -1
+//				setCantidadEntradas(this, atoi(strCantidad_entradas)) == -1 ||  En caso de ser int
+//				setMonto(this, atof(strMonto)) == -1       En caso de ser flotante el campo
 			) {
 
 				puts("\nNo se puedo crear la venta.\n");
@@ -61,26 +66,24 @@ Venta* new_ventaParametros(char strIdVenta[], char nombre_pelicula[], char strDi
 }
 
 
-
-
-int setIdVenta(Venta* this, int idVenta) {
+int setId(Venta* this, int id) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && idVenta > 0) {
-		this->id_venta = idVenta;
+	if (this != NULL && id > 0) {
+		this->id = id;
 		codigoError = 0;
 	}
 
 	return codigoError;
 }
 
-int getIdVenta(Venta* this, int* idVenta) {
+int getId(Venta* this, int* id) {
 	int codigoError;
 
 	codigoError = -1;
 	if (this != NULL) {
-		*idVenta = this->id_venta;
+		*id = this->id;
 		codigoError = 0;
 	}
 
@@ -88,12 +91,12 @@ int getIdVenta(Venta* this, int* idVenta) {
 }
 
 
-int setNombrePelicula(Venta* this, char* nombrePelicula) {
+int setNombre(Venta* this, char* nombre) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && nombrePelicula != NULL) {
-		strcpy(this->nombre_pelicula, nombrePelicula);
+	if (this != NULL && nombre != NULL) {
+		strcpy(this->nombre, nombre);
 		codigoError = 0;
 	}
 
@@ -101,12 +104,12 @@ int setNombrePelicula(Venta* this, char* nombrePelicula) {
 }
 
 
-int getNombrePelicula(Venta* this, char* nombrePelicula) {
+int getNombre(Venta* this, char* nombre) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && nombrePelicula != NULL) {
-		strcpy(nombrePelicula, this->nombre_pelicula);
+	if (this != NULL && nombre != NULL) {
+		strcpy(nombre, this->nombre);
 		codigoError = 0;
 	}
 
@@ -118,7 +121,7 @@ int setDia(Venta* this, int dia) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && dia > -1) {
+	if (this != NULL && dia > 0) {
 		this->dia = dia;
 		codigoError = 0;
 	}
@@ -126,13 +129,12 @@ int setDia(Venta* this, int dia) {
 	return codigoError;
 }
 
-
-int getDia(Venta* this, int* pDia) {
+int getDia(Venta* this, int* dia) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && pDia != NULL) {
-		*pDia = this->dia;
+	if (this != NULL) {
+		*dia = this->dia;
 		codigoError = 0;
 	}
 
@@ -153,12 +155,12 @@ int setHorario(Venta* this, char* horario) {
 }
 
 
-int getHorario(Venta* this, char* pHorario) {
+int getHorario(Venta* this, char* horario) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && pHorario != NULL) {
-		strcpy(pHorario, this->horario);
+	if (this != NULL && horario != NULL) {
+		strcpy(horario, this->horario);
 		codigoError = 0;
 	}
 
@@ -170,7 +172,7 @@ int setSala(Venta* this, int sala) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && sala > -1) {
+	if (this != NULL && sala > 0) {
 		this->sala = sala;
 		codigoError = 0;
 	}
@@ -178,13 +180,12 @@ int setSala(Venta* this, int sala) {
 	return codigoError;
 }
 
-
-int getSala(Venta* this, int* pSala) {
+int getSala(Venta* this, int* sala) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && pSala != NULL) {
-		*pSala = this->sala;
+	if (this != NULL) {
+		*sala = this->sala;
 		codigoError = 0;
 	}
 
@@ -196,21 +197,20 @@ int setCantidadEntradas(Venta* this, int cantidadEntradas) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && cantidadEntradas > -1) {
-		this->cantidad_entradas = cantidadEntradas;
+	if (this != NULL && cantidadEntradas > 0) {
+		this->cantidadEntradas = cantidadEntradas;
 		codigoError = 0;
 	}
 
 	return codigoError;
 }
 
-
-int getCantidadEntradas(Venta* this, int* pCantidadEntradas) {
+int getCantidadEntradas(Venta* this, int* cantidadEntradas) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && pCantidadEntradas != NULL) {
-		*pCantidadEntradas = this->cantidad_entradas;
+	if (this != NULL) {
+		*cantidadEntradas = this->cantidadEntradas;
 		codigoError = 0;
 	}
 
@@ -230,13 +230,12 @@ int setMonto(Venta* this, float monto) {
 	return codigoError;
 }
 
-
-int getMonto(Venta* this, float* pMonto) {
+int getMonto(Venta* this, float* monto) {
 	int codigoError;
 
 	codigoError = -1;
-	if (this != NULL && pMonto != NULL) {
-		*pMonto = this->monto;
+	if (this != NULL) {
+		*monto = this->monto;
 		codigoError = 0;
 	}
 
@@ -245,20 +244,21 @@ int getMonto(Venta* this, float* pMonto) {
 
 
 
-int imprimirVentas(LinkedList* pArrayListVentas) {
+int imprimirEntidades(LinkedList* pArrayList, int (*pFunc)(void* pEntidad)) {
+	//Itera por una lista generica y llama a imprimir + entidad especifica por pFunc
 	int codigoError;
 	int len;
-	Venta* pVenta;
+	void* pEntidad;
 
 	codigoError = -1;
-	if (pArrayListVentas != NULL) {
-		len = ll_len(pArrayListVentas);
+	if (pArrayList != NULL && pFunc != NULL) {
+		len = ll_len(pArrayList);
 
 		for (int i = 0; i < len; i++) {
-			pVenta = (Venta*) ll_get(pArrayListVentas, i);
+			pEntidad =  ll_get(pArrayList, i);
 
-			if (pVenta != NULL) {
-				codigoError = imprimirVenta(pVenta);
+			if (pEntidad != NULL) {
+				codigoError = pFunc(pEntidad);
 			}
 
 			if (codigoError != 0) {
@@ -271,122 +271,26 @@ int imprimirVentas(LinkedList* pArrayListVentas) {
 }
 
 
-int imprimirVenta(Venta* pVenta) {
+int imprimirVenta(void* pEntidad) {
 	int codigoError;
-	int idVenta;
-	char nombre_pelicula[100];
+	int id;
+	char nombre[100];
 	int dia;
 	char horario[50];
 	int sala;
-	int cantidad_entradas;
-	float monto;
-	char diasDeLaSemana[7][50] = {"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
-
-	codigoError = -1;
-	if (pVenta != NULL &&
-		getIdVenta(pVenta, &idVenta) != -1 &&
-		getNombrePelicula(pVenta, nombre_pelicula) != -1 &&
-		getDia(pVenta, &dia) != -1 &&
-		getHorario(pVenta, horario) != -1 &&
-		getSala(pVenta, &sala) != -1 &&
-		getCantidadEntradas(pVenta, &cantidad_entradas) != -1 &&
-		getMonto(pVenta, &monto) != -1
-
-	) {
-
-		printf("%10d", idVenta);
-		printf("%50s", nombre_pelicula);
-		printf("%20s", diasDeLaSemana[dia]);
-		printf("%20s", horario);
-		printf("%12d", sala);
-		printf("%12d", cantidad_entradas);
-		if (monto > 0) {
-			printf("%20.2f", monto);
-		}
-		printf("\n");
-		codigoError = 0;
-	}
-
-	return codigoError;
-}
-
-
-
-void venta_calcularCostos(void* venta) {
-	int codigoError;
-	float monto;
-	float descuento;
-	int dia;
-	int cantidad_entradas;
-	Venta* pVenta;
-
-	codigoError = -1;
-	if (venta != NULL) {
-
-		pVenta = (Venta*) venta;
-		if (getDia(pVenta, &dia) != -1 &&
-			getCantidadEntradas(pVenta, &cantidad_entradas) != -1
-		) {
-			switch (dia) {
-				case 1:
-				case 2:
-				case 3:
-					monto = 240 * cantidad_entradas;
-					if (cantidad_entradas > 2) {
-						descuento = (monto * 10) / 100;
-						monto = monto - descuento;
-					}
-					codigoError = setMonto(pVenta, monto);
-					break;
-				case 0:
-				case 4:
-				case 5:
-				case 6:
-					monto = 350 * cantidad_entradas;
-					if (cantidad_entradas > 2) {
-						descuento = (monto * 10) / 100;
-						monto = monto - descuento;
-					}
-					codigoError = setMonto(pVenta, monto);
-					break;
-				default:
-					break;
-			}
-		}
-
-
-	}
-
-//	return codigoError;
-}
-
-
-
-
-int venta_guardarComoTexto(FILE* pFile, LinkedList* pArrayListVentas) {
-	int codigoError;
-	int len;
-	Venta* pVenta;
-	int idVenta;
-	char nombrePelicula[100];
-	int dia;
-	char horario[10];
-	int sala;
 	int cantidadEntradas;
 	float monto;
+	Venta* pVenta;
+	char diasDeLaSemana[7][50] = {"Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"};
+
 
 	codigoError = -1;
-	if (pArrayListVentas != NULL && pFile != NULL) {
-		len = ll_len(pArrayListVentas);
-		fprintf(pFile, "id_venta,Nombre_pelicula,dia,horario,sala,cantidad_entradas,monto\n");
+	if (pEntidad != NULL) {
+		pVenta = (Venta*) pEntidad;
 
-		for (int i = 0; i < len; i++) {
-			pVenta = (Venta*) ll_get(pArrayListVentas, i);
-
-			if (pVenta != NULL &&
-				ll_map(pArrayListVentas, venta_calcularCostos) &&
-				getIdVenta(pVenta, &idVenta) != -1 &&
-				getNombrePelicula(pVenta, nombrePelicula) != -1 &&
+		if (
+				getId(pVenta, &id) != -1 &&
+				getNombre(pVenta, nombre) != -1 &&
 				getDia(pVenta, &dia) != -1 &&
 				getHorario(pVenta, horario) != -1 &&
 				getSala(pVenta, &sala) != -1 &&
@@ -394,7 +298,57 @@ int venta_guardarComoTexto(FILE* pFile, LinkedList* pArrayListVentas) {
 				getMonto(pVenta, &monto) != -1
 			) {
 
-					fprintf(pFile, "%d,%s,%d,%s,%d,%d,%.2f\n", idVenta, nombrePelicula, dia, horario, sala, cantidadEntradas, monto);
+				printf("%10d", id);
+				printf("%50s", nombre);
+				printf("%20s", diasDeLaSemana[dia]);
+				printf("%20s", horario);
+				printf("%10d", sala);
+				printf("%12d", cantidadEntradas);
+				if (monto > 0) {
+					printf("%12.2f", monto);
+				}
+
+				printf("\n");
+				codigoError = 0;
+			}
+	}
+
+
+	return codigoError;
+}
+
+
+int venta_guardarComoTexto(FILE* pFile, LinkedList* pArrayListVentas) {
+	int codigoError;
+	int len;
+	Venta* pVenta;
+	int id;
+	char nombre[100];
+	int dia;
+	char horario[10];
+	int sala;
+	int cantidadEntradas;
+	float monto;
+
+
+	codigoError = -1;
+	if (pArrayListVentas != NULL && pFile != NULL) {
+		len = ll_len(pArrayListVentas);
+		fprintf(pFile, "id,nombre,dia,horario,sala,cantidad_entradas,monto\n");
+
+		for (int i = 0; i < len; i++) {
+			pVenta = (Venta*) ll_get(pArrayListVentas, i);
+
+			if (pVenta != NULL &&
+				getId(pVenta, &id) != -1 &&
+				getNombre(pVenta, nombre) != -1 &&
+				getDia(pVenta, &dia) != -1 &&
+				getHorario(pVenta, horario) != -1 &&
+				getSala(pVenta, &sala) != -1 &&
+				getCantidadEntradas(pVenta, &cantidadEntradas) != -1 &&
+				getMonto(pVenta, &monto) != -1
+			) {
+					fprintf(pFile, "%d,%s,%d,%s,%d,%d,%.2f\n", id, nombre, dia, horario, sala, cantidadEntradas, monto);
 					codigoError = 0;
 
 			}
@@ -404,126 +358,83 @@ int venta_guardarComoTexto(FILE* pFile, LinkedList* pArrayListVentas) {
 	return codigoError;
 }
 
-
-
-int calcularEntradasVendidasPorSala(LinkedList* pArrayListVentas, int* cantidadEntradasVendidas, int sala) {
+int calcularMonto(void* pEntidad) {
 	int codigoError;
-	int len;
-	int salaActual;
-	int cantidadEntrada;
 	Venta* pVenta;
+	int dia;
+	int cantidadEntradas;
+	float monto;
 
 	codigoError = -1;
-	if (pArrayListVentas != NULL && cantidadEntradasVendidas != NULL && sala > -1) {
+	if (pEntidad != NULL) {
+		pVenta = (Venta*) pEntidad;
 
-		len = ll_len(pArrayListVentas);
-		for (int i = 0; i < len; i++) {
-			pVenta = (Venta*) ll_get(pArrayListVentas, i);
-			if (pVenta != NULL && getSala(pVenta, &salaActual) != -1 && salaActual == sala) {
-				codigoError = getCantidadEntradas(pVenta, &cantidadEntrada);
-				*cantidadEntradasVendidas += cantidadEntrada;
+		if (getDia(pVenta, &dia) != -1 && getCantidadEntradas(pVenta, &cantidadEntradas) != -1) {
+			switch (dia) {
+				case 1:
+				case 2:
+				case 3:
+					monto = cantidadEntradas * 240;
+					codigoError = setMonto(pVenta, monto);
+					break;
+				case 0:
+				case 4:
+				case 5:
+				case 6:
+					monto = cantidadEntradas * 350;
+					codigoError = setMonto(pVenta, monto);
+					break;
+				default:
+					break;
+			}
+
+			if (cantidadEntradas > 3) {
+				monto = monto * 0.90;
+				codigoError = setMonto(pVenta, monto);
 			}
 		}
+
+
 	}
 
 	return codigoError;
 }
 
 
-
-int imprimirInformes(int cantidadEntradasVendidas, float montoTotal, LinkedList* pArrayListPeliculas) {
-	int codigoError;
-	int len;
+int verificarEntradasPorSala(void* pEntidad, int criterio) {
+	int resultado;
 	Venta* pVenta;
-	char nombrePelicula[50];
+	int sala;
+	int cantidadEntradas;
 
-	codigoError = -1;
-	if (cantidadEntradasVendidas > -1 && montoTotal > -1 && pArrayListPeliculas != NULL) {
-		len = ll_len(pArrayListPeliculas);
+	resultado = 0;
+	if (pEntidad != NULL) {
+		pVenta = (Venta*) pEntidad;
 
-		printf("Entradas vendidas: %d", cantidadEntradasVendidas);
-		printf("\nMonto Total: %.2f $", montoTotal);
-		printf("\n\n=== PELICULAS ===\n\n");
-
-		for (int i = 0; i < len; i++) {
-			pVenta = (Venta*) ll_get(pArrayListPeliculas, i);
-			if (pVenta != NULL && getNombrePelicula(pVenta, nombrePelicula) != -1) {
-				printf("%s\n", nombrePelicula);
-
-			}
+		if (getSala(pVenta, &sala) != -1 && sala == criterio && getCantidadEntradas(pVenta, &cantidadEntradas) != -1) {
+			resultado = cantidadEntradas;
 		}
-		codigoError = 0;
 	}
 
-	return codigoError;
+	return resultado;
 }
 
 
-
-int calcularMontoTotalPorSala(LinkedList* pArrayListVenta, float* montoTotal, int sala) {
-	int codigoError;
-	int salaActual;
-	int len;
-	float montoActuall;
+int calcularMontoTotal(void* pEntidad, int criterio) {
+	int resultado;
 	Venta* pVenta;
+	int sala;
+	float monto;
 
-	montoActuall = 0;
-	codigoError = -1;
-	if (pArrayListVenta != NULL && montoTotal != NULL && sala > -1) {
+	resultado = 0;
+	if (pEntidad != NULL) {
+		pVenta = (Venta*) pEntidad;
 
-		len = ll_len(pArrayListVenta);
-		for (int i = 0; i < len; i++) {
-			pVenta = ll_get(pArrayListVenta, i);
-			if (pVenta != NULL && getSala(pVenta, &salaActual) != -1 && salaActual == sala) {
-				codigoError = getMonto(pVenta, &montoActuall);
-				*montoTotal += montoActuall;
-			}
+		if (getSala(pVenta, &sala) != -1 && sala == criterio && getMonto(pVenta, &monto) != -1) {
+			resultado = (int) monto;
 		}
 	}
 
-	return codigoError;
-}
-
-
-
-int peliculasPorSala(LinkedList* pArrayListVenta, LinkedList* pArrayListPeliculas, int sala) {
-	int codigoError;
-	int salaActual;
-	int len;
-	Venta* pVenta;
-	int yaPaso;
-	char nombre[100];
-	char nombreSegundaLista[100];
-	int lenPelis;
-
-	yaPaso = FALSE;
-	codigoError = -1;
-	if (pArrayListVenta != NULL && pArrayListPeliculas != NULL && sala > -1) {
-
-		len = ll_len(pArrayListVenta);
-		for (int i = 0; i < len; i++) {
-			pVenta = (Venta*) ll_get(pArrayListVenta, i);
-			if (pVenta != NULL && getSala(pVenta, &salaActual) != -1 && sala == salaActual) {
-
-				if (yaPaso == FALSE && getNombrePelicula(pVenta, nombre) != -1 && ll_add(pArrayListPeliculas, pVenta) != -1) {
-					yaPaso = TRUE;
-				}
-
-				lenPelis = ll_len(pArrayListPeliculas);
-				//si no lo contiene lo agrego
-				for (int i = 0; i < lenPelis; i++) {
-					pVenta = (Venta*) ll_get(pArrayListPeliculas, i);
-					if (getNombrePelicula(pVenta, nombreSegundaLista) != -1 && strcmp(nombre, nombreSegundaLista) == 0)
-						ll_add(pArrayListPeliculas, pVenta);
-				}
-//				if (ll_contains(pArrayListPeliculas, pVenta) == 0) {
-//					codigoError = ll_add(pArrayListPeliculas, pVenta);
-//
-//				}
-			}
-		}
-	}
-
-	return codigoError;
+	return resultado;
 }
 

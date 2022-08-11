@@ -220,7 +220,7 @@ int controller_archivoSinMachosSaveAsText(char* path, LinkedList* pArrayListCach
 
 		pArrayFilteredList = ll_filter(pArrayListCachorros, cachorro_esHembra);
 		pFile = fopen(path, "w");
-		//TODO grega filter menores a 45 diaas
+
 		if (pFile != NULL && pArrayFilteredList != NULL) {
 			codigoError = cachorro_guardarComoTexto(pFile, pArrayFilteredList);
 		}
@@ -245,27 +245,6 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListVentas)
 }
 
 
-int controller_hacerInforme(LinkedList* pArrayListVentas, int sala) {
-	int codigoError;
-	int cantidadEntradasVendidas;
-	float montoTotal;
-	LinkedList* pArrayListPeliculas;
 
-	pArrayListPeliculas = ll_newLinkedList();
-	cantidadEntradasVendidas = 0;
-	montoTotal = 0;
-	codigoError = -1;
-	if (pArrayListVentas != NULL && sala > -1) {
-
-		if (calcularEntradasVendidasPorSala(pArrayListVentas, &cantidadEntradasVendidas, sala) != -1 &&
-			calcularMontoTotalPorSala(pArrayListVentas, &montoTotal, sala) != -1 &&
-			peliculasPorSala(pArrayListVentas, pArrayListPeliculas, sala) != -1
-		) {
-			codigoError = imprimirInformes(cantidadEntradasVendidas, montoTotal, pArrayListPeliculas);
-		}
-	}
-
-	return codigoError;
-}
 
 

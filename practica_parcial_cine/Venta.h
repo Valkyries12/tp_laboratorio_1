@@ -1,22 +1,23 @@
 /*
  * Venta.h
  *
- *  Created on: 20 jul 2022
+ *  Created on: 9 ago 2022
  *      Author: Nico
  */
-
-#include "LinkedList.h"
 
 #ifndef VENTA_H_
 #define VENTA_H_
 
+#include "LinkedList.h"
+
+
 typedef struct {
-	int id_venta;
-	char nombre_pelicula[100];
+	int id;
+	char nombre[50];
 	int dia;
-	char horario[10];
+	char horario[50];
 	int sala;
-	int cantidad_entradas;
+	int cantidadEntradas;
 	float monto;
 }Venta;
 
@@ -24,47 +25,37 @@ typedef struct {
 
 Venta* new_venta();
 
-Venta* new_ventaParametros(char* strIdVenta, char* nombre_pelicula, char* strDia, char* horario, char* strSala, char* strCantidad_entradas, char* strMonto);
+Venta* new_ventaParametros(char* strId, char* strNombre, char* strDia, char* strHorario, char* strSala, char* strCantidadEntradas, char* strMonto);
 
 
-int setIdVenta(Venta* this, int idVenta);
-int getIdVenta(Venta* this, int* idVenta);
+int setId(Venta* this, int id);
+int getId(Venta* this, int* id);
 
-int setNombrePelicula(Venta* this, char* nombrePelicula);
-int getNombrePelicula(Venta* this, char* nombrePelicula);
+int setNombre(Venta* this, char* nombre);
+int getNombre(Venta* this, char* nombre);
 
 int setDia(Venta* this, int dia);
-int getDia(Venta* this, int* pDia);
+int getDia(Venta* this, int* dia);
 
 int setHorario(Venta* this, char* horario);
-int getHorario(Venta* this, char* pHorario);
+int getHorario(Venta* this, char* horario);
 
 int setSala(Venta* this, int sala);
-int getSala(Venta* this, int* pSala);
+int getSala(Venta* this, int* sala);
 
 int setCantidadEntradas(Venta* this, int cantidadEntradas);
-int getCantidadEntradas(Venta* this, int* pCantidadEntradas);
+int getCantidadEntradas(Venta* this, int* cantidadEntradas);
 
 int setMonto(Venta* this, float monto);
-int getMonto(Venta* this, float* pMonto);
+int getMonto(Venta* this, float* monto);
 
-
-int imprimirVenta(Venta* pVenta);
-int imprimirVentas(LinkedList* pArrayListVentas);
-
-
+int imprimirVenta(void* pEntidad);
 
 int venta_guardarComoTexto(FILE* pFile, LinkedList* pArrayListVentas);
 
-void venta_calcularCostos(void* venta);
+int calcularMonto(void* pEntidad);
 
-int calcularEntradasVendidasPorSala(LinkedList* pArrayListVentas, int* cantidadEntradasVendidas, int sala);
+int verificarEntradasPorSala(void* pEntidad, int criterio);
 
-int imprimirInformes(int cantidadEntradasVendidas, float montoTotal, LinkedList* pArrayListPeliculas);
-
-int calcularMontoTotalPorSala(LinkedList* pArrayListVenta, float* montoTotal, int sala);
-
-int peliculasPorSala(LinkedList* pArrayListVenta, LinkedList* pArrayListPeliculas, int sala);
-
-
+int calcularMontoTotal(void* pEntidad, int criterio);
 #endif /* VENTA_H_ */

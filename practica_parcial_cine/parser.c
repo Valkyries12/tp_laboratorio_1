@@ -11,38 +11,41 @@
 #include "LinkedList.h"
 #include "Venta.h"
 
-/** \brief Parsea los datos los datos de las ventas desde el archivo data.csv (modo texto).
+/** \brief Parsea los datos los datos de la entidad desde el archivo data.csv (modo texto).
  *
  * \param path char*
- * \param pArrayListVentas LinkedList*
+ * \param pArrayListEntidad LinkedList*
  * \return int
  *
  */
-int parser_VentasFromText(FILE* pFile , LinkedList* pArrayListVentas)
+int parser_entidadFromText(FILE* pFile , LinkedList* pArrayList)
 {
-	Venta* pVenta;
-
+	Venta* this; //-> this representa a la entidad a crear
+	//todos los campos son char porque los leo del archiivo y el constructor recibe char[]
 	int codigoError;
-	char nombre_pelicula[100];
-	char horario[50];
-	char strIdVenta[10];
+	char strId[10];
+	char strNombre[100];
 	char strDia[10];
-	char strSala[10];
-	char strCantidad_entradas[50];
-//	char strMonto[10];
+	char strHorario[50];
+	char strSala[50];
+	char strCantidadEntradas[50];
+//	char strMonto[50];
 
 	codigoError = -1;
-	if (pFile != NULL && pArrayListVentas != NULL) {
+	if (pFile != NULL && pArrayList != NULL) {
+
 		//Lectura falsa para el header
-		fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strIdVenta, nombre_pelicula, strDia, horario, strSala, strCantidad_entradas);
+		fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strId, strNombre, strDia, strHorario, strSala, strCantidadEntradas);
 		do {
-			codigoError = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strIdVenta, nombre_pelicula, strDia, horario, strSala, strCantidad_entradas);
+			codigoError = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strId, strNombre, strDia, strHorario, strSala, strCantidadEntradas);
+
 			if (codigoError == 6 ) {
 //				printf("\nstrIDVEnta es: %s, nombre peli es: %s, strDia es: %s, horario es: %s, strSala es: %s, strCantidad_entradas es: %s", strIdVenta, nombre_pelicula, strDia, horario, strSala, strCantidad_entradas);
-				pVenta = new_ventaParametros(strIdVenta, nombre_pelicula, strDia, horario, strSala, strCantidad_entradas, "0.0");
+				this = new_ventaParametros(strId, strNombre, strDia, strHorario, strSala, strCantidadEntradas, "0.0");
 
-				if (pVenta != NULL) {
-					codigoError = ll_add(pArrayListVentas, pVenta);
+				if (this != NULL) {
+
+					codigoError = ll_add(pArrayList, this);
 				}
 
 				if (codigoError == -1) {

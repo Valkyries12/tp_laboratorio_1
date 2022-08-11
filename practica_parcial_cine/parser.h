@@ -10,7 +10,7 @@
 
 #include "LinkedList.h"
 
-int parser_VentasFromText(FILE* pFile , LinkedList* pArrayListVentas);
+int parser_entidadFromText(FILE* pFile , LinkedList* pArrayListCachorros);
 int parser_VentasFromBinary(FILE* pFile , LinkedList* pArrayListVentas);
 
 

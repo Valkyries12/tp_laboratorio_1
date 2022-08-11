@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "LinkedList.h"
-#include "Venta.h"
+//#include "Venta.h"
 
 #define TRUE 1
 #define FALSE 0

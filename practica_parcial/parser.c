@@ -23,6 +23,7 @@ int parser_entidadFromText(FILE* pFile , LinkedList* pArrayListCachorros)
 	Cachorro* this; //-> this representa a la entidad a crear
 	//todos los campos son char porque los leo del archiivo y el constructor recibe char[]
 	int codigoError;
+	int camposLeidos;
 	char strId[10];
 	char strNombre[100];
 	char strDias[10];
@@ -35,8 +36,8 @@ int parser_entidadFromText(FILE* pFile , LinkedList* pArrayListCachorros)
 		//Lectura falsa para el header
 		fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strId, strNombre, strDias, strRaza, strReservado, strGenero);
 		do {
-			codigoError = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strId, strNombre, strDias, strRaza, strReservado, strGenero);
-			if (codigoError == 6 ) {
+			camposLeidos = fscanf(pFile, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^\n]\n", strId, strNombre, strDias, strRaza, strReservado, strGenero);
+			if (camposLeidos == 6 ) {
 //				printf("\nstrIDVEnta es: %s, nombre peli es: %s, strDia es: %s, horario es: %s, strSala es: %s, strCantidad_entradas es: %s", strIdVenta, nombre_pelicula, strDia, horario, strSala, strCantidad_entradas);
 				this = new_cachorroParametros(strId, strNombre, strDias, strRaza, strReservado, strGenero);
 

@@ -12,25 +12,24 @@
 #include "LinkedList.h"
 #include "Venta.h"
 
-
-/** \brief Carga los datos de las ventas desde el archivo data.csv (modo texto).
+/** \brief Carga los datos de la entidad desde el archivo data.csv (modo texto).
  *
  * \param path char*
- * \param pArrayListVentas LinkedList*
+ * \param pArrayList LinkedList*
  * \return int
  *
  */
-int controller_loadFromText(char* path , LinkedList* pArrayListVentas)
+int controller_loadFromText(char* path , LinkedList* pArrayList)
 {
 	int codigoError;
 	FILE* pFile;
 	codigoError = -1;
-	if (path != NULL && pArrayListVentas != NULL) {
-
+	if (path != NULL && pArrayList != NULL) {
 		pFile = fopen(path, "r");
-		//TODO ver si va != NULL o que carajo devuelve
+
 		if (pFile != NULL) {
-			codigoError = parser_VentasFromText(pFile, pArrayListVentas);
+
+			codigoError = parser_entidadFromText(pFile, pArrayList);
 
 		}
 
@@ -40,7 +39,7 @@ int controller_loadFromText(char* path , LinkedList* pArrayListVentas)
 	return codigoError;
 }
 
-/** \brief Carga los datos de las ventas desde el archivo data.csv (modo binario).
+/** \brief Carga los datos  desde el archivo data.csv (modo binario).
  *
  * \param path char*
  * \param pArrayListVentas LinkedList*
@@ -88,24 +87,29 @@ int controller_removeVenta(LinkedList* pArrayListVentas)
 
 }
 
-/** \brief Listar ventas
+/** \brief Listar
  *
  * \param path char*
- * \param pArrayListVentas LinkedList*
+ * \param pArrayList LinkedList*
  * \return int
  *
  */
-int controller_ListVentas(LinkedList* pArrayListVentas)
+int controller_list(LinkedList* pArrayList)
 {
 	int codigoError;
 
 	codigoError = -1;
-	if (pArrayListVentas != NULL) {
-		codigoError = imprimirVentas(pArrayListVentas);
+	if (pArrayList != NULL) {
+		codigoError = ll_map(pArrayList, imprimirVenta);
 	}
 
 	return codigoError;
 }
+
+
+
+
+
 
 /** \brief Ordenar ventas
  *
@@ -119,24 +123,24 @@ int controller_sortVentas(LinkedList* pArrayListVentas)
 
 }
 
-/** \brief Guarda los datos de las ventas en el archivo data.csv (modo texto).
+/** \brief Guarda los datos de la entidad en el archivo data.csv (modo texto).
  *
  * \param path char*
- * \param pArrayListVentas LinkedList*
+ * \param pArrayList LinkedList*
  * \return int
  *
  */
-int controller_saveAsText(char* path , LinkedList* pArrayListVentas)
+int controller_saveAsText(char* path , LinkedList* pArrayList)
 {
 	int codigoError;
 	FILE* pFile;
 
 	codigoError = -1;
-	if (path != NULL && pArrayListVentas != NULL) {
+	if (path != NULL && pArrayList != NULL) {
 		pFile = fopen(path, "w");
 
 		if (pFile != NULL) {
-			codigoError = venta_guardarComoTexto(pFile, pArrayListVentas);
+			codigoError = venta_guardarComoTexto(pFile, pArrayList);
 		}
 
 		fclose(pFile);
@@ -144,6 +148,10 @@ int controller_saveAsText(char* path , LinkedList* pArrayListVentas)
 
 	return codigoError;
 }
+
+
+
+
 
 /** \brief Guarda los datos de las ventas en el archivo data.csv (modo binario).
  *
@@ -157,25 +165,40 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListVentas)
 
 }
 
+int controller_archivoConMontos(char* path, LinkedList* pArrayListVentas) {
+	int codigoError;
+	FILE* pFile;
+
+	codigoError = -1;
+	if (path != NULL && pArrayListVentas != NULL) {
+		pFile = fopen(path, "w");
+
+		if (pFile != NULL) {
+			codigoError = ll_map(pArrayListVentas, calcularMonto);
+			codigoError = venta_guardarComoTexto(pFile, pArrayListVentas);
+		}
+
+		fclose(pFile);
+	}
+
+	return codigoError;
+}
+
+
 
 int controller_hacerInforme(LinkedList* pArrayListVentas, int sala) {
 	int codigoError;
 	int cantidadEntradasVendidas;
-	float montoTotal;
-	LinkedList* pArrayListPeliculas;
+	int montoTotal;
 
-	pArrayListPeliculas = ll_newLinkedList();
-	cantidadEntradasVendidas = 0;
-	montoTotal = 0;
 	codigoError = -1;
-	if (pArrayListVentas != NULL && sala > -1) {
+	if (pArrayListVentas != NULL && sala > 0) {
+		cantidadEntradasVendidas = ll_contador(pArrayListVentas, verificarEntradasPorSala, sala);
+		montoTotal = (int) ll_contador(pArrayListVentas, calcularMontoTotal, sala);
 
-		if (calcularEntradasVendidasPorSala(pArrayListVentas, &cantidadEntradasVendidas, sala) != -1 &&
-			calcularMontoTotalPorSala(pArrayListVentas, &montoTotal, sala) != -1 &&
-			peliculasPorSala(pArrayListVentas, pArrayListPeliculas, sala) != -1
-		) {
-			codigoError = imprimirInformes(cantidadEntradasVendidas, montoTotal, pArrayListPeliculas);
-		}
+		printf("\nLa cantidad de entradas vendidas es: %d", cantidadEntradasVendidas);
+		printf("\nEl monto facturado es: %d", montoTotal);
+		codigoError = 0;
 	}
 
 	return codigoError;

@@ -22,7 +22,6 @@
 int main(void) {
 	setbuf(stdout, NULL);
 	int opcionMenu;
-	int sala;
 	int codigoError;
 	char path[50];
 	LinkedList* pArrayListCachorros;

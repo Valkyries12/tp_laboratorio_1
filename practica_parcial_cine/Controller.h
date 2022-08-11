@@ -15,13 +15,16 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListVentas);
 int controller_addPassenger(LinkedList* pArrayListVentas);
 int controller_editPassenger(LinkedList* pArrayListVentas);
 int controller_removePassenger(LinkedList* pArrayListVentas);
-int controller_ListVentas(LinkedList* pArrayListVentas);
+int controller_list(LinkedList* pArrayList);
 int controller_sortPassenger(LinkedList* pArrayListVentas);
-int controller_saveAsText(char* path , LinkedList* pArrayListVentas);
+int controller_saveAsText(char* path , LinkedList* pArrayList);
 int controller_saveAsBinary(char* path , LinkedList* pArrayListVentas);
 int controller_hacerInforme(LinkedList* pArrayListVentas, int sala);
 
-
+int controller_archivoConMontos(char* path, LinkedList* pArrayListVentas);
+//int controller_menorDiasSaveAsText(char* path, LinkedList* pArrayListCachorros);
+//int controller_archivoSinMachosSaveAsText(char* path, LinkedList* pArrayListCachorros);
+//int controller_listCallejeros(LinkedList* pArrayListCachorros);
 
 
 #endif /* CONTROLLER_H_ */
